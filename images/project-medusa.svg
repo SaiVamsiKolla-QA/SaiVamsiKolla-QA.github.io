@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" role="img" aria-label="medusa-checkout-e2e project cover">
+  <rect width="640" height="320" fill="#7c3aed"/>
+  <rect width="640" height="320" fill="url(#p2)" opacity="0.35"/>
+  <defs>
+    <pattern id="p2" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0 20h40M20 0v40" stroke="#fff" stroke-opacity="0.25" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <text x="48" y="150" font-family="ui-monospace, monospace" font-size="34" font-weight="700" fill="#fff">medusa-checkout-e2e</text>
+  <text x="48" y="196" font-family="ui-monospace, monospace" font-size="20" fill="#ede9fe">playwright · docker · allure</text>
+</svg>
