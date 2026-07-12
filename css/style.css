@@ -10,6 +10,8 @@
   --border: #e2e8f0;
   --shadow: 0 1px 3px rgb(15 23 42 / 0.08), 0 8px 24px rgb(15 23 42 / 0.06);
   --nav-bg: rgb(248 250 252 / 0.85);
+  --particle-dot: rgb(29 78 216 / 0.35);
+  --particle-line: rgb(29 78 216 / 0.14);
   color-scheme: light dark;
 }
 
@@ -25,7 +27,17 @@
     --border: #1e293b;
     --shadow: 0 1px 3px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.3);
     --nav-bg: rgb(11 18 32 / 0.85);
+    --particle-dot: rgb(96 165 250 / 0.6);
+    --particle-line: rgb(96 165 250 / 0.22);
   }
+}
+
+/* constellation background */
+#bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* ---------- base ---------- */
