@@ -50,30 +50,38 @@ Toronto, Calgary, and Dallas-Fort Worth.
 All experience facts below come from SaiVamsiKolla_Resume.pdf (July 2026),
 also committed as files/resume.pdf. Logos: TODO(you), monograms until then.
 
+Format rule: each role renders as 2-3 short achievement bullets, never a
+paragraph. Recruiters scan.
+
 ### mimik, Vancouver — AI Quality Engineer (March 2026 - Present)
-- Sole QA engineer on a production on-device AI health app. Defined the
-  test strategy from scratch; built Schemathesis + PyTest (API contract)
-  and Playwright + JavaScript (UI) frameworks; validate on-device AI agent
-  behavior.
+- Sole QA engineer for an on-device AI health application.
+- Built Playwright and Schemathesis automation frameworks from scratch.
+- Developed QA tooling to validate AI workflows, HealthKit ingestion, and
+  API contracts.
 
 ### HCLTech, Vancouver — Test Lead, Client: Meta (Aug 2025 - Feb 2026)
-- Led QA validation for AI-powered agentic checkout across 10 to 15 real
-  e-commerce merchants daily; coordinated 20 offshore QA analysts across
-  iOS, Android, and Shopify.
+- Led QA for AI-powered checkout experiences, validating autonomous agent
+  workflows across 10 to 15 merchant integrations.
+- Coordinated a team of 20 offshore QA engineers supporting iOS, Android,
+  and Shopify commerce journeys.
 
 ### Peace Hills General Insurance, Edmonton — Senior QA Analyst (Nov 2022 - Dec 2024)
-- End-to-end Guidewire ClaimCenter workflows and cross-suite integrations;
-  1,900+ test cases, 975 defects found before UAT; Python + Selenium +
-  Behave regression suite.
+- Owned end-to-end QA for Guidewire ClaimCenter and cross-suite
+  integrations including PolicyCenter, BillingCenter, and customer portals.
+- Designed 1,900+ functional test cases and identified 975 defects before UAT.
+- Built the team's first Selenium + Python regression suite.
 
 ### TELUS, Edmonton — QA Analyst (Sept 2021 - Nov 2022)
-- SIT and A/B validation across 12 Agile sprints; cut critical defects by
-  70%; optimized 575 test cases and automated regression suites.
+- Executed SIT, regression, and A/B validation across 12 Agile releases.
+- Reduced critical production defects by 70% through improved functional
+  test coverage.
+- Optimized more than 575 regression test cases.
 
 ### Accenture, India — Software Engineer, QA (Mar 2016 - Aug 2019)
-- QA lead across three Guidewire migration programs; hybrid UI (Selenium,
-  Java, BDD), API, and SQL coverage; 30+ deployment cycles, 100% on-time;
-  Above & Beyond award.
+- Delivered QA for three enterprise Guidewire migration programs covering
+  UI, API, and SQL validation.
+- Supported more than 30 production releases with 100% on-time delivery.
+- Received the Above & Beyond Award for QA excellence.
 
 ## What I've Tested (dedicated section, cards with public references)
 

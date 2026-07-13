@@ -311,6 +311,14 @@ h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
 .timeline-dates { color: var(--text-soft); font-size: 0.85rem; margin: 0 0 0.4em; }
 .timeline-body p:last-child { margin: 0; color: var(--text-soft); }
 
+.timeline-points {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text-soft);
+}
+.timeline-points li { margin: 0.25em 0; }
+.timeline-points li::marker { color: var(--accent); }
+
 /* what I've tested */
 .section-intro { color: var(--text-soft); margin-top: -0.5rem; }
 
