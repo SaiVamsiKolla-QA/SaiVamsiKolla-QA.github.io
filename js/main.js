@@ -15,6 +15,17 @@ menu.addEventListener('click', (event) => {
   }
 });
 
+// Theme toggle: explicit choice wins over the OS preference and persists
+const themeToggle = document.querySelector('.theme-toggle');
+
+themeToggle.addEventListener('click', () => {
+  const systemDark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const current = document.documentElement.dataset.theme || (systemDark ? 'dark' : 'light');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('theme', next);
+});
+
 // Scroll-reveal: fade sections in the first time they enter the viewport
 const revealables = document.querySelectorAll('.reveal');
 

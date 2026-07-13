@@ -11,6 +11,12 @@
   <meta property="og:url" content="https://saivamsikolla-qa.github.io/">
   <meta property="og:image" content="https://saivamsikolla-qa.github.io/images/profile.jpg">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232563eb'/%3E%3Ctext x='50' y='66' font-size='46' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3ESV%3C/text%3E%3C/svg%3E">
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -32,6 +38,12 @@
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a class="nav-resume" href="files/resume.pdf" download>Resume</a></li>
+      <li>
+        <button class="theme-toggle" aria-label="Switch between light and dark theme">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </li>
     </ul>
   </nav>
 </header>
@@ -67,9 +79,10 @@
     <h2 class="reveal">About Me</h2>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I'm the sole QA engineer on a production on-device AI health app at <strong>mimik</strong>. I own the test strategy, built the product's first automation framework, and validate how the on-device AI agent actually behaves.</p>
-        <p>7+ years in QA: I started in manual testing, moved into automation and API testing, and now spend most of my time validating AI systems (agent behavior, model output, and RAG pipelines).</p>
-        <p>Open to SDET / QA Automation roles: remote, or on-site in <strong>Dallas-Fort Worth</strong>, Vancouver, Toronto, Calgary. Eligible to work in the US (TN visa).</p>
+        <p>I'm a Quality Engineer at <strong>mimik</strong>, where I help ensure the quality of an on-device AI health application built on a multi-agent architecture. My work focuses on validating AI agent behavior, model responses, and the end-to-end ingestion of health data from Apple HealthKit.</p>
+        <p>I enjoy finding bugs before customers do, but even more, I enjoy building tools that help teams find them faster. Whether it's creating automation frameworks, writing API tests, or developing utilities that make testing easier, I like solving quality problems through engineering.</p>
+        <p>Over the past 7+ years, I've worked across functional testing, test automation, API testing, and AI quality engineering. I enjoy collaborating with developers to build reliable software and deliver products with confidence.</p>
+        <p>I'm currently open to SDET and QA Automation opportunities in <strong>Vancouver, Toronto, Calgary, and Dallas-Fort Worth</strong>.</p>
       </div>
       <div class="skills reveal">
         <div class="skill-group"><h3>Automation</h3><ul><li>Playwright (JS/TS)</li><li>Selenium (Python)</li><li>Page Object Model</li><li>BDD</li></ul></div>

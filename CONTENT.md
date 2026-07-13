@@ -17,17 +17,23 @@ or generic until you do.
 
 ## About
 
-I test AI systems for a living. I'm the sole QA engineer on a production
-on-device AI health app at mimik — I own the test strategy, built the
-product's first automation framework, and validate how the on-device AI
-agent actually behaves.
+I'm a Quality Engineer at mimik, where I help ensure the quality of an
+on-device AI health application built on a multi-agent architecture. My
+work focuses on validating AI agent behavior, model responses, and the
+end-to-end ingestion of health data from Apple HealthKit.
 
-7+ years in QA: started in manual testing, moved into automation and API
-testing, and now spend most of my time validating AI systems — agent
-behavior, model output, and RAG pipelines.
+I enjoy finding bugs before customers do, but even more, I enjoy building
+tools that help teams find them faster. Whether it's creating automation
+frameworks, writing API tests, or developing utilities that make testing
+easier, I like solving quality problems through engineering.
 
-Open to SDET / QA Automation roles: remote, or on-site in Dallas–Fort
-Worth, Vancouver, Toronto, Calgary. Eligible to work in the US (TN visa).
+Over the past 7+ years, I've worked across functional testing, test
+automation, API testing, and AI quality engineering. I enjoy collaborating
+with developers to build reliable software and deliver products with
+confidence.
+
+I'm currently open to SDET and QA Automation opportunities in Vancouver,
+Toronto, Calgary, and Dallas-Fort Worth.
 
 ## Skills (grouped chips)
 

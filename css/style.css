@@ -15,8 +15,10 @@
   color-scheme: light dark;
 }
 
+/* Dark tokens apply when the OS prefers dark (and the user hasn't chosen
+   light), or when the user explicitly chose dark via the nav toggle. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #0b1220;
     --bg-card: #111a2e;
     --text: #e2e8f0;
@@ -30,6 +32,21 @@
     --particle-dot: rgb(96 165 250 / 0.6);
     --particle-line: rgb(96 165 250 / 0.22);
   }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0b1220;
+  --bg-card: #111a2e;
+  --text: #e2e8f0;
+  --text-soft: #94a3b8;
+  --accent: #60a5fa;
+  --accent-soft: #1e3a5f;
+  --on-accent: #0b1220;
+  --border: #1e293b;
+  --shadow: 0 1px 3px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.3);
+  --nav-bg: rgb(11 18 32 / 0.85);
+  --particle-dot: rgb(96 165 250 / 0.6);
+  --particle-line: rgb(96 165 250 / 0.22);
 }
 
 /* constellation background */
@@ -134,6 +151,30 @@ h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
   background: var(--accent);
 }
 .nav-menu .nav-resume:hover { filter: brightness(1.1); color: var(--on-accent); }
+
+/* theme toggle: moon shown when light is active, sun when dark is active */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-left: 0.25rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible { color: var(--accent); background: var(--accent-soft); }
+
+.theme-toggle .icon-sun { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+}
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 .nav-toggle {
   display: none;
