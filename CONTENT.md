@@ -102,12 +102,23 @@ Copy style rule: no em dashes or double dashes anywhere in site copy.
 - Master of Science, Internetworking Technologies, University of Alberta, 2021
 - Bachelor of Technology, Information Technology, GITAM University, 2015
 
-## Certifications (own section, card grid)
+## Certifications (own section, interactive card grid)
+
+Each card: emblem icon, level badge, skill tags, and a View Credential
+button (placeholder until a credential URL is added; wire real Credly or
+issuer URLs into the `.cert-cred` anchors when available).
 
 - ISTQB Advanced Test Automation Engineer (CT-TAE), June 2025
+  - Level: Advanced. Tags: Test Automation, API Testing, CI/CD, Framework Design
 - Guidewire Certified Associate, Insurance Suite Analyst, 2024
+  - Level: Associate. Tags: ClaimCenter, PolicyCenter, BillingCenter, Insurance Suite
 - AWS Certified AI Practitioner (Early Adopter), 2024
+  - Level: Foundational. Tags: Generative AI, Prompt Engineering, AI Fundamentals, Cloud AI
 - ISTQB Certified Tester, Foundation Level (CTFL), 2018
+  - Level: Foundation. Tags: Software Testing, Functional Testing, SDLC, Agile
+
+Emblems are custom inline SVGs (trademark-safe, theme-aware, zero
+requests). Official logo files can replace them later via images/logos/.
 
 ## Projects (public repos only)
 
