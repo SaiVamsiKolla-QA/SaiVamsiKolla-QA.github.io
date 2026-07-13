@@ -104,9 +104,10 @@
           <h3>AI Quality Engineer · mimik</h3>
           <p class="timeline-dates">Vancouver · March 2026 - Present</p>
           <ul class="timeline-points">
-            <li>Sole QA engineer for an on-device AI health application.</li>
-            <li>Built Playwright and Schemathesis automation frameworks from scratch.</li>
-            <li>Developed QA tooling to validate AI workflows, HealthKit ingestion, and API contracts.</li>
+            <li>Sole QA engineer on a multi-agent on-device AI health app, with no prior QA process to inherit.</li>
+            <li>Found and tracked 109 defects across the full stack, from HealthKit data ingestion to AI agent responses.</li>
+            <li>Built the first automation frameworks: Schemathesis and PyTest to fuzz API contracts against the OpenAPI spec, Playwright with parallel runs for UI.</li>
+            <li>Because the AI returns different output for the same input, tests assert on contracts and invariants instead of fixed strings.</li>
           </ul>
         </div>
       </li>
@@ -215,7 +216,6 @@
           <li>CI/CD</li>
           <li>Framework Design</li>
         </ul>
-        <a class="cert-cred" role="link" aria-disabled="true" title="Credential link coming soon">View Credential</a>
       </article>
       <article class="cert-card reveal">
         <div class="cert-head">
@@ -232,7 +232,6 @@
           <li>BillingCenter</li>
           <li>Insurance Suite</li>
         </ul>
-        <a class="cert-cred" role="link" aria-disabled="true" title="Credential link coming soon">View Credential</a>
       </article>
       <article class="cert-card reveal">
         <div class="cert-head">
@@ -249,7 +248,6 @@
           <li>AI Fundamentals</li>
           <li>Cloud AI</li>
         </ul>
-        <a class="cert-cred" role="link" aria-disabled="true" title="Credential link coming soon">View Credential</a>
       </article>
       <article class="cert-card reveal">
         <div class="cert-head">
@@ -266,7 +264,6 @@
           <li>SDLC</li>
           <li>Agile</li>
         </ul>
-        <a class="cert-cred" role="link" aria-disabled="true" title="Credential link coming soon">View Credential</a>
       </article>
     </div>
   </section>
@@ -279,7 +276,7 @@
         <img src="images/project-qa-agent.svg" alt="" width="640" height="320" loading="lazy">
         <div class="project-body">
           <h3>qa-agent</h3>
-          <p>How do you test an AI whose answers change every run? This one answers ISTQB questions from a local RAG pipeline, and a DeepEval gate fails the CI build when answer quality drops below threshold. Runs fully offline, 59 tests.</p>
+          <p>Testing an LLM is hard because the same question gives a different answer each run, so a normal assertion can't tell a regression from noise. qa-agent retrieves ISTQB context locally and scores each answer against a golden set with DeepEval, then fails the CI build when quality drops below a set threshold. It's regression testing for non-deterministic output, running offline on a small model to stay reproducible. 59 tests.</p>
           <ul class="project-tags">
             <li>Python</li>
             <li>ChromaDB</li>
@@ -293,7 +290,7 @@
         <img src="images/project-fhir.svg" alt="" width="640" height="320" loading="lazy">
         <div class="project-body">
           <h3>fhir-contract-fuzz</h3>
-          <p>Healthcare APIs have to match the FHIR R4 spec exactly. Here pydantic models pin the contract while Schemathesis fuzzes the live OpenAPI surface for violations, split into a fast PR gate and a nightly deep-fuzz run.</p>
+          <p>Healthcare APIs have to match the FHIR R4 spec exactly, and a subtle contract drift breaks downstream systems quietly. The framework pins the contract with pydantic models and fuzzes the live OpenAPI surface with Schemathesis, split into a fast PR gate and a nightly deep run. The architecture and CI are in place; I'm growing coverage against a live HAPI FHIR server.</p>
           <ul class="project-tags">
             <li>PyTest</li>
             <li>Schemathesis</li>
@@ -307,7 +304,7 @@
         <img src="images/project-medusa.svg" alt="" width="640" height="320" loading="lazy">
         <div class="project-body">
           <h3>medusa-checkout-e2e</h3>
-          <p>End-to-end checkout tests against a real Dockerized Medusa store, not a mock. Page objects keep selectors in one place, Playwright's auto-waiting kills flaky sleeps, and Allure reports run on every PR.</p>
+          <p>Checkout is where e-commerce quality actually matters and the flow most likely to break on a release. The suite runs against a real Dockerized Medusa store instead of mocks, with page objects isolating selectors and Playwright auto-waiting to kill flaky sleeps. Built as a framework foundation with CI and Allure reporting wired end to end.</p>
           <ul class="project-tags">
             <li>Playwright</li>
             <li>JavaScript</li>

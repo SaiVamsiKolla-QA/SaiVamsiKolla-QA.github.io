@@ -59,10 +59,14 @@ Format rule: each role renders as 2-3 short achievement bullets, never a
 paragraph. Recruiters scan.
 
 ### mimik, Vancouver — AI Quality Engineer (March 2026 - Present)
-- Sole QA engineer for an on-device AI health application.
-- Built Playwright and Schemathesis automation frameworks from scratch.
-- Developed QA tooling to validate AI workflows, HealthKit ingestion, and
-  API contracts.
+- Sole QA engineer on a multi-agent on-device AI health app, no prior QA
+  process to inherit.
+- Found and tracked 109 defects across the full stack, from HealthKit data
+  ingestion to AI agent responses. (metric from resume, verifiable)
+- Built the first automation frameworks: Schemathesis + PyTest to fuzz API
+  contracts against the OpenAPI spec, Playwright with parallel runs for UI.
+- Non-determinism note: the AI returns different output for the same input,
+  so tests assert on contracts and invariants, not fixed strings.
 
 ### HCLTech, Vancouver — Test Lead, Client: Meta (Aug 2025 - Feb 2026)
 - Led QA for AI-powered checkout experiences, validating autonomous agent
@@ -109,9 +113,10 @@ Copy style rule: no em dashes or double dashes anywhere in site copy.
 
 ## Certifications (own section, interactive card grid)
 
-Each card: emblem icon, level badge, skill tags, and a View Credential
-button (placeholder until a credential URL is added; wire real Credly or
-issuer URLs into the `.cert-cred` anchors when available).
+Each card: emblem icon, level badge, and skill tags. The "View Credential"
+button was removed because no real credential URLs exist yet (a dead button
+reads as unfinished). To re-add: put a `.cert-cred` anchor with the real
+Credly/issuer URL back into each card and restore its CSS.
 
 - ISTQB Advanced Test Automation Engineer (CT-TAE), June 2025
   - Level: Advanced. Tags: Test Automation, API Testing, CI/CD, Framework Design
@@ -127,22 +132,27 @@ requests). Official logo files can replace them later via images/logos/.
 
 ## Projects (public repos only)
 
-Ordered by brand fit (AI/eval tooling first). Each card leads with the
-problem it solves, then tech tags, then the GitHub link. Frame honestly, no
-"in active development" apology in the copy.
+Ordered by brand fit (AI/eval tooling first). Each card is a mini case
+study: problem, why it's hard, how it's solved, why an engineer cares.
+Maturity described honestly — fhir and medusa are framework foundations
+with CI wired, not full suites; say so, emphasize architecture not coverage.
 
-1. qa-agent — Tests an AI whose answers change every run: local RAG answers
-   ISTQB questions, a DeepEval gate fails CI when answer quality drops. Runs
-   offline, 59 tests. Tags: Python, ChromaDB, DeepEval, RAG.
-   https://github.com/SaiVamsiKolla-QA/qa-agent
-2. fhir-contract-fuzz — pydantic models pin the FHIR R4 contract, Schemathesis
-   fuzzes the live OpenAPI surface; fast PR gate + nightly deep fuzz. Tags:
-   PyTest, Schemathesis, pydantic v2, Docker.
+1. qa-agent — Problem: an LLM gives a different answer each run, so a plain
+   assertion can't tell regression from noise. Solution: score RAG answers
+   against a golden set with DeepEval, fail CI below a threshold. Offline,
+   small model for reproducibility, 59 tests. Tags: Python, ChromaDB,
+   DeepEval, RAG. https://github.com/SaiVamsiKolla-QA/qa-agent
+2. fhir-contract-fuzz — Problem: silent FHIR R4 contract drift breaks
+   downstream systems. Solution: pydantic pins the contract, Schemathesis
+   fuzzes the OpenAPI surface; PR gate + nightly deep run. Honest status:
+   architecture + CI in place, coverage growing against a live HAPI server.
+   Tags: PyTest, Schemathesis, pydantic v2, Docker.
    https://github.com/SaiVamsiKolla-QA/fhir-contract-fuzz
-3. medusa-checkout-e2e — End-to-end checkout tests against a real Dockerized
-   Medusa store; page objects, Playwright auto-wait, Allure on every PR. Tags:
-   Playwright, JavaScript, Docker, Allure.
-   https://github.com/SaiVamsiKolla-QA/medusa-checkout-e2e
+3. medusa-checkout-e2e — Problem: checkout is the highest-stakes, most
+   break-prone e-commerce flow. Solution: real Dockerized store (not mocks),
+   POM, Playwright auto-wait, Allure on every PR. Honest status: framework
+   foundation with CI wired end to end. Tags: Playwright, JavaScript, Docker,
+   Allure. https://github.com/SaiVamsiKolla-QA/medusa-checkout-e2e
 
 ## Footer / contact
 
