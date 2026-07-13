@@ -8,9 +8,11 @@ or generic until you do.
 ## Hero
 
 - Name: Sai Vamsi Kolla
-- Title: Senior QA Engineer | SDET
-- Photo: images/profile.svg (monogram placeholder — replace with your photo
-  as images/profile.jpg and update index.html)
+- Title: QA Engineer | SDET | AI Quality
+- Tagline: I build the tools that test AI products — automation frameworks,
+  API fuzzers, and eval harnesses that catch bad model output before users
+  do. 7+ years across AI, commerce, and insurance QA.
+- Photo: images/profile.jpg
 - GitHub: https://github.com/SaiVamsiKolla-QA
 - LinkedIn: https://www.linkedin.com/in/saivamsi-kolla/
 - Location: Vancouver, BC, Canada
@@ -27,23 +29,26 @@ tools that help teams find them faster. Whether it's creating automation
 frameworks, writing API tests, or developing utilities that make testing
 easier, I like solving quality problems through engineering.
 
-Over the past 7+ years, I've worked across functional testing, test
-automation, API testing, and AI quality engineering. I enjoy collaborating
-with developers to build reliable software and deliver products with
-confidence.
+Before mimik I spent years in insurance and telecom QA, most of it on
+Guidewire, where a missed defect meant a wrong claim payout. That's where I
+learned to test systems the boring, thorough way before I started
+automating them.
 
 I'm currently open to SDET and QA Automation opportunities in Vancouver,
 Toronto, Calgary, and Dallas-Fort Worth.
 
-## Skills (grouped chips)
+Voice rule: write like an engineer, not a resume. Banned words: passionate,
+results-driven, leveraged, dynamic, detail-oriented, proven track record,
+cutting-edge, innovative solutions, deliver with confidence.
+
+## Skills (grouped chips — every group coherent, no tool/domain mixing)
 
 - Automation: Playwright (JS/TS), Selenium (Python), Page Object Model, BDD
-- API Testing: Schemathesis (fuzz), Postman, httpx, Playwright API
-- AI / ML Testing: AI agent validation, model-output validation, RAG evaluation
-- CI/CD: GitHub Actions, Jenkins, Docker
+- API & Contract Testing: Schemathesis (fuzz), pydantic, httpx, Postman
+- AI Quality: AI agent validation, model-output validation, RAG evaluation, DeepEval
+- CI/CD & Tooling: GitHub Actions, Docker, Jenkins, Allure
 - Languages: Python, JavaScript/TypeScript, SQL
-- Reporting: Allure
-- Domains: Insurance (P&C, Guidewire), eCommerce, Telecom
+- Domains: Healthcare / AI, Insurance (P&C, Guidewire), e-commerce, Telecom
 
 ## Experience (newest first)
 
@@ -122,14 +127,22 @@ requests). Official logo files can replace them later via images/logos/.
 
 ## Projects (public repos only)
 
-1. fhir-contract-fuzz — Contract & fuzz testing framework for FHIR R4
-   healthcare APIs — PyTest, Schemathesis, pydantic v2, CI-gated (in active
-   development). https://github.com/SaiVamsiKolla-QA/fhir-contract-fuzz
-2. medusa-checkout-e2e — Playwright E2E suite for an open-source commerce
-   platform — Dockerized SUT, PR-gated CI (in active development).
+Ordered by brand fit (AI/eval tooling first). Each card leads with the
+problem it solves, then tech tags, then the GitHub link. Frame honestly, no
+"in active development" apology in the copy.
+
+1. qa-agent — Tests an AI whose answers change every run: local RAG answers
+   ISTQB questions, a DeepEval gate fails CI when answer quality drops. Runs
+   offline, 59 tests. Tags: Python, ChromaDB, DeepEval, RAG.
+   https://github.com/SaiVamsiKolla-QA/qa-agent
+2. fhir-contract-fuzz — pydantic models pin the FHIR R4 contract, Schemathesis
+   fuzzes the live OpenAPI surface; fast PR gate + nightly deep fuzz. Tags:
+   PyTest, Schemathesis, pydantic v2, Docker.
+   https://github.com/SaiVamsiKolla-QA/fhir-contract-fuzz
+3. medusa-checkout-e2e — End-to-end checkout tests against a real Dockerized
+   Medusa store; page objects, Playwright auto-wait, Allure on every PR. Tags:
+   Playwright, JavaScript, Docker, Allure.
    https://github.com/SaiVamsiKolla-QA/medusa-checkout-e2e
-3. qa-agent — Local RAG QA mentor agent with a CI-gated DeepEval evaluation
-   layer. https://github.com/SaiVamsiKolla-QA/qa-agent
 
 ## Footer / contact
 

@@ -54,8 +54,8 @@
       <div class="hero-text reveal">
         <p class="hero-hello">Hi, I'm</p>
         <h1>Sai Vamsi Kolla</h1>
-        <p class="hero-title">Senior QA Engineer&ensp;|&ensp;SDET</p>
-        <p class="hero-tagline">I test AI systems for a living: agent behavior, model output, and RAG pipelines. Backed by 7+ years across automation, API, and insurance-domain QA.</p>
+        <p class="hero-title">QA Engineer&ensp;|&ensp;SDET&ensp;|&ensp;AI Quality</p>
+        <p class="hero-tagline">I build the tools that test AI products: automation frameworks, API fuzzers, and eval harnesses that catch bad model output before users do. 7+ years across AI, commerce, and insurance QA.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#experience">View Experience</a>
           <a class="btn btn-ghost" href="files/resume.pdf" download>Download Resume</a>
@@ -81,16 +81,16 @@
       <div class="about-text reveal">
         <p>I'm a Quality Engineer at <strong>mimik</strong>, where I help ensure the quality of an on-device AI health application built on a multi-agent architecture. My work focuses on validating AI agent behavior, model responses, and the end-to-end ingestion of health data from Apple HealthKit.</p>
         <p>I enjoy finding bugs before customers do, but even more, I enjoy building tools that help teams find them faster. Whether it's creating automation frameworks, writing API tests, or developing utilities that make testing easier, I like solving quality problems through engineering.</p>
-        <p>Over the past 7+ years, I've worked across functional testing, test automation, API testing, and AI quality engineering. I enjoy collaborating with developers to build reliable software and deliver products with confidence.</p>
+        <p>Before mimik I spent years in insurance and telecom QA, most of it on Guidewire, where a missed defect meant a wrong claim payout. That's where I learned to test systems the boring, thorough way before I started automating them.</p>
         <p>I'm currently open to SDET and QA Automation opportunities in <strong>Vancouver, Toronto, Calgary, and Dallas-Fort Worth</strong>.</p>
       </div>
       <div class="skills reveal">
         <div class="skill-group"><h3>Automation</h3><ul><li>Playwright (JS/TS)</li><li>Selenium (Python)</li><li>Page Object Model</li><li>BDD</li></ul></div>
-        <div class="skill-group"><h3>API Testing</h3><ul><li>Schemathesis (fuzz)</li><li>Postman</li><li>httpx</li><li>Playwright API</li></ul></div>
-        <div class="skill-group"><h3>AI / ML Testing</h3><ul><li>AI agent validation</li><li>Model-output validation</li><li>RAG evaluation</li></ul></div>
-        <div class="skill-group"><h3>CI/CD</h3><ul><li>GitHub Actions</li><li>Jenkins</li><li>Docker</li></ul></div>
+        <div class="skill-group"><h3>API &amp; Contract Testing</h3><ul><li>Schemathesis (fuzz)</li><li>pydantic</li><li>httpx</li><li>Postman</li></ul></div>
+        <div class="skill-group"><h3>AI Quality</h3><ul><li>AI agent validation</li><li>Model-output validation</li><li>RAG evaluation</li><li>DeepEval</li></ul></div>
+        <div class="skill-group"><h3>CI/CD &amp; Tooling</h3><ul><li>GitHub Actions</li><li>Docker</li><li>Jenkins</li><li>Allure</li></ul></div>
         <div class="skill-group"><h3>Languages</h3><ul><li>Python</li><li>JavaScript/TypeScript</li><li>SQL</li></ul></div>
-        <div class="skill-group"><h3>Reporting &amp; Domains</h3><ul><li>Allure</li><li>Insurance (P&amp;C, Guidewire)</li><li>eCommerce</li><li>Telecom</li></ul></div>
+        <div class="skill-group"><h3>Domains</h3><ul><li>Healthcare / AI</li><li>Insurance (P&amp;C, Guidewire)</li><li>e-commerce</li><li>Telecom</li></ul></div>
       </div>
     </div>
   </section>
@@ -273,12 +273,33 @@
 
   <section id="projects" class="section">
     <h2 class="reveal">Projects</h2>
+    <p class="section-intro reveal">Testing tools I built to solve problems I kept running into.</p>
     <div class="projects-grid">
+      <article class="project-card reveal">
+        <img src="images/project-qa-agent.svg" alt="" width="640" height="320" loading="lazy">
+        <div class="project-body">
+          <h3>qa-agent</h3>
+          <p>How do you test an AI whose answers change every run? This one answers ISTQB questions from a local RAG pipeline, and a DeepEval gate fails the CI build when answer quality drops below threshold. Runs fully offline, 59 tests.</p>
+          <ul class="project-tags">
+            <li>Python</li>
+            <li>ChromaDB</li>
+            <li>DeepEval</li>
+            <li>RAG</li>
+          </ul>
+          <a class="project-link" href="https://github.com/SaiVamsiKolla-QA/qa-agent">View on GitHub<span aria-hidden="true"> →</span></a>
+        </div>
+      </article>
       <article class="project-card reveal">
         <img src="images/project-fhir.svg" alt="" width="640" height="320" loading="lazy">
         <div class="project-body">
           <h3>fhir-contract-fuzz</h3>
-          <p>Contract and fuzz testing framework for FHIR R4 healthcare APIs. PyTest, Schemathesis, pydantic v2, CI-gated (in active development).</p>
+          <p>Healthcare APIs have to match the FHIR R4 spec exactly. Here pydantic models pin the contract while Schemathesis fuzzes the live OpenAPI surface for violations, split into a fast PR gate and a nightly deep-fuzz run.</p>
+          <ul class="project-tags">
+            <li>PyTest</li>
+            <li>Schemathesis</li>
+            <li>pydantic v2</li>
+            <li>Docker</li>
+          </ul>
           <a class="project-link" href="https://github.com/SaiVamsiKolla-QA/fhir-contract-fuzz">View on GitHub<span aria-hidden="true"> →</span></a>
         </div>
       </article>
@@ -286,16 +307,14 @@
         <img src="images/project-medusa.svg" alt="" width="640" height="320" loading="lazy">
         <div class="project-body">
           <h3>medusa-checkout-e2e</h3>
-          <p>Playwright E2E suite for an open-source commerce platform. Dockerized SUT, PR-gated CI (in active development).</p>
+          <p>End-to-end checkout tests against a real Dockerized Medusa store, not a mock. Page objects keep selectors in one place, Playwright's auto-waiting kills flaky sleeps, and Allure reports run on every PR.</p>
+          <ul class="project-tags">
+            <li>Playwright</li>
+            <li>JavaScript</li>
+            <li>Docker</li>
+            <li>Allure</li>
+          </ul>
           <a class="project-link" href="https://github.com/SaiVamsiKolla-QA/medusa-checkout-e2e">View on GitHub<span aria-hidden="true"> →</span></a>
-        </div>
-      </article>
-      <article class="project-card reveal">
-        <img src="images/project-qa-agent.svg" alt="" width="640" height="320" loading="lazy">
-        <div class="project-body">
-          <h3>qa-agent</h3>
-          <p>Local RAG QA mentor agent with a CI-gated DeepEval evaluation layer.</p>
-          <a class="project-link" href="https://github.com/SaiVamsiKolla-QA/qa-agent">View on GitHub<span aria-hidden="true"> →</span></a>
         </div>
       </article>
     </div>
