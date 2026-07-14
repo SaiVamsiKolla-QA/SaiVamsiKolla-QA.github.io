@@ -80,6 +80,11 @@ paragraph. Recruiters scan.
 - Designed 1,900+ functional test cases and identified 975 defects before UAT.
 - Built the team's first Selenium + Python regression suite.
 
+### M.Sc., University of Alberta (2019 - 2021) — timeline gap-filler
+- Sits between TELUS and Accenture in the experience timeline (grad-cap
+  icon, not a job) to explain the Aug 2019 - Sept 2021 gap: relocation from
+  India to Canada for graduate study. Also listed under Education.
+
 ### TELUS, Edmonton — QA Analyst (Sept 2021 - Nov 2022)
 - Executed SIT, regression, and A/B validation across 12 Agile releases.
 - Reduced critical production defects by 70% through improved functional
