@@ -8,7 +8,7 @@ or generic until you do.
 ## Hero
 
 - Name: Sai Vamsi Kolla
-- Title: QA Engineer | SDET | AI Quality
+- Title: Senior QA Engineer | SDET | AI Quality
 - Tagline: I build the tools that test AI products — automation frameworks,
   API fuzzers, and eval harnesses that catch bad model output before users
   do. 7+ years across AI, commerce, and insurance QA.
@@ -19,10 +19,9 @@ or generic until you do.
 
 ## About
 
-I'm a Quality Engineer at mimik, where I help ensure the quality of an
-on-device AI health application built on a multi-agent architecture. My
-work focuses on validating AI agent behavior, model responses, and the
-end-to-end ingestion of health data from Apple HealthKit.
+I'm the sole QA engineer on an on-device AI health app at mimik, where I
+own the test strategy end to end — validating AI agent behavior, model
+responses, and the ingestion of health data from Apple HealthKit.
 
 I enjoy finding bugs before customers do, but even more, I enjoy building
 tools that help teams find them faster. Whether it's creating automation
