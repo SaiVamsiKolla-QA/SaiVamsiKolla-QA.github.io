@@ -19,8 +19,8 @@ or generic until you do.
 
 ## About
 
-I'm the sole QA engineer on an on-device AI health app at mimik, where I
-own the test strategy end to end — validating AI agent behavior, model
+I'm a Quality Engineer at mimik, owning the test strategy for an
+on-device AI health app end to end — validating AI agent behavior, model
 responses, and the ingestion of health data from Apple HealthKit.
 
 I enjoy finding bugs before customers do, but even more, I enjoy building
