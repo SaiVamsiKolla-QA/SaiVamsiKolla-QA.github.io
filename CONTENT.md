@@ -34,8 +34,8 @@ Guidewire, where a missed defect meant a wrong claim payout. That's where I
 learned to test systems the boring, thorough way before I started
 automating them.
 
-I'm currently open to SDET and QA Automation opportunities in Vancouver,
-Toronto, Calgary, and Dallas-Fort Worth.
+I'm currently open to SDET and QA Automation opportunities in the USA and
+Canada — remote or on-site. Eligible to work in the US (TN visa).
 
 Voice rule: write like an engineer, not a resume. Banned words: passionate,
 results-driven, leveraged, dynamic, detail-oriented, proven track record,
