@@ -8,7 +8,7 @@ or generic until you do.
 ## Hero
 
 - Name: Sai Vamsi Kolla
-- Title: Senior QA Engineer | SDET | AI Quality
+- Title: AI Quality Engineer | Senior SDET
 - Tagline: I build the tools that test AI products — automation frameworks,
   API fuzzers, and eval harnesses that catch bad model output before users
   do. 7+ years across AI, commerce, and insurance QA.
@@ -57,45 +57,75 @@ also committed as files/resume.pdf. Logos: TODO(you), monograms until then.
 Format rule: each role renders as 2-3 short achievement bullets, never a
 paragraph. Recruiters scan.
 
-### mimik, Vancouver — Quality Engineer (March 2026 - Present)
-- Built the product's first test automation stack: Schemathesis + pytest
-  fuzzing API contracts against the OpenAPI v3 spec, and DeepEval scoring
-  chat-agent responses.
-- Own QA end to end for a multi-agent, on-device AI health app — defined
-  the test strategy and QA process from zero.
-- Found and tracked 109 defects across the full stack, from HealthKit data
-  ingestion to AI agent responses. (metric from resume, verifiable)
-- Designed for non-deterministic AI: tests assert on API contracts and
-  response invariants instead of fixed strings.
+### mimik, Vancouver — Quality Engineer (Mar 2026 – Present)
+- Own quality engineering for a multi-agent, on-device AI health
+  application, defining the test strategy and QA process from the ground up.
+- Built the product's first automation framework using Schemathesis,
+  pytest, and DeepEval to validate OpenAPI contracts and evaluate AI agent
+  behavior.
+- Designed testing for non-deterministic AI systems by validating API
+  contracts, structured outputs, and behavioral invariants instead of
+  fixed responses.
+- Identified and tracked 109 defects across HealthKit data ingestion,
+  backend services, mobile applications, and AI agent workflows. (metric
+  from resume, verifiable)
 
-### HCLTech, Vancouver — Test Lead, Client: Meta (Aug 2025 - Feb 2026)
-- Led QA for AI-powered checkout experiences, validating autonomous agent
-  workflows across 10 to 15 merchant integrations.
-- Coordinated a team of 20 offshore QA engineers supporting iOS, Android,
-  and Shopify commerce journeys.
+### HCLTech (Client: Meta), Vancouver — Test Lead (Aug 2025 – Feb 2026)
+- Led functional testing for AI-assisted commerce workflows across 10–15
+  merchant integrations.
+- Coordinated testing efforts for 20 offshore QA engineers supporting iOS,
+  Android, and Shopify platforms.
+- Partnered with engineering and product teams to improve release quality
+  across multiple commerce integrations.
 
-### Peace Hills General Insurance, Edmonton — Senior QA Analyst (Nov 2022 - Dec 2024)
-- Owned end-to-end QA for Guidewire ClaimCenter and cross-suite
-  integrations including PolicyCenter, BillingCenter, and customer portals.
-- Designed 1,900+ functional test cases and identified 975 defects before UAT.
-- Built the team's first Selenium + Python regression suite.
+### Peace Hills General Insurance, Edmonton — Senior QA Analyst (Nov 2022 – Dec 2024)
+- Owned end-to-end functional testing for Guidewire ClaimCenter and
+  integrations with PolicyCenter, BillingCenter, and customer-facing
+  portals.
+- Designed and executed 1,900+ functional test cases, identifying 975
+  defects before UAT.
+- Built the team's first Selenium + Python regression automation framework,
+  reducing manual regression effort and improving release confidence.
 
-### M.Sc., University of Alberta (2019 - 2021) — timeline gap-filler
-- Sits between TELUS and Accenture in the experience timeline (grad-cap
-  icon, not a job) to explain the Aug 2019 - Sept 2021 gap: relocation from
-  India to Canada for graduate study. Also listed under Education.
+### TELUS, Edmonton — QA Analyst (Sept 2021 – Nov 2022)
+- Executed system integration, regression, and A/B testing across 12 Agile
+  releases.
+- Improved functional test coverage, contributing to a 70% reduction in
+  critical production defects.
+- Optimized 575+ regression test cases, improving regression efficiency
+  and release confidence.
 
-### TELUS, Edmonton — QA Analyst (Sept 2021 - Nov 2022)
-- Executed SIT, regression, and A/B validation across 12 Agile releases.
-- Reduced critical production defects by 70% through improved functional
-  test coverage.
-- Optimized more than 575 regression test cases.
+### Accenture, India — Software Engineer, QA (Mar 2016 – Aug 2019)
+- Delivered quality assurance for three enterprise Guidewire implementation
+  and migration programs.
+- Performed UI, API, database, and SQL validation across enterprise
+  insurance systems.
+- Supported 30+ production releases with 100% on-time delivery.
+- Received the Above & Beyond Award for consistently delivering
+  high-quality software.
 
-### Accenture, India — Software Engineer, QA (Mar 2016 - Aug 2019)
-- Delivered QA for three enterprise Guidewire migration programs covering
-  UI, API, and SQL validation.
-- Supported more than 30 production releases with 100% on-time delivery.
-- Received the Above & Beyond Award for QA excellence.
+Note: education no longer appears inside the Experience timeline; the
+relocation/M.Sc. story lives in Career Journey and Education. Aramark
+stays off the Experience section by design (LinkedIn only), but appears
+as a milestone in Career Journey and Beyond Software.
+
+## Career Journey (vertical timeline right after Experience)
+
+- 2016–2019 — Software Engineer, QA — Accenture (India)
+- 2019 — Moved to Canada to pursue an M.Sc. in Internetworking
+  Technologies at the University of Alberta
+- 2019–2021 — Worked part-time at Aramark while completing my Master's
+  degree
+- 2021–Present — QA Analyst → Senior QA Analyst → Test Lead → Quality
+  Engineer (AI)
+
+## Beyond Software (after Projects, before contact/footer)
+
+I moved from India to Canada in 2019 to pursue my Master's degree at the
+University of Alberta. While studying full-time, I worked at Aramark and
+progressed from dishwasher to front supervisor. That experience taught me
+ownership, teamwork, and staying calm under pressure—qualities I continue
+to apply as a quality engineer building reliable software.
 
 ## What I've Tested (dedicated section, cards with public references)
 
@@ -151,7 +181,7 @@ with CI wired, not full suites; say so, emphasize architecture not coverage.
    downstream systems. Solution: pydantic pins the contract, Schemathesis
    fuzzes the OpenAPI surface; PR gate + nightly deep run. Honest status:
    architecture + CI in place, coverage growing against a live HAPI server.
-   Tags: PyTest, Schemathesis, pydantic v2, Docker.
+   Tags: pytest, Schemathesis, pydantic v2, Docker.
    https://github.com/SaiVamsiKolla-QA/fhir-contract-fuzz
 3. medusa-checkout-e2e — Problem: checkout is the highest-stakes, most
    break-prone e-commerce flow. Solution: real Dockerized store (not mocks),
