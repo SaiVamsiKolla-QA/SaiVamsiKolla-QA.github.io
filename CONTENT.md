@@ -57,15 +57,16 @@ also committed as files/resume.pdf. Logos: TODO(you), monograms until then.
 Format rule: each role renders as 2-3 short achievement bullets, never a
 paragraph. Recruiters scan.
 
-### mimik, Vancouver — AI Quality Engineer (March 2026 - Present)
-- Sole QA engineer on a multi-agent on-device AI health app, no prior QA
-  process to inherit.
+### mimik, Vancouver — Quality Engineer (March 2026 - Present)
+- Built the product's first test automation stack: Schemathesis + pytest
+  fuzzing API contracts against the OpenAPI v3 spec, and DeepEval scoring
+  chat-agent responses.
+- Own QA end to end for a multi-agent, on-device AI health app — defined
+  the test strategy and QA process from zero.
 - Found and tracked 109 defects across the full stack, from HealthKit data
   ingestion to AI agent responses. (metric from resume, verifiable)
-- Built the first automation frameworks: Schemathesis + PyTest to fuzz API
-  contracts against the OpenAPI spec, Playwright with parallel runs for UI.
-- Non-determinism note: the AI returns different output for the same input,
-  so tests assert on contracts and invariants, not fixed strings.
+- Designed for non-deterministic AI: tests assert on API contracts and
+  response invariants instead of fixed strings.
 
 ### HCLTech, Vancouver — Test Lead, Client: Meta (Aug 2025 - Feb 2026)
 - Led QA for AI-powered checkout experiences, validating autonomous agent
