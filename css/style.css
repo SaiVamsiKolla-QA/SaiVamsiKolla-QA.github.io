@@ -5,7 +5,7 @@
   --surface-strong: #e6effa;
   --text: #101828;
   --text-muted: #475467;
-  --text-subtle: #667085;
+  --text-subtle: #5f6b7c;
   --accent: #175cd3;
   --accent-hover: #1849a9;
   --accent-soft: #dbeafe;
@@ -19,6 +19,7 @@
   --approach-surface: #162d49;
   --approach-text: #f4f7fb;
   --approach-muted: #b7c6d8;
+  --approach-accent: #67b7ff;
   --shadow-sm: 0 1px 2px rgb(16 24 40 / 0.06), 0 4px 12px rgb(16 24 40 / 0.05);
   --shadow-lg: 0 20px 48px rgb(16 24 40 / 0.12);
   --focus: #f79009;
@@ -49,6 +50,7 @@
   --approach-surface: #0f1b2d;
   --approach-text: #f4f7fb;
   --approach-muted: #a9b7c9;
+  --approach-accent: #67b7ff;
   --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.32), 0 4px 12px rgb(0 0 0 / 0.2);
   --shadow-lg: 0 20px 48px rgb(0 0 0 / 0.36);
   --focus: #fdb022;
@@ -77,6 +79,7 @@
     --approach-surface: #0f1b2d;
     --approach-text: #f4f7fb;
     --approach-muted: #a9b7c9;
+    --approach-accent: #67b7ff;
     --focus: #fdb022;
     color-scheme: dark;
   }
@@ -879,6 +882,10 @@ h3 {
   color: var(--approach-muted);
 }
 
+.section-approach .eyebrow {
+  color: var(--approach-accent);
+}
+
 .approach-flow {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -904,7 +911,7 @@ h3 {
   position: absolute;
   top: 1.2rem;
   right: 1.2rem;
-  color: var(--accent);
+  color: var(--approach-accent);
   font-weight: 800;
 }
 
@@ -914,7 +921,7 @@ h3 {
 }
 
 .approach-flow span {
-  color: var(--accent);
+  color: var(--approach-accent);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.74rem;
   font-weight: 800;
@@ -1424,6 +1431,7 @@ h3 {
     --approach-surface: #ffffff;
     --approach-text: #000000;
     --approach-muted: #222222;
+    --approach-accent: #003f8f;
     color-scheme: light;
   }
 
