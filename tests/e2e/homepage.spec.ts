@@ -19,7 +19,7 @@ test('CONTENT-001 ASSET-001 homepage exposes the core recruiter path', async ({ 
 
   await test.step('Verify the primary action and résumé contract', async () => {
     await expect(page.getByTestId('hero-primary-action')).toBeVisible();
-    const resumeLinks = page.getByRole('link', { name: /résumé|resume/i });
+    const resumeLinks = page.locator('a[href="files/resume.pdf"][download]');
     await expect(resumeLinks).toHaveCount(3);
     for (const resumeLink of await resumeLinks.all()) {
       await expect(resumeLink).toHaveAttribute('href', 'files/resume.pdf');

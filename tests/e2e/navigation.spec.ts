@@ -25,13 +25,16 @@ test('NAV-001 LINK-001 desktop navigation targets unique existing sections witho
     const labels = page.getByRole('navigation', { name: 'Primary navigation' }).locator('.nav-menu a');
     const measurements = await labels.evaluateAll((links) =>
       links.map((link) => {
-        const style = getComputedStyle(link);
-        const lineHeight = Number.parseFloat(style.lineHeight);
-        return { label: link.textContent?.trim(), height: link.getBoundingClientRect().height, lineHeight };
+        const range = document.createRange();
+        range.selectNodeContents(link);
+        const lineTops = [...range.getClientRects()]
+          .filter((rect) => rect.width > 0)
+          .map((rect) => Math.round(rect.top));
+        return { label: link.textContent?.trim(), lineCount: new Set(lineTops).size };
       }),
     );
     for (const measurement of measurements) {
-      expect(measurement.height, `${measurement.label} should remain on one line`).toBeLessThanOrEqual(measurement.lineHeight * 1.6);
+      expect(measurement.lineCount, `${measurement.label} should remain on one line`).toBe(1);
     }
   });
 });
@@ -60,7 +63,7 @@ test('NAV-002 NAV-003 mobile navigation exposes deterministic keyboard states', 
   await test.step('Open the compact navigation with Enter', async () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await openPortfolio(page);
-    const trigger = page.getByRole('button', { name: 'Open navigation menu' });
+    const trigger = page.locator('button[aria-controls="primary-navigation"]');
     await expect(trigger).toBeVisible();
     await trigger.focus();
     await trigger.press('Enter');
@@ -70,20 +73,21 @@ test('NAV-002 NAV-003 mobile navigation exposes deterministic keyboard states', 
   });
 
   await test.step('Move keyboard focus into the open menu', async () => {
-    await page.getByRole('button', { name: 'Close navigation menu' }).press('Tab');
+    await page.locator('button[aria-controls="primary-navigation"]').press('Tab');
     await expect(page.getByRole('link', { name: 'Expertise' })).toBeFocused();
   });
 
   await test.step('Close with Escape and return focus to the trigger', async () => {
     await page.keyboard.press('Escape');
-    const trigger = page.getByRole('button', { name: 'Open navigation menu' });
+    const trigger = page.locator('button[aria-controls="primary-navigation"]');
     await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    await expect(trigger).toHaveAccessibleName('Open navigation menu');
     await expect(trigger).toBeFocused();
     await expect(page.getByTestId('mobile-navigation')).toBeHidden();
   });
 
   await test.step('Open with Space and close by choosing a destination', async () => {
-    const trigger = page.getByRole('button', { name: 'Open navigation menu' });
+    const trigger = page.locator('button[aria-controls="primary-navigation"]');
     await trigger.press('Space');
     await page.getByRole('link', { name: 'About' }).click();
     await expect(page).toHaveURL(/#about$/);
@@ -92,7 +96,7 @@ test('NAV-002 NAV-003 mobile navigation exposes deterministic keyboard states', 
   });
 
   await test.step('Reset menu state when resizing to desktop', async () => {
-    const trigger = page.getByRole('button', { name: 'Open navigation menu' });
+    const trigger = page.locator('button[aria-controls="primary-navigation"]');
     await trigger.press('Space');
     await expect(trigger).toHaveAttribute('aria-expanded', 'true');
     await page.setViewportSize({ width: 1440, height: 900 });
