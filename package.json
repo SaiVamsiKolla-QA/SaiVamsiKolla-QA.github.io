@@ -1,0 +1,40 @@
+{
+  "name": "saivamsikolla-qa-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static portfolio with development-only quality automation",
+  "engines": {
+    "node": "^22.22.0 || >=24.8.0"
+  },
+  "scripts": {
+    "start": "python3 -m http.server 4173 --bind 127.0.0.1",
+    "validate:html": "html-validate index.html",
+    "validate:assets": "node scripts/check-assets.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:chromium": "playwright test --project=chromium-desktop",
+    "test:mobile": "playwright test --project=mobile-chrome --project=mobile-safari",
+    "test:smoke": "playwright test tests/e2e/homepage.spec.ts --project=chromium-desktop",
+    "test:functional": "playwright test tests/e2e/homepage.spec.ts tests/e2e/navigation.spec.ts tests/e2e/theme.spec.ts tests/e2e/no-javascript.spec.ts tests/e2e/project-status.spec.ts",
+    "test:responsive": "playwright test tests/e2e/responsive.spec.ts",
+    "test:a11y": "playwright test tests/e2e/accessibility.spec.ts --project=chromium-desktop",
+    "test:links": "playwright test tests/e2e/links.spec.ts --project=chromium-desktop",
+    "test:visual": "PW_VISUAL=1 playwright test tests/e2e/visual.spec.ts --project=chromium-desktop --project=mobile-chrome",
+    "test:visual:update": "PW_VISUAL=1 playwright test tests/e2e/visual.spec.ts --project=chromium-desktop --project=mobile-chrome --update-snapshots",
+    "lighthouse:baseline": "node scripts/run-lighthouse.mjs",
+    "lighthouse:ci": "node scripts/run-lighthouse.mjs --assert",
+    "quality": "npm run validate:html && npm run validate:assets && npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "@playwright/test": "1.56.1",
+    "@types/node": "22.20.1",
+    "chrome-launcher": "1.2.1",
+    "html-validate": "11.6.0",
+    "lighthouse": "13.4.1",
+    "typescript": "7.0.2"
+  }
+}
