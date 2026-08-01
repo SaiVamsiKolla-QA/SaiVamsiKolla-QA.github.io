@@ -551,7 +551,7 @@ h3 {
 
 .capability-strip ul {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin: 0;
   padding: 1.6rem 0;
   list-style: none;
@@ -611,7 +611,7 @@ h3 {
 /* Expertise */
 .expertise-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
 }
 
@@ -1234,14 +1234,14 @@ h3 {
   }
 
   .capability-strip ul {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
-  .capability-strip li:nth-child(3) {
+  .capability-strip li {
     border-left: 0;
   }
 
-  .capability-strip li:nth-child(n + 3) {
+  .capability-strip li:nth-child(n + 2) {
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid var(--border);

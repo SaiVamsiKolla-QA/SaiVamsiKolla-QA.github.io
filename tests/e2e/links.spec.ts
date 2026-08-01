@@ -23,7 +23,7 @@ test('LINK-001 anchors, local assets, and outbound URLs satisfy the site contrac
   });
 
   await test.step('Verify required local assets return successfully', async () => {
-    for (const path of ['/files/resume.pdf', '/images/profile.jpg', '/css/style.css', '/js/main.js', '/js/background.js']) {
+    for (const path of ['/files/SaiVamsiKolla_Resume.pdf', '/images/profile.jpg', '/css/style.css', '/js/main.js', '/js/background.js']) {
       const response = await request.get(path);
       expect(response.ok(), `${path} should return a successful status`).toBe(true);
     }
