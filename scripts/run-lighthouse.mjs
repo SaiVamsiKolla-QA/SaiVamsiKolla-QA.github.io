@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { spawn } from 'node:child_process';
 import process from 'node:process';
 import lighthouse from 'lighthouse';
+import desktopConfig from 'lighthouse/core/config/desktop-config.js';
 import { launch } from 'chrome-launcher';
 import { chromium } from '@playwright/test';
 
@@ -29,7 +30,7 @@ async function waitForSite() {
 
 let server;
 if (!(await siteIsAvailable())) {
-  server = spawn('python3', ['-m', 'http.server', '4173', '--bind', '127.0.0.1'], {
+  server = spawn(process.execPath, ['scripts/serve-static.mjs'], {
     cwd: new URL('..', import.meta.url),
     stdio: 'ignore',
   });
@@ -40,6 +41,7 @@ const profiles = [
   {
     name: 'desktop',
     url: `${siteUrl}/?testMode=1&theme=light`,
+    lighthouseConfig: desktopConfig,
     settings: {
       formFactor: 'desktop',
       screenEmulation: { mobile: false, width: 1440, height: 900, deviceScaleFactor: 1, disabled: false },
@@ -69,13 +71,17 @@ try {
 
   await mkdir(outputDirectory, { recursive: true });
   for (const profile of profiles) {
-    const result = await lighthouse(profile.url, {
-      port: chrome.port,
-      output: ['html', 'json'],
-      logLevel: 'error',
-      onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
-      ...profile.settings,
-    });
+    const result = await lighthouse(
+      profile.url,
+      {
+        port: chrome.port,
+        output: ['html', 'json'],
+        logLevel: 'error',
+        onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
+        ...profile.settings,
+      },
+      profile.lighthouseConfig,
+    );
     if (!result?.lhr || !Array.isArray(result.report)) throw new Error(`Lighthouse did not return ${profile.name} results`);
 
     const categories = Object.fromEntries(
