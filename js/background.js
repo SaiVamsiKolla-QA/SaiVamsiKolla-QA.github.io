@@ -1,98 +1,132 @@
-/* Constellation background: drifting particles joined by short lines.
-   Canvas sits behind all content; skips animation entirely for users
-   who prefer reduced motion, and pauses when the tab is hidden. */
 (() => {
   const canvas = document.getElementById('bg');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!(canvas instanceof HTMLCanvasElement)) return;
 
-  const DPR = Math.min(devicePixelRatio || 1, 2);
-  const LINK_DIST = 120;
-  let particles = [];
-  let raf = null;
-
-  const styles = () => {
-    const s = getComputedStyle(document.documentElement);
-    return {
-      dot: s.getPropertyValue('--particle-dot').trim() || 'rgba(96, 165, 250, 0.55)',
-      line: s.getPropertyValue('--particle-line').trim() || 'rgba(96, 165, 250, 0.16)',
-    };
-  };
-
-  function resize() {
-    canvas.width = innerWidth * DPR;
-    canvas.height = innerHeight * DPR;
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    const count = Math.min(90, Math.floor((innerWidth * innerHeight) / 22000));
-    particles = Array.from({ length: count }, () => ({
-      x: Math.random() * innerWidth,
-      y: Math.random() * innerHeight,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      r: 1 + Math.random() * 1.6,
-    }));
+  const root = document.documentElement;
+  if (root.dataset.testMode === 'true') {
+    canvas.hidden = true;
+    return;
   }
 
-  function frame() {
-    const { dot, line } = styles();
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
+  const context = canvas.getContext('2d');
+  if (!context) return;
 
-    for (const p of particles) {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0 || p.x > innerWidth) p.vx *= -1;
-      if (p.y < 0 || p.y > innerHeight) p.vy *= -1;
-    }
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+  const linkDistance = 116;
+  let particles = [];
+  let animationFrame = null;
+  let resizeFrame = null;
+  let heroVisible = true;
+  let colours = readColours();
 
-    ctx.strokeStyle = line;
-    ctx.lineWidth = 1;
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const a = particles[i];
-        const b = particles[j];
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const d2 = dx * dx + dy * dy;
-        if (d2 < LINK_DIST * LINK_DIST) {
-          ctx.globalAlpha = 1 - Math.sqrt(d2) / LINK_DIST;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
+  function readColours() {
+    const dark = root.dataset.theme === 'dark';
+    return dark
+      ? { dot: 'rgba(103, 183, 255, 0.42)', line: 'rgba(103, 183, 255, 0.14)' }
+      : { dot: 'rgba(23, 92, 211, 0.30)', line: 'rgba(23, 92, 211, 0.11)' };
+  }
+
+  function resize() {
+    const bounds = canvas.getBoundingClientRect();
+    const width = Math.max(1, Math.round(bounds.width));
+    const height = Math.max(1, Math.round(bounds.height));
+    canvas.width = Math.round(width * pixelRatio);
+    canvas.height = Math.round(height * pixelRatio);
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+    const count = Math.min(36, Math.max(12, Math.floor((width * height) / 36000)));
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.22,
+      vy: (Math.random() - 0.5) * 0.22,
+      radius: 1 + Math.random() * 1.2,
+    }));
+    draw();
+  }
+
+  function draw() {
+    const bounds = canvas.getBoundingClientRect();
+    const width = bounds.width;
+    const height = bounds.height;
+    context.clearRect(0, 0, width, height);
+
+    context.strokeStyle = colours.line;
+    context.lineWidth = 1;
+    for (let first = 0; first < particles.length; first += 1) {
+      for (let second = first + 1; second < particles.length; second += 1) {
+        const a = particles[first];
+        const b = particles[second];
+        const xDistance = a.x - b.x;
+        const yDistance = a.y - b.y;
+        const distanceSquared = xDistance * xDistance + yDistance * yDistance;
+        if (distanceSquared < linkDistance * linkDistance) {
+          context.globalAlpha = 1 - Math.sqrt(distanceSquared) / linkDistance;
+          context.beginPath();
+          context.moveTo(a.x, a.y);
+          context.lineTo(b.x, b.y);
+          context.stroke();
         }
       }
     }
 
-    ctx.globalAlpha = 1;
-    ctx.fillStyle = dot;
-    for (const p of particles) {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
+    context.globalAlpha = 1;
+    context.fillStyle = colours.dot;
+    for (const particle of particles) {
+      context.beginPath();
+      context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+      context.fill();
     }
   }
 
-  function loop() {
-    frame();
-    raf = requestAnimationFrame(loop);
+  function tick() {
+    const bounds = canvas.getBoundingClientRect();
+    for (const particle of particles) {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      if (particle.x < 0 || particle.x > bounds.width) particle.vx *= -1;
+      if (particle.y < 0 || particle.y > bounds.height) particle.vy *= -1;
+    }
+    draw();
+    animationFrame = window.requestAnimationFrame(tick);
   }
+
+  function shouldAnimate() {
+    return !reducedMotion && !document.hidden && heroVisible;
+  }
+
+  function syncAnimation() {
+    if (shouldAnimate() && animationFrame === null) {
+      animationFrame = window.requestAnimationFrame(tick);
+    } else if (!shouldAnimate() && animationFrame !== null) {
+      window.cancelAnimationFrame(animationFrame);
+      animationFrame = null;
+    }
+  }
+
+  window.addEventListener('resize', () => {
+    if (resizeFrame !== null) window.cancelAnimationFrame(resizeFrame);
+    resizeFrame = window.requestAnimationFrame(() => {
+      resizeFrame = null;
+      resize();
+    });
+  });
+
+  document.addEventListener('visibilitychange', syncAnimation);
+
+  const heroObserver = new IntersectionObserver((entries) => {
+    heroVisible = entries.some((entry) => entry.isIntersecting);
+    syncAnimation();
+  });
+  heroObserver.observe(canvas);
+
+  const themeObserver = new MutationObserver(() => {
+    colours = readColours();
+    draw();
+  });
+  themeObserver.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
 
   resize();
-  addEventListener('resize', resize);
-
-  if (reduceMotion) {
-    frame(); // one static constellation, no animation
-    return;
-  }
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      cancelAnimationFrame(raf);
-      raf = null;
-    } else if (!raf) {
-      loop();
-    }
-  });
-  loop();
+  syncAnimation();
 })();

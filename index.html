@@ -3,372 +3,386 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sai Vamsi Kolla | AI Quality Engineer | SDET</title>
-  <meta name="description" content="Sai Vamsi Kolla, AI Quality Engineer / SDET in Vancouver, BC. AI systems testing, API contract and fuzz testing, Playwright E2E automation.">
+  <title>Sai Vamsi Kolla | AI Quality Engineer · Senior SDET</title>
+  <meta name="description" content="Sai Vamsi Kolla designs quality systems for AI agents, APIs, microservices, mobile applications, and high-risk data workflows.">
+  <link rel="canonical" href="https://saivamsikolla-qa.github.io/">
+  <meta name="theme-color" content="#08111f">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Sai Vamsi Kolla | AI Quality Engineer | SDET">
-  <meta property="og:description" content="AI systems testing, API contract & fuzz testing, Playwright E2E automation.">
+  <meta property="og:title" content="Sai Vamsi Kolla | AI Quality Engineer · Senior SDET">
+  <meta property="og:description" content="Quality systems for AI-powered products, APIs, microservices, mobile applications, and high-risk data workflows.">
   <meta property="og:url" content="https://saivamsikolla-qa.github.io/">
   <meta property="og:image" content="https://saivamsikolla-qa.github.io/images/profile.jpg">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232563eb'/%3E%3Ctext x='50' y='66' font-size='46' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3ESV%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23175cd3'/%3E%3Ctext x='50' y='66' font-size='46' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3ESV%3C/text%3E%3C/svg%3E">
   <script>
     (function () {
-      var t = localStorage.getItem('theme');
-      if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      var root = document.documentElement;
+      var selectedTheme = null;
+      try {
+        var parameters = new URLSearchParams(window.location.search);
+        if (parameters.get('testMode') === '1') root.dataset.testMode = 'true';
+        selectedTheme = parameters.get('theme') || localStorage.getItem('theme');
+      } catch (error) {
+        selectedTheme = null;
+      }
+      if (selectedTheme !== 'light' && selectedTheme !== 'dark') {
+        selectedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      root.dataset.theme = selectedTheme;
     })();
   </script>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20260801">
 </head>
 <body>
-<canvas id="bg" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<a class="skip-link" href="#about">Skip to content</a>
+  <header class="site-header" id="top" data-testid="site-header">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="nav-brand" href="#top" aria-label="Sai Vamsi Kolla home">SV</a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open navigation menu"
+        hidden
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <ul class="nav-menu" id="primary-navigation" data-testid="mobile-navigation">
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#building">Building</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="nav-resume" href="files/resume.pdf" download data-testid="resume-link">Resume</a></li>
+        <li>
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch theme"
+            aria-pressed="false"
+            data-testid="theme-toggle"
+          >
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-<header class="nav" id="top">
-  <nav aria-label="Primary">
-    <a class="nav-brand" href="#top">SV</a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-menu" id="nav-menu">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#journey">Career Journey</a></li>
-      <li><a href="#tested">What I've Tested</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#beyond">Beyond Software</a></li>
-      <li><a class="nav-resume" href="files/resume.pdf" download>Resume</a></li>
-      <li>
-        <button class="theme-toggle" aria-label="Switch between light and dark theme">
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        </button>
-      </li>
-    </ul>
-  </nav>
-</header>
-
-<main>
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text reveal">
-        <p class="hero-hello">Hi, I'm</p>
-        <h1>Sai Vamsi Kolla</h1>
-        <p class="hero-title">AI Quality Engineer&ensp;|&ensp;Senior SDET</p>
-        <p class="hero-tagline">I build the tools that test AI products: automation frameworks, API fuzzers, and eval harnesses that catch bad model output before users do. 7+ years across AI, commerce, and insurance QA.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#experience">View Experience</a>
-          <a class="btn btn-ghost" href="files/resume.pdf" download>Download Resume</a>
+  <main id="main-content" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-heading">
+      <canvas class="hero-canvas" id="bg" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">AI Quality Engineer · Senior SDET</p>
+          <h1 id="hero-heading">I build quality systems for AI-powered products.</h1>
+          <p class="hero-lead">I design automation, API validation, realistic test-data, observability, and behavioral evaluation systems for AI agents, microservices, mobile applications, and high-risk data workflows.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#building" data-testid="hero-primary-action">See what I’m building</a>
+            <a class="button button-secondary" href="files/resume.pdf" download>View résumé</a>
+          </div>
+          <p class="availability">Vancouver, BC, Canada · Eligible to work in the US (TN visa)</p>
+          <div class="hero-social" role="group" aria-label="Professional profiles">
+            <a href="https://github.com/SaiVamsiKolla-QA" aria-label="GitHub profile">
+              <svg viewBox="0 0 16 16" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/saivamsi-kolla/" aria-label="LinkedIn profile">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+            </a>
+          </div>
         </div>
-        <div class="hero-social">
-          <a href="https://github.com/SaiVamsiKolla-QA" aria-label="GitHub profile">
-            <svg viewBox="0 0 16 16" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/saivamsi-kolla/" aria-label="LinkedIn profile">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-          </a>
+        <div class="hero-photo reveal">
+          <div class="photo-frame">
+            <img src="images/profile.jpg" alt="Portrait of Sai Vamsi Kolla" width="560" height="560" fetchpriority="high">
+          </div>
+          <p class="photo-caption"><span aria-hidden="true"></span> Designing confidence into complex systems</p>
         </div>
       </div>
-      <div class="hero-photo reveal">
-        <img src="images/profile.jpg" alt="Portrait of Sai Vamsi Kolla" width="280" height="280">
+    </section>
+
+    <section class="capability-strip" aria-labelledby="capability-heading">
+      <div class="section-shell">
+        <h2 class="visually-hidden" id="capability-heading">Core capabilities</h2>
+        <ul>
+          <li><strong>7+ years</strong><span>in quality engineering</span></li>
+          <li><strong>AI systems</strong><span>and agent testing</span></li>
+          <li><strong>API automation</strong><span>for microservices</span></li>
+          <li><strong>Mobile validation</strong><span>for health-data flows</span></li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="about" class="section">
-    <h2 class="reveal">About Me</h2>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>I'm a Quality Engineer at <strong>mimik</strong>, owning the test strategy for an on-device AI health app end to end — validating AI agent behavior, model responses, and the ingestion of health data from Apple HealthKit.</p>
-        <p>I enjoy finding bugs before customers do, but even more, I enjoy building tools that help teams find them faster. Whether it's creating automation frameworks, writing API tests, or developing utilities that make testing easier, I like solving quality problems through engineering.</p>
-        <p>Before mimik I spent years in insurance and telecom QA, most of it on Guidewire, where a missed defect meant a wrong claim payout. That's where I learned to test systems the boring, thorough way before I started automating them.</p>
-        <p>I'm currently open to SDET and QA Automation opportunities in the <strong>USA and Canada</strong> — remote or on-site. Eligible to work in the US (TN visa).</p>
+    <section class="section" id="expertise" aria-labelledby="expertise-heading">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">What I engineer</p>
+          <h2 id="expertise-heading">Quality systems built around product risk.</h2>
+          <p>I connect test strategy, automation, data, and diagnostics so teams can understand both what failed and whether the product is ready.</p>
+        </div>
+        <div class="expertise-grid" data-testid="capability-list">
+          <article class="expertise-card reveal">
+            <p class="card-index" aria-hidden="true">01</p>
+            <h3>AI Systems Quality</h3>
+            <p>I translate user intent into observable checks for agent obligations, constraints, tool use, and failure behavior—then evaluate non-deterministic output without pretending every answer has one exact assertion.</p>
+            <ul class="feature-list">
+              <li>Intent, obligation, and constraint validation</li>
+              <li>Behavioral evaluation and output invariants</li>
+              <li>Failure analysis using logs, reports, and traces</li>
+              <li>Evaluation strategy for agentic workflows</li>
+            </ul>
+          </article>
+          <article class="expertise-card reveal">
+            <p class="card-index" aria-hidden="true">02</p>
+            <h3>API and Microservice Quality</h3>
+            <p>I combine schemas with realistic state and failure paths, using contracts as a starting point rather than the whole test strategy.</p>
+            <ul class="feature-list">
+              <li>OpenAPI contract and integration validation</li>
+              <li>Fuzz, seeded-data, and failure-path testing</li>
+              <li>Python, pytest, Schemathesis, and Playwright APIs</li>
+              <li>Service-boundary diagnostics and reporting</li>
+            </ul>
+          </article>
+          <article class="expertise-card reveal">
+            <p class="card-index" aria-hidden="true">03</p>
+            <h3>Mobile and Health-Data Quality</h3>
+            <p>I validate data as it moves from devices and operating-system services through mobile workflows and backend systems.</p>
+            <ul class="feature-list">
+              <li>HealthKit ingestion and BLE-connected workflows</li>
+              <li>Background, foreground, and synchronization states</li>
+              <li>Data-integrity and end-to-end health flows</li>
+              <li>Cross-layer logging, traceability, and diagnosis</li>
+            </ul>
+          </article>
+        </div>
       </div>
-      <div class="skills reveal">
-        <div class="skill-group"><h3>Automation</h3><ul><li>Playwright (JS/TS)</li><li>Selenium (Python)</li><li>Page Object Model</li><li>BDD</li></ul></div>
-        <div class="skill-group"><h3>API &amp; Contract Testing</h3><ul><li>Schemathesis (fuzz)</li><li>pydantic</li><li>httpx</li><li>Postman</li></ul></div>
-        <div class="skill-group"><h3>AI Quality</h3><ul><li>AI agent validation</li><li>Model-output validation</li><li>RAG evaluation</li><li>DeepEval</li></ul></div>
-        <div class="skill-group"><h3>CI/CD &amp; Tooling</h3><ul><li>GitHub Actions</li><li>Docker</li><li>Jenkins</li><li>Allure</li></ul></div>
-        <div class="skill-group"><h3>Languages</h3><ul><li>Python</li><li>JavaScript/TypeScript</li><li>SQL</li></ul></div>
-        <div class="skill-group"><h3>Domains</h3><ul><li>Healthcare / AI</li><li>Insurance (P&amp;C, Guidewire)</li><li>e-commerce</li><li>Telecom</li></ul></div>
+    </section>
+
+    <section class="section section-surface" id="building" aria-labelledby="building-heading">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Building now</p>
+          <h2 id="building-heading">Active systems, documented honestly.</h2>
+          <p>A selection of quality-engineering systems I am actively designing, implementing, and refining.</p>
+        </div>
+        <div class="building-grid" data-testid="building-project-list">
+          <article class="project-card reveal" data-project-status="active-build">
+            <header class="project-header">
+              <div>
+                <p class="status-label"><span aria-hidden="true"></span> Active build</p>
+                <h3>qa-agent</h3>
+              </div>
+              <span class="project-type">AI evaluation</span>
+            </header>
+            <dl class="project-details">
+              <div><dt>Problem</dt><dd>Small local language models can sound authoritative while producing inconsistent or unsupported testing guidance.</dd></div>
+              <div><dt>What I’m building</dt><dd>A local RAG mentor with grounded retrieval, citation rules, abstention behavior, and a golden evaluation harness.</dd></div>
+              <div><dt>Current status</dt><dd>The ingestion/query pipeline, CLI, automated tests, and evaluation scaffolding exist. Published baseline results document that the current small model is not yet reliable for domain Q&amp;A.</dd></div>
+              <div><dt>Next milestone</dt><dd>Upgrade the local instruct model and re-run the golden suite to compare concept accuracy, citations, and abstention behavior.</dd></div>
+            </dl>
+            <ul class="technology-list" aria-label="Technologies"><li>Python</li><li>pytest</li><li>ChromaDB</li><li>DeepEval</li></ul>
+            <a class="text-link" href="https://github.com/SaiVamsiKolla-QA/qa-agent">View qa-agent repository<span aria-hidden="true"> ↗</span></a>
+          </article>
+
+          <article class="project-card reveal" data-project-status="active-build">
+            <header class="project-header">
+              <div>
+                <p class="status-label"><span aria-hidden="true"></span> Active build</p>
+                <h3>fhir-contract-fuzz</h3>
+              </div>
+              <span class="project-type">API quality</span>
+            </header>
+            <dl class="project-details">
+              <div><dt>Problem</dt><dd>FHIR integrations can fail when live API behavior drifts from expected resource shapes or mishandles unusual inputs.</dd></div>
+              <div><dt>What I’m building</dt><dd>A layered HAPI FHIR R4 test system for smoke, contract, integration, and property-based fuzz validation.</dd></div>
+              <div><dt>Current status</dt><dd>The Dockerized test target, HTTP adapter, initial pydantic model, capability-statement smoke test, and CI structure are in place. Contract, workflow, and fuzz coverage are still being implemented.</dd></div>
+              <div><dt>Next milestone</dt><dd>Add response-shape contract tests and deterministic resource fixtures before expanding CRUD workflows and fuzz budgets.</dd></div>
+            </dl>
+            <ul class="technology-list" aria-label="Technologies"><li>pytest</li><li>Schemathesis</li><li>pydantic</li><li>Docker</li></ul>
+            <a class="text-link" href="https://github.com/SaiVamsiKolla-QA/fhir-contract-fuzz">View FHIR repository<span aria-hidden="true"> ↗</span></a>
+          </article>
+
+          <article class="project-card reveal" data-project-status="active-build">
+            <header class="project-header">
+              <div>
+                <p class="status-label"><span aria-hidden="true"></span> Active build</p>
+                <h3>medusa-checkout-e2e</h3>
+              </div>
+              <span class="project-type">Web automation</span>
+            </header>
+            <dl class="project-details">
+              <div><dt>Problem</dt><dd>Checkout spans storefront, backend, data, and third-party boundaries where timing and state make brittle UI tests easy to create.</dd></div>
+              <div><dt>What I’m building</dt><dd>A Playwright suite against a Dockerized Medusa storefront, with page objects, injected fixtures, readiness polling, and diagnostic reporting.</dd></div>
+              <div><dt>Current status</dt><dd>The local stack, page-object and fixture structure, global readiness setup, smoke checks, linting, and CI workflow exist. Full checkout journeys are not yet implemented.</dd></div>
+              <div><dt>Next milestone</dt><dd>Implement seeded cart and checkout journeys with failure diagnostics and keep the PR smoke path fast.</dd></div>
+            </dl>
+            <ul class="technology-list" aria-label="Technologies"><li>Playwright</li><li>JavaScript</li><li>Docker</li><li>Allure</li></ul>
+            <a class="text-link" href="https://github.com/SaiVamsiKolla-QA/medusa-checkout-e2e">View Medusa repository<span aria-hidden="true"> ↗</span></a>
+          </article>
+        </div>
       </div>
+    </section>
+
+    <section class="section" id="experience" aria-labelledby="experience-heading">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Experience and leadership</p>
+          <h2 id="experience-heading">Quality ownership across AI, commerce, insurance, and telecom.</h2>
+          <p>Recent work is organized around the systems, risks, and responsibilities I owned—not a repeated résumé inventory.</p>
+        </div>
+        <ol class="experience-list">
+          <li class="experience-item reveal">
+            <div class="experience-meta"><span>2026—present</span><span>Vancouver</span></div>
+            <div class="experience-body">
+              <p class="role-company">mimik</p>
+              <h3>Quality Engineer</h3>
+              <p>Own quality engineering for a multi-agent, on-device AI health application across agent behavior, backend services, HealthKit and BLE-connected data flows, and mobile workflows.</p>
+              <ul>
+                <li>Defined the test strategy and quality process for a new product area.</li>
+                <li>Built the first automation foundation with Schemathesis, pytest, and behavioral evaluation.</li>
+                <li>Designed checks around contracts, structured outputs, obligations, invariants, and cross-layer failure evidence.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="experience-item reveal">
+            <div class="experience-meta"><span>2025—2026</span><span>Vancouver</span></div>
+            <div class="experience-body">
+              <p class="role-company">HCLTech · Client: Meta</p>
+              <h3>Test Lead</h3>
+              <p>Led functional quality work for AI-assisted commerce workflows across 10–15 merchant integrations on iOS, Android, and Shopify.</p>
+              <ul>
+                <li>Coordinated the work of 20 offshore QA engineers.</li>
+                <li>Aligned product, engineering, and QA around integration risk and release readiness.</li>
+                <li>Supported quality decisions across multiple merchant and platform boundaries.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="experience-item reveal">
+            <div class="experience-meta"><span>2022—2024</span><span>Edmonton</span></div>
+            <div class="experience-body">
+              <p class="role-company">Peace Hills General Insurance</p>
+              <h3>Senior QA Analyst</h3>
+              <p>Owned end-to-end validation for Guidewire ClaimCenter and its PolicyCenter, BillingCenter, and customer-portal integrations.</p>
+              <ul>
+                <li>Built the team’s first Selenium and Python regression-automation framework.</li>
+                <li>Connected business rules, integration behavior, and release risk across a high-consequence claims workflow.</li>
+                <li>Worked across functional, API, database, and system-integration testing.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+        <div class="earlier-experience reveal">
+          <p class="eyebrow">Earlier experience</p>
+          <div>
+            <p><strong>QA Analyst · TELUS</strong><span>2021—2022</span></p>
+            <p>System integration, regression, and A/B validation across 12 Agile releases.</p>
+          </div>
+          <div>
+            <p><strong>Software Engineer, QA · Accenture</strong><span>2016—2019</span></p>
+            <p>Enterprise Guidewire implementations, UI/API/database validation, and support for 30+ releases.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-approach" id="approach" aria-labelledby="approach-heading">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Quality-engineering approach</p>
+          <h2 id="approach-heading">From intent to release confidence.</h2>
+          <p>A repeatable way to make behavior, data, service boundaries, and residual risk observable.</p>
+        </div>
+        <ol class="approach-flow">
+          <li class="reveal"><span>01</span><h3>Understand intent</h3><p>Determine what the feature or system is expected to accomplish for the user and product.</p></li>
+          <li class="reveal"><span>02</span><h3>Identify risk</h3><p>Map behavioral, data, integration, reliability, accessibility, and user-impact risks.</p></li>
+          <li class="reveal"><span>03</span><h3>Model realistic data</h3><p>Create valid, missing, extreme, contradictory, and stateful data scenarios.</p></li>
+          <li class="reveal"><span>04</span><h3>Validate contracts</h3><p>Check schemas, service boundaries, dependencies, inputs, outputs, and failure behavior.</p></li>
+          <li class="reveal"><span>05</span><h3>Evaluate behavior</h3><p>Assert deterministic results and evaluate non-deterministic AI behavior against clear obligations.</p></li>
+          <li class="reveal"><span>06</span><h3>Trace failures</h3><p>Use logs, reports, traces, browser evidence, and system state to locate the failure point.</p></li>
+          <li class="reveal"><span>07</span><h3>Communicate confidence</h3><p>Explain coverage, evidence, remaining risk, and whether the product is ready.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="credentials" aria-labelledby="credentials-heading">
+      <div class="section-shell credentials-layout">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Credentials</p>
+          <h2 id="credentials-heading">Foundations that support the engineering work.</h2>
+          <p>Advanced automation, AI and cloud foundations, insurance systems, and software-engineering education.</p>
+        </div>
+        <div class="credentials-grid">
+          <article class="credential-group reveal">
+            <h3>Certifications</h3>
+            <ul>
+              <li><strong>ISTQB Advanced Test Automation Engineer</strong><span>2025 · Advanced</span></li>
+              <li><strong>AWS Certified AI Practitioner</strong><span>2024 · Early adopter</span></li>
+              <li><strong>Guidewire Certified Associate</strong><span>2024 · InsuranceSuite Analyst</span></li>
+              <li><strong>ISTQB Certified Tester</strong><span>2018 · Foundation level</span></li>
+            </ul>
+          </article>
+          <article class="credential-group reveal">
+            <h3>Education</h3>
+            <ul>
+              <li><strong>Master of Science, Internetworking Technologies</strong><span>University of Alberta · 2021</span></li>
+              <li><strong>Bachelor of Technology, Information Technology</strong><span>GITAM University · 2015</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-surface" id="about" aria-labelledby="about-heading">
+      <div class="section-shell about-layout">
+        <div class="section-heading reveal">
+          <p class="eyebrow">About</p>
+          <h2 id="about-heading">A career built by adapting, learning, and taking ownership.</h2>
+        </div>
+        <div class="about-copy reveal">
+          <p>I started in enterprise insurance QA, moved through telecom and AI-assisted commerce, and now own quality engineering for an on-device AI health product. Across those domains, the constant has been learning the system deeply enough to make risk visible and automation maintainable.</p>
+          <p>I moved from India to Canada in 2019 for my master’s degree and worked from dishwasher to front supervisor while studying. That progression strengthened the calm coordination, adaptability, and ownership I bring to technical leadership today.</p>
+          <ul class="about-principles" aria-label="Working principles">
+            <li>Make risk explicit</li>
+            <li>Design for testability</li>
+            <li>Prefer observable systems</li>
+            <li>Communicate with evidence</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="contact-panel reveal">
+        <div>
+          <p class="eyebrow">Let’s work together</p>
+          <h2 id="contact-heading">Building an AI product that needs stronger quality engineering?</h2>
+          <p>I can help design AI-quality strategy, API automation, end-to-end validation systems, test-data approaches, and senior test-engineering workflows.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button button-primary" href="mailto:saivamsikolla@gmail.com">Email Sai Vamsi</a>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/saivamsi-kolla/">LinkedIn<span aria-hidden="true"> ↗</span></a></li>
+            <li><a href="https://github.com/SaiVamsiKolla-QA">GitHub<span aria-hidden="true"> ↗</span></a></li>
+            <li><a href="files/resume.pdf" download>Download résumé</a></li>
+          </ul>
+          <p>Vancouver, BC · Canada and US opportunities</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-shell">
+      <p><strong>Sai Vamsi Kolla</strong><span>AI Quality Engineer · Senior SDET</span></p>
+      <p>Static, lightweight, and designed for testability.</p>
+      <a href="#top">Back to top</a>
     </div>
-  </section>
+  </footer>
 
-  <section id="experience" class="section">
-    <h2 class="reveal">Experience</h2>
-    <ol class="timeline">
-      <li class="timeline-item reveal">
-        <div class="timeline-logo" aria-hidden="true">m</div>
-        <div class="timeline-body">
-          <h3>Quality Engineer · mimik</h3>
-          <p class="timeline-dates">Vancouver · Mar 2026 – Present</p>
-          <ul class="timeline-points">
-            <li>Own quality engineering for a multi-agent, on-device AI health application, defining the test strategy and QA process from the ground up.</li>
-            <li>Built the product's first automation framework using Schemathesis, pytest, and DeepEval to validate OpenAPI contracts and evaluate AI agent behavior.</li>
-            <li>Designed testing for non-deterministic AI systems by validating API contracts, structured outputs, and behavioral invariants instead of fixed responses.</li>
-            <li>Identified and tracked 109 defects across HealthKit data ingestion, backend services, mobile applications, and AI agent workflows.</li>
-          </ul>
-        </div>
-      </li>
-      <li class="timeline-item reveal">
-        <div class="timeline-logo" aria-hidden="true">M</div>
-        <div class="timeline-body">
-          <h3>Test Lead · HCLTech (Client: Meta)</h3>
-          <p class="timeline-dates">Vancouver · Aug 2025 – Feb 2026</p>
-          <ul class="timeline-points">
-            <li>Led functional testing for AI-assisted commerce workflows across 10–15 merchant integrations.</li>
-            <li>Coordinated testing efforts for 20 offshore QA engineers supporting iOS, Android, and Shopify platforms.</li>
-            <li>Partnered with engineering and product teams to improve release quality across multiple commerce integrations.</li>
-          </ul>
-        </div>
-      </li>
-      <li class="timeline-item reveal">
-        <div class="timeline-logo" aria-hidden="true">P</div>
-        <div class="timeline-body">
-          <h3>Senior QA Analyst · Peace Hills General Insurance</h3>
-          <p class="timeline-dates">Edmonton · Nov 2022 – Dec 2024</p>
-          <ul class="timeline-points">
-            <li>Owned end-to-end functional testing for Guidewire ClaimCenter and integrations with PolicyCenter, BillingCenter, and customer-facing portals.</li>
-            <li>Designed and executed 1,900+ functional test cases, identifying 975 defects before UAT.</li>
-            <li>Built the team's first Selenium + Python regression automation framework, reducing manual regression effort and improving release confidence.</li>
-          </ul>
-        </div>
-      </li>
-      <li class="timeline-item reveal">
-        <div class="timeline-logo" aria-hidden="true">T</div>
-        <div class="timeline-body">
-          <h3>QA Analyst · TELUS</h3>
-          <p class="timeline-dates">Edmonton · Sept 2021 – Nov 2022</p>
-          <ul class="timeline-points">
-            <li>Executed system integration, regression, and A/B testing across 12 Agile releases.</li>
-            <li>Improved functional test coverage, contributing to a 70% reduction in critical production defects.</li>
-            <li>Optimized 575+ regression test cases, improving regression efficiency and release confidence.</li>
-          </ul>
-        </div>
-      </li>
-      <li class="timeline-item reveal">
-        <div class="timeline-logo" aria-hidden="true">A</div>
-        <div class="timeline-body">
-          <h3>Software Engineer, QA · Accenture</h3>
-          <p class="timeline-dates">India · Mar 2016 – Aug 2019</p>
-          <ul class="timeline-points">
-            <li>Delivered quality assurance for three enterprise Guidewire implementation and migration programs.</li>
-            <li>Performed UI, API, database, and SQL validation across enterprise insurance systems.</li>
-            <li>Supported 30+ production releases with 100% on-time delivery.</li>
-            <li>Received the Above &amp; Beyond Award for consistently delivering high-quality software.</li>
-          </ul>
-        </div>
-      </li>
-    </ol>
-  </section>
-
-  <section id="journey" class="section">
-    <h2 class="reveal">Career Journey</h2>
-    <ol class="timeline">
-      <li class="timeline-item reveal">
-        <div class="timeline-logo" aria-hidden="true">A</div>
-        <div class="timeline-body">
-          <h3>Software Engineer, QA — Accenture (India)</h3>
-          <p class="timeline-dates">2016–2019</p>
-        </div>
-      </li>
-      <li class="timeline-item timeline-item-edu reveal">
-        <div class="timeline-logo" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2 2 6 2s6-1 6-2v-5"/></svg>
-        </div>
-        <div class="timeline-body">
-          <h3>Moved to Canada to pursue an M.Sc. in Internetworking Technologies at the University of Alberta</h3>
-          <p class="timeline-dates">2019</p>
-        </div>
-      </li>
-      <li class="timeline-item reveal">
-        <div class="timeline-logo" aria-hidden="true">a</div>
-        <div class="timeline-body">
-          <h3>Worked part-time at Aramark while completing my Master's degree</h3>
-          <p class="timeline-dates">2019–2021</p>
-        </div>
-      </li>
-      <li class="timeline-item reveal">
-        <div class="timeline-logo" aria-hidden="true">→</div>
-        <div class="timeline-body">
-          <h3>QA Analyst → Senior QA Analyst → Test Lead → Quality Engineer (AI)</h3>
-          <p class="timeline-dates">2021–Present</p>
-        </div>
-      </li>
-    </ol>
-  </section>
-
-  <section id="tested" class="section">
-    <h2 class="reveal">What I've Tested</h2>
-    <p class="section-intro reveal">Real products in production, with public references.</p>
-    <div class="tested-grid">
-      <article class="tested-card reveal">
-        <div class="tested-logo" aria-hidden="true">m</div>
-        <h3>mimik agentic-native platform</h3>
-        <p>The agentic AI platform and mimOE runtime behind the on-device AI health app I test every day.</p>
-        <a class="tested-link" href="https://www.mimik.com/agentic-native-taxonomy">Read about the platform<span aria-hidden="true"> →</span></a>
-      </article>
-      <article class="tested-card reveal">
-        <div class="tested-logo" aria-hidden="true">M</div>
-        <h3>Meta AI shopping &amp; checkout</h3>
-        <p>AI-powered product discovery and one-tap checkout: the autonomous shopping flows my team validated.</p>
-        <a class="tested-link" href="https://www.facebook.com/business/news/ai-and-creators-product-discovery">Read Meta's announcement<span aria-hidden="true"> →</span></a>
-      </article>
-      <article class="tested-card reveal">
-        <div class="tested-logo" aria-hidden="true">P</div>
-        <h3>Peace Hills on Guidewire Cloud</h3>
-        <p>The Guidewire Cloud implementation I led QA on, covered by Canadian Underwriter.</p>
-        <a class="tested-link" href="https://www.insuranceinstitute.ca/en/Insights-And-Publications/CanadianUnderwriterArticles/items/2025/06/24/Peace-Hills-Insurance-Announces-Implementation-of-Guidewire-Cloud-Platform-to-Drive-Innovation-and-">Read the coverage<span aria-hidden="true"> →</span></a>
-      </article>
-    </div>
-  </section>
-
-  <section id="education" class="section">
-    <h2 class="reveal">Education</h2>
-    <div class="edu-card reveal">
-      <h3>Master of Science, Internetworking Technologies</h3>
-      <p>University of Alberta · 2021</p>
-    </div>
-    <div class="edu-card reveal">
-      <h3>Bachelor of Technology, Information Technology</h3>
-      <p>GITAM University · 2015</p>
-    </div>
-  </section>
-
-  <section id="certifications" class="section">
-    <h2 class="reveal">Certifications</h2>
-    <div class="cert-grid">
-      <article class="cert-card reveal">
-        <div class="cert-head">
-          <span class="cert-logo cert-logo-istqb" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-          </span>
-          <span class="cert-level cert-level-advanced">Advanced</span>
-        </div>
-        <h3>ISTQB Advanced Test Automation Engineer (CT-TAE)</h3>
-        <p class="cert-year">June 2025</p>
-        <ul class="cert-tags">
-          <li>Test Automation</li>
-          <li>API Testing</li>
-          <li>CI/CD</li>
-          <li>Framework Design</li>
-        </ul>
-      </article>
-      <article class="cert-card reveal">
-        <div class="cert-head">
-          <span class="cert-logo cert-logo-guidewire" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 8.5 5v10L12 22l-8.5-5V7L12 2z"/><path d="m3.5 7 8.5 5 8.5-5"/><path d="M12 12v10"/></svg>
-          </span>
-          <span class="cert-level cert-level-associate">Associate</span>
-        </div>
-        <h3>Guidewire Certified Associate, Insurance Suite Analyst</h3>
-        <p class="cert-year">2024</p>
-        <ul class="cert-tags">
-          <li>ClaimCenter</li>
-          <li>PolicyCenter</li>
-          <li>BillingCenter</li>
-          <li>Insurance Suite</li>
-        </ul>
-      </article>
-      <article class="cert-card reveal">
-        <div class="cert-head">
-          <span class="cert-logo cert-logo-aws" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-.42-8.98 6 6 0 1 0-11.06 3.1A3.5 3.5 0 0 0 6.5 19h11z"/></svg>
-          </span>
-          <span class="cert-level cert-level-foundation">Foundational</span>
-        </div>
-        <h3>AWS Certified AI Practitioner (Early Adopter)</h3>
-        <p class="cert-year">2024</p>
-        <ul class="cert-tags">
-          <li>Generative AI</li>
-          <li>Prompt Engineering</li>
-          <li>AI Fundamentals</li>
-          <li>Cloud AI</li>
-        </ul>
-      </article>
-      <article class="cert-card reveal">
-        <div class="cert-head">
-          <span class="cert-logo cert-logo-istqb" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-          </span>
-          <span class="cert-level cert-level-foundation">Foundation</span>
-        </div>
-        <h3>ISTQB Certified Tester, Foundation Level (CTFL)</h3>
-        <p class="cert-year">2018</p>
-        <ul class="cert-tags">
-          <li>Software Testing</li>
-          <li>Functional Testing</li>
-          <li>SDLC</li>
-          <li>Agile</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section id="projects" class="section">
-    <h2 class="reveal">Projects</h2>
-    <p class="section-intro reveal">Testing tools I built to solve problems I kept running into.</p>
-    <div class="projects-grid">
-      <article class="project-card reveal">
-        <img src="images/project-qa-agent.svg" alt="" width="640" height="320" loading="lazy">
-        <div class="project-body">
-          <h3>qa-agent</h3>
-          <p>Testing an LLM is hard because the same question gives a different answer each run, so a normal assertion can't tell a regression from noise. qa-agent retrieves ISTQB context locally and scores each answer against a golden set with DeepEval, then fails the CI build when quality drops below a set threshold. It's regression testing for non-deterministic output, running offline on a small model to stay reproducible. 59 tests.</p>
-          <ul class="project-tags">
-            <li>Python</li>
-            <li>ChromaDB</li>
-            <li>DeepEval</li>
-            <li>RAG</li>
-          </ul>
-          <a class="project-link" href="https://github.com/SaiVamsiKolla-QA/qa-agent">View on GitHub<span aria-hidden="true"> →</span></a>
-        </div>
-      </article>
-      <article class="project-card reveal">
-        <img src="images/project-fhir.svg" alt="" width="640" height="320" loading="lazy">
-        <div class="project-body">
-          <h3>fhir-contract-fuzz</h3>
-          <p>Healthcare APIs have to match the FHIR R4 spec exactly, and a subtle contract drift breaks downstream systems quietly. The framework pins the contract with pydantic models and fuzzes the live OpenAPI surface with Schemathesis, split into a fast PR gate and a nightly deep run. The architecture and CI are in place; I'm growing coverage against a live HAPI FHIR server.</p>
-          <ul class="project-tags">
-            <li>pytest</li>
-            <li>Schemathesis</li>
-            <li>pydantic v2</li>
-            <li>Docker</li>
-          </ul>
-          <a class="project-link" href="https://github.com/SaiVamsiKolla-QA/fhir-contract-fuzz">View on GitHub<span aria-hidden="true"> →</span></a>
-        </div>
-      </article>
-      <article class="project-card reveal">
-        <img src="images/project-medusa.svg" alt="" width="640" height="320" loading="lazy">
-        <div class="project-body">
-          <h3>medusa-checkout-e2e</h3>
-          <p>Checkout is where e-commerce quality actually matters and the flow most likely to break on a release. The suite runs against a real Dockerized Medusa store instead of mocks, with page objects isolating selectors and Playwright auto-waiting to kill flaky sleeps. Built as a framework foundation with CI and Allure reporting wired end to end.</p>
-          <ul class="project-tags">
-            <li>Playwright</li>
-            <li>JavaScript</li>
-            <li>Docker</li>
-            <li>Allure</li>
-          </ul>
-          <a class="project-link" href="https://github.com/SaiVamsiKolla-QA/medusa-checkout-e2e">View on GitHub<span aria-hidden="true"> →</span></a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="beyond" class="section">
-    <h2 class="reveal">Beyond Software</h2>
-    <p class="section-intro reveal">I moved from India to Canada in 2019 to pursue my Master's degree at the University of Alberta. While studying full-time, I worked at Aramark and progressed from dishwasher to front supervisor. That experience taught me ownership, teamwork, and staying calm under pressure—qualities I continue to apply as a quality engineer building reliable software.</p>
-  </section>
-</main>
-
-<footer class="footer">
-  <p>Let's talk testing: <a href="mailto:saivamsikolla@gmail.com">saivamsikolla@gmail.com</a></p>
-  <p class="footer-meta">Vancouver, BC, Canada · <a href="https://github.com/SaiVamsiKolla-QA">GitHub</a> · <a href="https://www.linkedin.com/in/saivamsi-kolla/">LinkedIn</a></p>
-</footer>
-
-<script src="js/main.js" defer></script>
-<script src="js/background.js" defer></script>
+  <script src="js/main.js?v=20260801" defer></script>
+  <script src="js/background.js?v=20260801" defer></script>
 </body>
 </html>

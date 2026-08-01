@@ -1,0 +1,20 @@
+{
+  "desktop": {
+    "performance": 0.9,
+    "accessibility": 0.95,
+    "best-practices": 0.95,
+    "seo": 0.95,
+    "totalByteWeight": 750000,
+    "scriptByteWeight": 75000,
+    "imageByteWeight": 500000
+  },
+  "mobile": {
+    "performance": 0.85,
+    "accessibility": 0.95,
+    "best-practices": 0.95,
+    "seo": 0.95,
+    "totalByteWeight": 750000,
+    "scriptByteWeight": 75000,
+    "imageByteWeight": 500000
+  }
+}

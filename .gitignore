@@ -1,3 +1,12 @@
 .DS_Store
 .claude/
 *.log
+node_modules/
+playwright-report/
+test-results/
+blob-report/
+lighthouse-results/
+lighthouse-reports/
+.lighthouseci/
+.env
+.env.*
