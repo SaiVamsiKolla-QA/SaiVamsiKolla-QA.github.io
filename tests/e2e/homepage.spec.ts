@@ -23,6 +23,13 @@ test('CONTENT-001 ASSET-001 homepage exposes the core recruiter path', async ({ 
     await expect(resumeLinks).toHaveCount(3);
     for (const resumeLink of await resumeLinks.all()) {
       await expect(resumeLink).toHaveAttribute('href', 'files/SaiVamsiKolla_Resume.pdf');
+      await expect(resumeLink).toHaveText(/resume/i);
+    }
+
+    const visibleResumeLinks = resumeLinks.filter({ visible: true });
+    const expectedVisibleCount = testInfo.project.name.startsWith('mobile-') ? 2 : 3;
+    await expect(visibleResumeLinks).toHaveCount(expectedVisibleCount);
+    for (const resumeLink of await visibleResumeLinks.all()) {
       await expect(resumeLink).toHaveAccessibleName(/resume/i);
     }
   });
