@@ -33,10 +33,11 @@ export default defineConfig({
     contextOptions: { reducedMotion: 'reduce' },
   },
   webServer: {
-    command: 'python3 -m http.server 4173 --bind 127.0.0.1',
+    command: 'npm run start',
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: !process.env.CI,
-    timeout: 30_000,
+    stdout: 'pipe',
+    timeout: 60_000,
   },
   projects: [
     {
