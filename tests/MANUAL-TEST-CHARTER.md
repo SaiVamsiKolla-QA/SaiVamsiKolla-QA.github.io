@@ -18,7 +18,7 @@ Read the Building-now cards as a skeptical engineering interviewer. Confirm acti
 
 ## Keyboard usability
 
-Starting at the address bar, navigate the complete page with Tab, Shift+Tab, Enter, Space, Escape, and arrow keys where native controls require them. Verify focus order, visibility, skip link, compact-menu entry and dismissal, focus restoration, theme toggle, all CTAs, résumé links, and absence of keyboard traps.
+Starting at the address bar, navigate the complete page with Tab, Shift+Tab, Enter, Space, Escape, and arrow keys where native controls require them. Verify focus order, visibility, skip link, compact-menu entry and dismissal, focus restoration, theme toggle, all CTAs, resume links, and absence of keyboard traps.
 
 ## Screen-reader experience
 
@@ -34,7 +34,7 @@ Review initial system preference, manual switching, persistence after reload, an
 
 ## Real iPhone Safari
 
-Test a current physical iPhone in portrait and landscape. Check viewport scaling, safe areas, sticky header, compact menu, theme persistence, anchor offsets, tap targets, long terminology, scroll performance, résumé behavior, mail link, and rotation state reset.
+Test a current physical iPhone in portrait and landscape. Check viewport scaling, safe areas, sticky header, compact menu, theme persistence, anchor offsets, tap targets, long terminology, scroll performance, resume behavior, mail link, and rotation state reset.
 
 ## Real Android Chrome
 
@@ -52,9 +52,9 @@ Enable the operating system’s reduced-motion setting before loading. Verify th
 
 Open print preview in light and dark preference. Confirm all professional content prints with readable contrast, sensible breaks, visible link destinations where useful, and no hidden reveal content. Navigation, theme control, canvas, portrait decoration, and redundant chrome should be removed.
 
-## Résumé download
+## Resume download
 
-Activate each résumé link with mouse, keyboard, and mobile touch. Confirm the same `files/resume.pdf` asset opens or downloads, is not a 404, has a meaningful filename, and does not strand the user. The PDF’s own content and accessibility require a separate audit.
+Activate each resume link with mouse, keyboard, and mobile touch. Confirm the same `files/SaiVamsiKolla_Resume.pdf` asset opens or downloads, is not a 404, has a meaningful filename, and does not strand the user. The PDF’s own content and accessibility require a separate audit.
 
 ## Broken-image behavior
 
@@ -62,7 +62,7 @@ Use local developer tools to block `images/profile.jpg`. Confirm the alternative
 
 ## Delayed-script behavior
 
-Block or delay `js/main.js` and `js/background.js`. Confirm headline, sections, contact details, résumé links, and anchor navigation remain available; content never remains at zero opacity; the fallback navigation is usable; and loss of theme/canvas/menu enhancement does not create a blank or misleading page.
+Block or delay `js/main.js` and `js/background.js`. Confirm headline, sections, contact details, resume links, and anchor navigation remain available; content never remains at zero opacity; the fallback navigation is usable; and loss of theme/canvas/menu enhancement does not create a blank or misleading page.
 
 ## Exit criteria
 

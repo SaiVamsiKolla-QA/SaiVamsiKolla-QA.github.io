@@ -8,11 +8,14 @@ Last synchronized: August 2026.
 
 - Present Sai as a quality engineer who designs systems, understands product risk, promotes testability, and communicates release confidence.
 - Primary role: **AI Quality Engineer · Senior SDET**.
+- Keep core positioning focused on AI systems, APIs, UI automation, web quality, testability, observability, failure diagnosis, quality architecture, and release confidence.
+- Past platform-specific work may appear only as limited historical context when necessary. Do not present it as a specialization or career direction.
+- Do not position Sai around a single insurance platform.
 - Do not promote defect counts as proof of seniority.
 - Describe personal repositories as active builds, prototypes, architecture-stage work, or early explorations.
 - Do not invent project outcomes, test results, coverage, maturity, production usage, screenshots, or business impact.
 - Use tools as evidence of engineering decisions, not as repeated inventories.
-- Preserve the résumé path and download behavior: `files/resume.pdf`.
+- Preserve the resume path and download behavior: `files/SaiVamsiKolla_Resume.pdf`.
 - Keep one responsive semantic HTML document for every viewport.
 
 ## Header
@@ -25,7 +28,7 @@ Navigation:
 4. About → `#about`
 5. Contact → `#contact`
 
-Primary header action: Resume → `files/resume.pdf` with download behavior.
+Primary header action: Resume → `files/SaiVamsiKolla_Resume.pdf` with download behavior.
 
 Secondary control: persisted light/dark theme toggle.
 
@@ -41,7 +44,7 @@ Headline:
 
 Supporting copy:
 
-> I design automation, API validation, realistic test-data, observability, and behavioral evaluation systems for AI agents, microservices, mobile applications, and high-risk data workflows.
+> I design test systems for AI agents, APIs and web applications using realistic data, behavioral validation and observable failure evidence.
 
 Primary CTA:
 
@@ -49,7 +52,7 @@ Primary CTA:
 
 Secondary CTA:
 
-> View résumé
+> View resume
 
 Availability:
 
@@ -60,12 +63,11 @@ Professional profiles:
 - GitHub: <https://github.com/SaiVamsiKolla-QA>
 - LinkedIn: <https://www.linkedin.com/in/saivamsi-kolla/>
 
-## Capability strip
+## Evidence strip
 
-- **7+ years** — in quality engineering
-- **AI systems** — and agent testing
-- **API automation** — for microservices
-- **Mobile validation** — for health-data flows
+- **7+ years:** Quality engineering experience
+- **20 engineers:** Coordinated across distributed QA work
+- **10 to 15 integrations:** Validated across commerce workflows
 
 No defect counts belong in this strip.
 
@@ -83,40 +85,53 @@ Introduction:
 
 Plain-language explanation:
 
-> I translate user intent into observable checks for agent obligations, constraints, tool use, and failure behavior—then evaluate non-deterministic output without pretending every answer has one exact assertion.
+> I translate user intent into observable checks for agent obligations, constraints, tool use and failure behavior. I evaluate non-deterministic outputs against clear expectations without forcing every response into one exact assertion.
 
 Evidence areas:
 
-- Intent, obligation, and constraint validation
+- Intent, obligation and constraint validation
+- Tool-use validation and failure behavior
 - Behavioral evaluation and output invariants
-- Failure analysis using logs, reports, and traces
-- Evaluation strategy for agentic workflows
+- Evaluation strategy and observable failure evidence
 
 ### API and Microservice Quality
 
 Plain-language explanation:
 
-> I combine schemas with realistic state and failure paths, using contracts as a starting point rather than the whole test strategy.
+> I combine contract validation with realistic data, state transitions and failure-path testing so teams can understand how services behave beyond the happy path.
 
 Evidence areas:
 
-- OpenAPI contract and integration validation
-- Fuzz, seeded-data, and failure-path testing
-- Python, pytest, Schemathesis, and Playwright APIs
-- Service-boundary diagnostics and reporting
+- OpenAPI contracts and schema validation
+- Fuzz testing and failure-path coverage
+- Seeded data and stateful integration scenarios
+- Python, pytest and Schemathesis across service boundaries
 
-### Mobile and Health-Data Quality
+### UI Automation and Web Quality
 
 Plain-language explanation:
 
-> I validate data as it moves from devices and operating-system services through mobile workflows and backend systems.
+> I build maintainable web automation around real user behavior, accessible semantics and deterministic test data. I use browser, network, console and trace evidence to diagnose failures instead of relying only on screenshots.
 
 Evidence areas:
 
-- HealthKit ingestion and BLE-connected workflows
-- Background, foreground, and synchronization states
-- Data-integrity and end-to-end health flows
-- Cross-layer logging, traceability, and diagnosis
+- Playwright coverage across Chromium, Firefox and WebKit
+- Semantic locators and accessibility-first test design
+- Reliable fixtures, test data and state control
+- Responsive, console, network and trace validation
+
+### Testability and Observability
+
+Plain-language explanation:
+
+> I promote testability as an engineering requirement. I design observable states, deterministic test controls and diagnostic evidence so failures can be reproduced, understood and resolved quickly.
+
+Evidence areas:
+
+- Testability built into component and API design
+- Logs, reports and traces connected to test evidence
+- Deterministic environments and repeatable test data
+- CI quality gates and requirement traceability
 
 ## Building now
 
@@ -162,11 +177,12 @@ All three entries use the status **Active build**.
 
 **Vancouver · 2026–present**
 
-Own quality engineering for a multi-agent, on-device AI health application across agent behavior, backend services, HealthKit and BLE-connected data flows, and mobile workflows.
+Own quality engineering for a multi-agent AI product across agent behavior, APIs, microservices, data flows and end-to-end product risk.
 
-- Defined the test strategy and quality process for a new product area.
-- Built the first automation foundation with Schemathesis, pytest, and behavioral evaluation.
-- Designed checks around contracts, structured outputs, obligations, invariants, and cross-layer failure evidence.
+- Defined the test strategy and quality process for a new AI product area.
+- Built an automation foundation using Schemathesis, pytest and behavioral evaluation.
+- Designed checks around contracts, structured outputs, obligations, invariants and cross-service failure evidence.
+- Improved testability through logging, reporting, tracing and deterministic test data.
 
 ### Test Lead · HCLTech, client Meta
 
@@ -182,7 +198,7 @@ Led functional quality work for AI-assisted commerce workflows across 10–15 me
 
 **Edmonton · 2022–2024**
 
-Owned end-to-end validation for Guidewire ClaimCenter and its PolicyCenter, BillingCenter, and customer-portal integrations.
+Owned end-to-end validation for enterprise claims, policy, billing and customer-portal integrations.
 
 - Built the team’s first Selenium and Python regression-automation framework.
 - Connected business rules, integration behavior, and release risk across a high-consequence claims workflow.
@@ -191,7 +207,7 @@ Owned end-to-end validation for Guidewire ClaimCenter and its PolicyCenter, Bill
 ### Earlier experience
 
 - **QA Analyst · TELUS · 2021–2022:** System integration, regression, and A/B validation across 12 Agile releases.
-- **Software Engineer, QA · Accenture · 2016–2019:** Enterprise Guidewire implementations, UI/API/database validation, and support for 30+ releases.
+- **Software Engineer, QA · Accenture · 2016–2019:** Enterprise insurance implementations, UI/API/database validation and support for 30+ releases.
 
 ## Quality-engineering approach
 
@@ -211,19 +227,18 @@ Section heading:
 
 ### Certifications
 
-- ISTQB Advanced Test Automation Engineer — 2025, Advanced
-- AWS Certified AI Practitioner — 2024, Early adopter
-- Guidewire Certified Associate — 2024, InsuranceSuite Analyst
-- ISTQB Certified Tester — 2018, Foundation level
+- ISTQB Advanced Test Automation Engineer, 2025, Advanced
+- AWS Certified AI Practitioner, 2024, Early adopter
+- ISTQB Certified Tester, 2018, Foundation level
 
 ### Education
 
-- Master of Science, Internetworking Technologies — University of Alberta, 2021
-- Bachelor of Technology, Information Technology — GITAM University, 2015
+- Master of Science, Internetworking Technologies, University of Alberta, 2021
+- Bachelor of Technology, Information Technology, GITAM University, 2015
 
 ## About
 
-> I started in enterprise insurance QA, moved through telecom and AI-assisted commerce, and now own quality engineering for an on-device AI health product. Across those domains, the constant has been learning the system deeply enough to make risk visible and automation maintainable.
+> I focus on quality engineering for AI systems, APIs and web products. My work connects test strategy, automation, testability and failure evidence so teams can make clearer release decisions.
 
 > I moved from India to Canada in 2019 for my master’s degree and worked from dishwasher to front supervisor while studying. That progression strengthened the calm coordination, adaptability, and ownership I bring to technical leadership today.
 
@@ -238,11 +253,11 @@ Working principles:
 
 Heading:
 
-> Building an AI product that needs stronger quality engineering?
+> Looking for an engineer who can make complex AI systems testable?
 
 Supporting copy:
 
-> I can help design AI-quality strategy, API automation, end-to-end validation systems, test-data approaches, and senior test-engineering workflows.
+> I bring AI systems testing, API automation, reliable UI automation, realistic test data, observability and end-to-end validation to product teams.
 
 Primary action:
 
@@ -252,7 +267,7 @@ Supporting links:
 
 - LinkedIn: <https://www.linkedin.com/in/saivamsi-kolla/>
 - GitHub: <https://github.com/SaiVamsiKolla-QA>
-- Résumé: `files/resume.pdf`
+- Resume: `files/SaiVamsiKolla_Resume.pdf`
 
 Location line:
 
@@ -264,3 +279,10 @@ Location line:
 - AI Quality Engineer · Senior SDET
 - “Static, lightweight, and designed for testability.”
 - Back-to-top anchor
+
+## Metadata
+
+- Page title: `Sai Vamsi Kolla | AI Quality Engineer · Senior SDET`
+- Meta description: `Sai Vamsi Kolla designs test systems for AI agents, APIs, microservices and web applications with a focus on testability, automation and observable failure evidence.`
+- Open Graph title: `Sai Vamsi Kolla | AI Quality Engineer · Senior SDET`
+- Open Graph description: `Test systems for AI agents, APIs, microservices and web applications, with a focus on testability, automation and observable failure evidence.`

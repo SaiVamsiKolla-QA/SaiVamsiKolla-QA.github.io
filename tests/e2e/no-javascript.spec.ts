@@ -29,7 +29,7 @@ test('A11Y-001 core portfolio content and navigation work without JavaScript', a
       );
       expect(hiddenSections).toEqual([]);
       await expect(noJsPage.getByRole('link', { name: 'Email Sai Vamsi' })).toHaveAttribute('href', 'mailto:saivamsikolla@gmail.com');
-      await expect(noJsPage.getByRole('link', { name: /résumé|resume/i }).first()).toHaveAttribute('href', 'files/resume.pdf');
+      await expect(noJsPage.getByRole('link', { name: /resume/i }).first()).toHaveAttribute('href', 'files/SaiVamsiKolla_Resume.pdf');
       await noJsPage.getByRole('link', { name: 'Experience' }).click();
       await expect(noJsPage).toHaveURL(/#experience$/);
       await expect(noJsPage.getByRole('heading', { name: /Quality ownership across AI/ })).toBeVisible();
