@@ -23,13 +23,57 @@ test('LINK-001 anchors, local assets, and outbound URLs satisfy the site contrac
   });
 
   await test.step('Verify required local assets return successfully', async () => {
-    for (const path of ['/files/SaiVamsiKolla_Resume.pdf', '/images/profile.jpg', '/css/style.css', '/js/main.js', '/js/background.js']) {
+    for (const path of [
+      '/files/SaiVamsiKolla_Resume.pdf',
+      '/images/profile.jpg',
+      '/images/social-preview.jpg',
+      '/css/style.css',
+      '/js/main.js',
+      '/robots.txt',
+      '/sitemap.xml',
+    ]) {
       const response = await request.get(path);
       expect(response.ok(), `${path} should return a successful status`).toBe(true);
     }
   });
 
+  await test.step('Verify canonical, social, structured-data, and crawler metadata', async () => {
+    const canonicalUrl = 'https://saivamsikolla-qa.github.io/';
+    const socialImage = `${canonicalUrl}images/social-preview.jpg`;
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', canonicalUrl);
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute('content', canonicalUrl);
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', socialImage);
+    await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute('content', /Sai Vamsi Kolla/);
+    await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image');
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', socialImage);
+
+    const structuredData = await page.locator('script[type="application/ld+json"]').textContent();
+    expect(structuredData).not.toBeNull();
+    const person = JSON.parse(structuredData!);
+    expect(person).toMatchObject({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Sai Vamsi Kolla',
+      url: canonicalUrl,
+      jobTitle: 'Senior SDET · AI Quality Engineer',
+      email: 'mailto:saivamsikolla@gmail.com',
+    });
+    expect(person.sameAs).toEqual([
+      'https://github.com/SaiVamsiKolla-QA',
+      'https://www.linkedin.com/in/saivamsi-kolla/',
+    ]);
+
+    const robots = await (await request.get('/robots.txt')).text();
+    expect(robots).toContain(`Sitemap: ${canonicalUrl}sitemap.xml`);
+    const sitemap = await (await request.get('/sitemap.xml')).text();
+    expect(sitemap).toContain(`<loc>${canonicalUrl}</loc>`);
+  });
+
   await test.step('Verify outbound links are intentional and well formed', async () => {
+    await expect(page.locator('a[href="https://github.com/SaiVamsiKolla-QA"]')).toHaveCount(2);
+    await expect(page.locator('a[href="https://www.linkedin.com/in/saivamsi-kolla/"]')).toHaveCount(2);
+    await expect(page.locator('a[href="mailto:saivamsikolla@gmail.com"]')).toHaveCount(1);
+
     const invalid = await page.locator('a').evaluateAll((links) =>
       (links as HTMLAnchorElement[]).flatMap((link) => {
         const rawHref = link.getAttribute('href') ?? '';

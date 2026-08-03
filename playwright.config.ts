@@ -1,21 +1,15 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const reportSuffix = process.env.PW_REPORT_SUFFIX ?? 'full';
-const visualComparisonEnabled = process.env.PW_VISUAL === '1';
 
 export default defineConfig({
   testDir: './tests/e2e',
-  testIgnore: visualComparisonEnabled ? [] : ['**/visual.spec.ts'],
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: 0,
   timeout: 30_000,
   expect: {
     timeout: 5_000,
-    toHaveScreenshot: {
-      animations: 'disabled',
-      maxDiffPixelRatio: 0.01,
-    },
   },
   reporter: [
     ['list'],
@@ -24,7 +18,6 @@ export default defineConfig({
     ['junit', { outputFile: `test-results/${reportSuffix}/junit.xml` }],
   ],
   outputDir: `test-results/${reportSuffix}/artifacts`,
-  snapshotPathTemplate: '{testDir}/__screenshots__/{testFilePath}/{projectName}/{arg}{ext}',
   use: {
     baseURL: 'http://127.0.0.1:4173',
     trace: 'retain-on-failure',

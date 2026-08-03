@@ -14,6 +14,7 @@ test('NAV-001 LINK-001 desktop navigation targets unique existing sections witho
     const sectionLinks = navigation.locator('a[href^="#"]');
     const hrefs = await sectionLinks.evaluateAll((links) => links.map((link) => link.getAttribute('href')));
     expect(hrefs).toEqual(['#top', '#expertise', '#building', '#experience', '#about', '#contact']);
+    await expect(navigation.getByRole('link', { name: 'Projects' })).toHaveAttribute('href', '#building');
 
     for (const href of hrefs) {
       expect(href).not.toBeNull();
@@ -41,6 +42,7 @@ test('NAV-001 LINK-001 desktop navigation targets unique existing sections witho
 
 test('A11Y-002 skip link moves focus to the main landmark', async ({ page }, testInfo) => {
   annotateRequirements(testInfo, 'A11Y-002');
+  test.skip(testInfo.project.name !== 'chromium-desktop', 'The skip-link contract is browser-independent.');
 
   await test.step('Open and focus the skip link', async () => {
     await openPortfolio(page);
@@ -59,6 +61,7 @@ test('A11Y-002 skip link moves focus to the main landmark', async ({ page }, tes
 
 test('NAV-002 NAV-003 mobile navigation exposes deterministic keyboard states', async ({ browserName, page }, testInfo) => {
   annotateRequirements(testInfo, 'NAV-002', 'NAV-003');
+  test.skip(!testInfo.project.name.startsWith('mobile-'), 'Compact navigation runs in the representative mobile projects.');
 
   await test.step('Open the compact navigation with Enter', async () => {
     await page.setViewportSize({ width: 390, height: 844 });

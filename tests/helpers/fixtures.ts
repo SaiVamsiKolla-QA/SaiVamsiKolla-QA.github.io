@@ -74,9 +74,8 @@ export function annotateRequirements(testInfo: TestInfo, ...requirementIds: stri
   }
 }
 
-export async function openPortfolio(page: Page, options: { theme?: 'light' | 'dark'; testMode?: boolean } = {}): Promise<void> {
+export async function openPortfolio(page: Page, options: { theme?: 'light' | 'dark' } = {}): Promise<void> {
   const parameters = new URLSearchParams();
-  if (options.testMode !== false) parameters.set('testMode', '1');
   if (options.theme) parameters.set('theme', options.theme);
   const suffix = parameters.size > 0 ? `?${parameters.toString()}` : '';
   await page.goto(`/${suffix}`);

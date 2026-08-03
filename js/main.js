@@ -85,92 +85,22 @@
     setTheme(root.dataset.theme);
     if (!themeButton) return;
 
+    themeButton.hidden = false;
     themeButton.addEventListener('click', () => {
       setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', { persist: true });
     });
   }
 
-  function initializeReveal() {
-    const testMode = root.dataset.testMode === 'true';
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (testMode || reduceMotion || !('IntersectionObserver' in window)) return;
-
-    const revealables = [...document.querySelectorAll('.reveal')];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
-            observer.unobserve(entry.target);
-          }
-        }
-      },
-      { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
-    );
-
-    for (const element of revealables) {
-      const rect = element.getBoundingClientRect();
-      if (rect.top <= window.innerHeight * 0.92) {
-        element.classList.add('reveal-pending', 'reveal-visible');
-      } else {
-        element.classList.add('reveal-pending');
-        observer.observe(element);
-      }
-    }
-
-    root.dataset.motionReady = 'true';
-  }
-
   const copyEmailButton = document.querySelector('[data-copy-email]');
   const copyEmailStatus = document.getElementById('copy-email-status');
 
-  function copyTextFallback(text) {
-    if (typeof document.execCommand !== 'function') return false;
-
-    const activeElement = document.activeElement;
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    textArea.readOnly = true;
-    textArea.setAttribute('aria-hidden', 'true');
-    Object.assign(textArea.style, {
-      position: 'fixed',
-      inset: '0 auto auto 0',
-      opacity: '0',
-      pointerEvents: 'none',
-    });
-    document.body.append(textArea);
-    textArea.select();
-    textArea.setSelectionRange(0, text.length);
-
-    let copied = false;
-    try {
-      copied = document.execCommand('copy');
-    } catch (error) {
-      copied = false;
-    } finally {
-      textArea.remove();
-      if (activeElement instanceof HTMLElement) activeElement.focus({ preventScroll: true });
-    }
-    return copied;
-  }
-
-  async function copyText(text) {
-    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-      try {
-        await navigator.clipboard.writeText(text);
-        return;
-      } catch (error) {
-        // A denied Clipboard API request may still succeed through the selection fallback.
-      }
-    }
-
-    if (!copyTextFallback(text)) {
-      throw new Error('Clipboard access is unavailable');
-    }
-  }
-
   function initializeCopyEmail() {
-    if (!(copyEmailButton instanceof HTMLButtonElement) || !copyEmailStatus) return;
+    if (
+      !(copyEmailButton instanceof HTMLButtonElement) ||
+      !copyEmailStatus ||
+      !navigator.clipboard ||
+      typeof navigator.clipboard.writeText !== 'function'
+    ) return;
 
     copyEmailButton.hidden = false;
     copyEmailButton.addEventListener('click', async () => {
@@ -179,7 +109,7 @@
 
       copyEmailStatus.textContent = 'Copying email address…';
       try {
-        await copyText(email);
+        await navigator.clipboard.writeText(email);
         copyEmailStatus.textContent = 'Email address copied to clipboard.';
       } catch (error) {
         copyEmailStatus.textContent = 'Could not copy the email address. Select and copy it manually.';
@@ -189,7 +119,6 @@
 
   initializeNavigation();
   initializeTheme();
-  initializeReveal();
   initializeCopyEmail();
   root.dataset.js = 'enabled';
 })();

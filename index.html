@@ -3,25 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sai Vamsi Kolla | AI Quality Engineer · Senior SDET</title>
-  <meta name="description" content="Sai Vamsi Kolla designs test systems for AI agents, APIs, microservices, and web applications with a focus on testability, automation, and observable failure evidence.">
+  <title>Sai Vamsi Kolla | Senior SDET · AI Quality Engineer</title>
+  <meta name="description" content="Sai Vamsi Kolla is a Senior SDET and AI Quality Engineer who tests AI-agent behavior, APIs, microservices, and web applications through realistic data, automation, testability, and failure diagnosis.">
   <link rel="canonical" href="https://saivamsikolla-qa.github.io/">
   <meta name="theme-color" content="#08111f">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Sai Vamsi Kolla | AI Quality Engineer · Senior SDET">
-  <meta property="og:description" content="Test systems for AI agents, APIs, microservices, and web applications, with a focus on testability, automation, and observable failure evidence.">
+  <meta property="og:site_name" content="Sai Vamsi Kolla · Quality Engineering Portfolio">
+  <meta property="og:title" content="Sai Vamsi Kolla | Senior SDET · AI Quality Engineer">
+  <meta property="og:description" content="Quality engineering for AI-agent behavior, APIs, microservices, and web automation, backed by realistic data and observable failure evidence.">
   <meta property="og:url" content="https://saivamsikolla-qa.github.io/">
-  <meta property="og:image" content="https://saivamsikolla-qa.github.io/images/profile.jpg">
-  <meta property="og:image:alt" content="Portrait of Sai Vamsi Kolla">
+  <meta property="og:image" content="https://saivamsikolla-qa.github.io/images/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sai Vamsi Kolla, Senior SDET and AI Quality Engineer — AI systems, APIs, and automation">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sai Vamsi Kolla | Senior SDET · AI Quality Engineer">
+  <meta name="twitter:description" content="Quality engineering for AI-agent behavior, APIs, microservices, and web automation.">
+  <meta name="twitter:image" content="https://saivamsikolla-qa.github.io/images/social-preview.jpg">
+  <meta name="twitter:image:alt" content="Sai Vamsi Kolla, Senior SDET and AI Quality Engineer — AI systems, APIs, and automation">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sai Vamsi Kolla",
+      "url": "https://saivamsikolla-qa.github.io/",
+      "image": "https://saivamsikolla-qa.github.io/images/profile.jpg",
+      "jobTitle": "Senior SDET · AI Quality Engineer",
+      "description": "Quality engineer focused on AI-agent behavior, APIs, microservices, web automation, testability, observability, and failure diagnosis.",
+      "email": "mailto:saivamsikolla@gmail.com",
+      "sameAs": [
+        "https://github.com/SaiVamsiKolla-QA",
+        "https://www.linkedin.com/in/saivamsi-kolla/"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Vancouver",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      }
+    }
+  </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23175cd3'/%3E%3Ctext x='50' y='66' font-size='46' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3ESV%3C/text%3E%3C/svg%3E">
   <script>
     (function () {
       var root = document.documentElement;
       var selectedTheme = null;
       try {
-        var parameters = new URLSearchParams(window.location.search);
-        if (parameters.get('testMode') === '1') root.dataset.testMode = 'true';
-        selectedTheme = parameters.get('theme') || localStorage.getItem('theme');
+        selectedTheme = new URLSearchParams(window.location.search).get('theme') || localStorage.getItem('theme');
       } catch (error) {
         selectedTheme = null;
       }
@@ -31,7 +59,7 @@
       root.dataset.theme = selectedTheme;
     })();
   </script>
-  <link rel="stylesheet" href="css/style.css?v=20260802">
+  <link rel="stylesheet" href="css/style.css?v=20260803">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -53,11 +81,11 @@
       </button>
       <ul class="nav-menu" id="primary-navigation" data-testid="mobile-navigation">
         <li><a href="#expertise">Expertise</a></li>
-        <li><a href="#building">Building</a></li>
+        <li><a href="#building">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a class="nav-resume" href="files/SaiVamsiKolla_Resume.pdf" target="_blank" rel="noopener noreferrer" data-testid="resume-link">Resume</a></li>
+        <li><a class="nav-resume" href="files/SaiVamsiKolla_Resume.pdf" target="_blank" rel="noopener noreferrer" data-testid="resume-link">View resume</a></li>
         <li>
           <button
             class="theme-toggle"
@@ -65,6 +93,7 @@
             aria-label="Switch theme"
             aria-pressed="false"
             data-testid="theme-toggle"
+            hidden
           >
             <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -76,27 +105,24 @@
 
   <main id="main-content" tabindex="-1">
     <section class="hero" aria-labelledby="hero-heading">
-      <canvas class="hero-canvas" id="bg" aria-hidden="true"></canvas>
       <div class="hero-inner">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">AI Quality Engineer · Senior SDET</p>
-          <h1 id="hero-heading">I build quality systems for AI-powered products.</h1>
-          <p class="hero-lead">I design test systems for AI agents, APIs, and web applications using realistic data, behavioral validation, and observable failure evidence.</p>
+        <div class="hero-copy">
+          <p class="eyebrow">Senior SDET · AI Quality Engineer</p>
+          <h1 id="hero-heading">Sai Vamsi Kolla</h1>
+          <p class="hero-positioning">Quality engineering for AI agents, APIs, microservices, and web automation.</p>
+          <p class="hero-lead">I validate behavioral obligations and tool use, model realistic data and failure paths, design for testability and observability, and diagnose failures with browser, network, console, trace, and logging evidence.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#building" data-testid="hero-primary-action">See what I’m building</a>
-            <a class="button button-secondary" href="files/SaiVamsiKolla_Resume.pdf" target="_blank" rel="noopener noreferrer">View resume</a>
+            <a class="button button-primary" href="files/SaiVamsiKolla_Resume.pdf" target="_blank" rel="noopener noreferrer" data-testid="hero-primary-action">View resume</a>
+            <a class="button button-secondary" href="#building">View engineering projects</a>
           </div>
           <p class="availability">Vancouver, BC, Canada · Canadian citizen · Eligible to apply for TN status for qualifying U.S. roles</p>
-          <div class="hero-social" role="group" aria-label="Professional profiles">
-            <a href="https://github.com/SaiVamsiKolla-QA" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile, opens in a new tab">
-              <svg viewBox="0 0 16 16" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/saivamsi-kolla/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile, opens in a new tab">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-            </a>
+          <div class="hero-links" role="group" aria-label="Professional links">
+            <a href="https://www.linkedin.com/in/saivamsi-kolla/" target="_blank" rel="noopener noreferrer">LinkedIn<span aria-hidden="true"> ↗</span></a>
+            <a href="https://github.com/SaiVamsiKolla-QA" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true"> ↗</span></a>
+            <a href="#contact">Email Sai</a>
           </div>
         </div>
-        <div class="hero-photo reveal">
+        <div class="hero-photo">
           <div class="photo-frame">
             <img src="images/profile.jpg" alt="Portrait of Sai Vamsi Kolla" width="560" height="560" fetchpriority="high">
           </div>
@@ -107,65 +133,55 @@
 
     <section class="capability-strip" aria-labelledby="capability-heading">
       <div class="section-shell">
-        <h2 class="visually-hidden" id="capability-heading">Core capabilities</h2>
+        <h2 class="visually-hidden" id="capability-heading">Verified engineering evidence</h2>
         <ul>
           <li><strong>7+ years</strong> <span>of quality engineering experience</span></li>
-          <li><strong>20 engineers</strong><span>Coordinated across distributed QA work</span></li>
-          <li><strong>10 to 15 integrations</strong><span>Validated across commerce workflows</span></li>
+          <li><strong>20 QA engineers</strong><span>Coordinated across distributed work</span></li>
+          <li><strong>10–15 integrations</strong><span>Validated across commerce workflows</span></li>
+          <li><strong>AI product quality</strong><span>Current end-to-end engineering ownership</span></li>
         </ul>
       </div>
     </section>
 
     <section class="section" id="expertise" aria-labelledby="expertise-heading">
       <div class="section-shell">
-        <div class="section-heading reveal">
-          <p class="eyebrow">What I engineer</p>
-          <h2 id="expertise-heading">Quality systems built around product risk.</h2>
-          <p>I connect test strategy, automation, data, and diagnostics so teams can understand both what failed and whether the product is ready.</p>
+        <div class="section-heading">
+          <p class="eyebrow">Engineering focus</p>
+          <h2 id="expertise-heading">Three connected quality disciplines.</h2>
+          <p>Tools support the engineering story: understand behavior, test realistic system boundaries, and make failures explainable.</p>
         </div>
         <div class="expertise-grid" data-testid="capability-list">
-          <article class="expertise-card reveal">
+          <article class="expertise-card">
             <p class="card-index" aria-hidden="true">01</p>
-            <h3>AI Systems Quality</h3>
-            <p>I translate user intent into observable checks for agent obligations, constraints, tool use, and failure behavior. I evaluate non-deterministic outputs against clear expectations without forcing every response into one exact assertion.</p>
+            <h3>AI Systems and Behavioral Quality</h3>
+            <p>I turn user intent into observable checks for agent obligations, constraints, tool use, output quality, and failure behavior.</p>
             <ul class="feature-list">
-              <li>Intent, obligation, and constraint validation</li>
-              <li>Tool-use validation and failure behavior</li>
-              <li>Behavioral evaluation and output invariants</li>
-              <li>Evaluation strategy and observable failure evidence</li>
+              <li>Intent, obligation, and tool-use validation</li>
+              <li>Output invariants and failure behavior</li>
+              <li>Evaluation of non-deterministic systems</li>
+              <li>Evidence that explains why behavior failed</li>
             </ul>
           </article>
-          <article class="expertise-card reveal">
+          <article class="expertise-card">
             <p class="card-index" aria-hidden="true">02</p>
-            <h3>API and Microservices Quality</h3>
-            <p>I combine contract validation with realistic data, state transitions, and failure-path testing so teams can understand how services behave beyond the happy path.</p>
+            <h3>API, Microservices, and Realistic Data</h3>
+            <p>I test service boundaries beyond the happy path with explicit contracts, realistic system state, and deliberately difficult data.</p>
             <ul class="feature-list">
               <li>OpenAPI contracts and schema validation</li>
-              <li>Fuzz testing and failure-path coverage</li>
-              <li>Seeded data and stateful integration scenarios</li>
-              <li>Python, pytest, and Schemathesis across service boundaries</li>
+              <li>Contract, integration, and fuzz testing</li>
+              <li>Seeded data and stateful workflows</li>
+              <li>Missing, extreme, contradictory, and invalid data</li>
             </ul>
           </article>
-          <article class="expertise-card reveal">
+          <article class="expertise-card">
             <p class="card-index" aria-hidden="true">03</p>
-            <h3>UI Automation and Web Quality</h3>
-            <p>I build maintainable web automation around real user behavior, accessible semantics, and deterministic test data. I use browser, network, console, and trace evidence to diagnose failures instead of relying only on screenshots.</p>
+            <h3>UI Automation, Testability, and Observability</h3>
+            <p>I build Playwright automation around accessible semantics, reliable fixtures, and diagnostic evidence instead of brittle selectors and screenshots alone.</p>
             <ul class="feature-list">
-              <li>Playwright coverage across Chromium, Firefox, and WebKit</li>
-              <li>Semantic locators and accessibility-first test design</li>
-              <li>Reliable fixtures, test data, and state control</li>
-              <li>Responsive, console, network, and trace validation</li>
-            </ul>
-          </article>
-          <article class="expertise-card reveal">
-            <p class="card-index" aria-hidden="true">04</p>
-            <h3>Testability and Observability</h3>
-            <p>I promote testability as an engineering requirement. I design observable states, deterministic test controls, and diagnostic evidence so failures can be reproduced, understood, and resolved quickly.</p>
-            <ul class="feature-list">
-              <li>Testability built into component and API design</li>
-              <li>Logs, reports, and traces connected to test evidence</li>
-              <li>Deterministic environments and repeatable test data</li>
-              <li>CI quality gates and requirement traceability</li>
+              <li>Semantic locators and reliable fixtures</li>
+              <li>Browser, network, console, trace, and logging evidence</li>
+              <li>Accessibility and responsive validation</li>
+              <li>Systems designed for testability</li>
             </ul>
           </article>
         </div>
@@ -174,64 +190,58 @@
 
     <section class="section section-surface" id="building" aria-labelledby="building-heading">
       <div class="section-shell">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Building now</p>
-          <h2 id="building-heading">Active systems, documented honestly.</h2>
-          <p>A selection of quality-engineering systems I am actively designing, implementing, and refining.</p>
+        <div class="section-heading">
+          <p class="eyebrow">Engineering projects</p>
+          <h2 id="building-heading">Evidence you can inspect.</h2>
+          <p>Three active builds that demonstrate AI evaluation, API quality, and reliable browser automation.</p>
         </div>
         <div class="building-grid" data-testid="building-project-list">
-          <article class="project-card reveal" data-project-status="active-build">
+          <article class="project-card" data-project-status="active-build">
             <header class="project-header">
               <div>
                 <p class="status-label"><span aria-hidden="true"></span> Active build</p>
                 <h3>qa-agent</h3>
               </div>
-              <span class="project-type">AI evaluation</span>
             </header>
+            <p class="maturity-label">Evaluation baseline implemented</p>
             <dl class="project-details">
               <div><dt>Problem</dt><dd>Small local language models can sound authoritative while producing inconsistent or unsupported testing guidance.</dd></div>
-              <div><dt>What I’m building</dt><dd>A local RAG mentor with grounded retrieval, citation rules, abstention behavior, and a golden evaluation harness.</dd></div>
-              <div><dt>Current status</dt><dd>The ingestion/query pipeline, CLI, automated tests, and evaluation scaffolding exist. Published baseline results document that the current small model is not yet reliable for domain Q&amp;A.</dd></div>
-              <div><dt>Next milestone</dt><dd>Upgrade the local instruct model and re-run the golden suite to compare concept accuracy, citations, and abstention behavior.</dd></div>
+              <div><dt>Implemented</dt><dd>A local RAG mentor with document ingestion, CLI queries, grounded retrieval, citation and abstention rules, automated tests, and a golden evaluation harness. Current work improves model quality and evaluation reliability.</dd></div>
             </dl>
             <ul class="technology-list" aria-label="Technologies"><li>Python</li><li>pytest</li><li>ChromaDB</li><li>DeepEval</li></ul>
-            <a class="text-link" href="https://github.com/SaiVamsiKolla-QA/qa-agent" target="_blank" rel="noopener noreferrer">View qa-agent repository<span aria-hidden="true"> ↗</span></a>
+            <a class="text-link" href="https://github.com/SaiVamsiKolla-QA/qa-agent" target="_blank" rel="noopener noreferrer">View qa-agent on GitHub<span aria-hidden="true"> ↗</span></a>
           </article>
 
-          <article class="project-card reveal" data-project-status="active-build">
+          <article class="project-card" data-project-status="active-build">
             <header class="project-header">
               <div>
                 <p class="status-label"><span aria-hidden="true"></span> Active build</p>
                 <h3>fhir-contract-fuzz</h3>
               </div>
-              <span class="project-type">API quality</span>
             </header>
+            <p class="maturity-label">Test architecture implemented</p>
             <dl class="project-details">
               <div><dt>Problem</dt><dd>FHIR integrations can fail when live API behavior drifts from expected resource shapes or mishandles unusual inputs.</dd></div>
-              <div><dt>What I’m building</dt><dd>A layered HAPI FHIR R4 test system for smoke, contract, integration, and property-based fuzz validation.</dd></div>
-              <div><dt>Current status</dt><dd>The Dockerized test target, HTTP adapter, initial Pydantic model, capability-statement smoke test, and CI structure are in place. Contract, workflow, and fuzz coverage are still being implemented.</dd></div>
-              <div><dt>Next milestone</dt><dd>Add response-shape contract tests and deterministic resource fixtures before expanding CRUD workflows and fuzz budgets.</dd></div>
+              <div><dt>Implemented</dt><dd>A Dockerized HAPI FHIR target, HTTP adapter, initial Pydantic contract model, capability-statement smoke test, and CI structure. Contract, workflow, and fuzz coverage is expanding from this working foundation.</dd></div>
             </dl>
             <ul class="technology-list" aria-label="Technologies"><li>pytest</li><li>Schemathesis</li><li>Pydantic</li><li>Docker</li></ul>
-            <a class="text-link" href="https://github.com/SaiVamsiKolla-QA/fhir-contract-fuzz" target="_blank" rel="noopener noreferrer">View FHIR repository<span aria-hidden="true"> ↗</span></a>
+            <a class="text-link" href="https://github.com/SaiVamsiKolla-QA/fhir-contract-fuzz" target="_blank" rel="noopener noreferrer">View FHIR project on GitHub<span aria-hidden="true"> ↗</span></a>
           </article>
 
-          <article class="project-card reveal" data-project-status="active-build">
+          <article class="project-card" data-project-status="active-build">
             <header class="project-header">
               <div>
                 <p class="status-label"><span aria-hidden="true"></span> Active build</p>
                 <h3>medusa-checkout-e2e</h3>
               </div>
-              <span class="project-type">Web automation</span>
             </header>
+            <p class="maturity-label">CI foundation implemented</p>
             <dl class="project-details">
               <div><dt>Problem</dt><dd>Checkout spans storefront, backend, data, and third-party boundaries where timing and state make brittle UI tests easy to create.</dd></div>
-              <div><dt>What I’m building</dt><dd>A Playwright suite against a Dockerized Medusa storefront, with page objects, injected fixtures, readiness polling, and diagnostic reporting.</dd></div>
-              <div><dt>Current status</dt><dd>The local stack, page-object and fixture structure, global readiness setup, smoke checks, linting, and CI workflow exist. Full checkout journeys are not yet implemented.</dd></div>
-              <div><dt>Next milestone</dt><dd>Implement seeded cart and checkout journeys with failure diagnostics and keep the PR smoke path fast.</dd></div>
+              <div><dt>Implemented</dt><dd>A Dockerized Medusa stack with page objects, injected fixtures, readiness polling, smoke checks, linting, Allure reporting, and CI. Seeded cart and checkout coverage is expanding from this foundation.</dd></div>
             </dl>
             <ul class="technology-list" aria-label="Technologies"><li>Playwright</li><li>JavaScript</li><li>Docker</li><li>Allure</li></ul>
-            <a class="text-link" href="https://github.com/SaiVamsiKolla-QA/medusa-checkout-e2e" target="_blank" rel="noopener noreferrer">View Medusa repository<span aria-hidden="true"> ↗</span></a>
+            <a class="text-link" href="https://github.com/SaiVamsiKolla-QA/medusa-checkout-e2e" target="_blank" rel="noopener noreferrer">View Medusa project on GitHub<span aria-hidden="true"> ↗</span></a>
           </article>
         </div>
       </div>
@@ -239,13 +249,13 @@
 
     <section class="section" id="experience" aria-labelledby="experience-heading">
       <div class="section-shell">
-        <div class="section-heading reveal">
+        <div class="section-heading">
           <p class="eyebrow">Experience and leadership</p>
           <h2 id="experience-heading">Quality ownership across AI, commerce, insurance, and telecom.</h2>
           <p>Recent work is organized around the systems, risks, and responsibilities I owned, not a repeated resume inventory.</p>
         </div>
         <ol class="experience-list">
-          <li class="experience-item reveal">
+          <li class="experience-item">
             <div class="experience-meta"><span>2026–present</span><span>Vancouver</span></div>
             <div class="experience-body">
               <p class="role-company">mimik</p>
@@ -259,7 +269,7 @@
               </ul>
             </div>
           </li>
-          <li class="experience-item reveal">
+          <li class="experience-item">
             <div class="experience-meta"><span>2025–2026</span><span>Vancouver</span></div>
             <div class="experience-body">
               <p class="role-company">HCLTech · Client: Meta</p>
@@ -272,7 +282,7 @@
               </ul>
             </div>
           </li>
-          <li class="experience-item reveal">
+          <li class="experience-item">
             <div class="experience-meta"><span>2022–2024</span><span>Edmonton</span></div>
             <div class="experience-body">
               <p class="role-company">Peace Hills General Insurance</p>
@@ -286,7 +296,7 @@
             </div>
           </li>
         </ol>
-        <div class="earlier-experience reveal">
+        <div class="earlier-experience">
           <p class="eyebrow">Earlier experience</p>
           <div>
             <p><strong>QA Analyst · TELUS</strong><span>2021–2022</span></p>
@@ -302,32 +312,29 @@
 
     <section class="section section-approach" id="approach" aria-labelledby="approach-heading">
       <div class="section-shell">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Quality-engineering approach</p>
-          <h2 id="approach-heading">From intent to release confidence.</h2>
-          <p>A repeatable way to make behavior, data, service boundaries, and residual risk observable.</p>
+        <div class="section-heading">
+          <p class="eyebrow">Engineering approach</p>
+          <h2 id="approach-heading">Four steps from intent to confidence.</h2>
+          <p>A concise loop for making product risk, system behavior, and failure evidence understandable.</p>
         </div>
         <ol class="approach-flow">
-          <li class="reveal"><span>01</span><h3>Understand intent</h3><p>Determine what the feature or system is expected to accomplish for the user and product.</p></li>
-          <li class="reveal"><span>02</span><h3>Identify risk</h3><p>Map behavioral, data, integration, reliability, accessibility, and user-impact risks.</p></li>
-          <li class="reveal"><span>03</span><h3>Model realistic data</h3><p>Create valid, missing, extreme, contradictory, and stateful data scenarios.</p></li>
-          <li class="reveal"><span>04</span><h3>Validate contracts</h3><p>Check schemas, service boundaries, dependencies, inputs, outputs, and failure behavior.</p></li>
-          <li class="reveal"><span>05</span><h3>Evaluate behavior</h3><p>Assert deterministic results and evaluate non-deterministic AI behavior against clear obligations.</p></li>
-          <li class="reveal"><span>06</span><h3>Trace failures</h3><p>Use logs, reports, traces, browser evidence, and system state to locate the failure point.</p></li>
-          <li class="reveal"><span>07</span><h3>Communicate confidence</h3><p>Explain coverage, evidence, remaining risk, and whether the product is ready.</p></li>
+          <li><span>01</span><h3>Understand intent and product risk</h3><p>Clarify what the system must accomplish and where behavior, data, integration, accessibility, or reliability can fail.</p></li>
+          <li><span>02</span><h3>Model realistic data and failure paths</h3><p>Create valid, missing, extreme, contradictory, invalid, and stateful scenarios.</p></li>
+          <li><span>03</span><h3>Validate contracts and behavior</h3><p>Check service boundaries and deterministic results, then evaluate AI behavior against clear obligations.</p></li>
+          <li><span>04</span><h3>Diagnose failures and communicate confidence</h3><p>Connect logs, traces, browser evidence, and system state to explain failures, coverage, and remaining risk.</p></li>
         </ol>
       </div>
     </section>
 
     <section class="section" id="credentials" aria-labelledby="credentials-heading">
       <div class="section-shell credentials-layout">
-        <div class="section-heading reveal">
+        <div class="section-heading">
           <p class="eyebrow">Credentials</p>
           <h2 id="credentials-heading">Foundations that support the engineering work.</h2>
           <p>Advanced automation, AI, cloud foundations, insurance systems, and software-engineering education.</p>
         </div>
         <div class="credentials-grid">
-          <article class="credential-group reveal">
+          <article class="credential-group">
             <h3>Certifications</h3>
             <ul>
               <li><strong>ISTQB Advanced Test Automation Engineer</strong><span>2025 · Advanced</span></li>
@@ -335,7 +342,7 @@
               <li><strong>ISTQB Certified Tester</strong><span>2018 · Foundation level</span></li>
             </ul>
           </article>
-          <article class="credential-group reveal">
+          <article class="credential-group">
             <h3>Education</h3>
             <ul>
               <li><strong>Master of Science, Internetworking Technologies</strong><span>University of Alberta · 2021</span></li>
@@ -348,35 +355,30 @@
 
     <section class="section section-surface" id="about" aria-labelledby="about-heading">
       <div class="section-shell about-layout">
-        <div class="section-heading reveal">
+        <div class="section-heading">
           <p class="eyebrow">About</p>
-          <h2 id="about-heading">A career built by adapting, learning, and taking ownership.</h2>
+          <h2 id="about-heading">Adaptability grounded in ownership.</h2>
         </div>
-        <div class="about-copy reveal">
-          <p>I focus on quality engineering for AI systems, APIs, and web products. My work connects test strategy, automation, testability, and failure evidence so teams can make clearer release decisions.</p>
-          <p>I moved from India to Canada in 2019 for my master’s degree and worked my way up from dishwasher to front supervisor while studying. That progression strengthened the calm coordination, adaptability, and ownership I bring to technical leadership today.</p>
-          <ul class="about-principles" aria-label="Working principles">
-            <li>Make risk explicit</li>
-            <li>Design for testability</li>
-            <li>Prefer observable systems</li>
-            <li>Communicate with evidence</li>
-          </ul>
+        <div class="about-copy">
+          <p>I moved from India to Canada in 2019 for my master’s degree and progressed from dishwasher to front supervisor while studying.</p>
+          <p>That experience reinforced the adaptability, ownership, calm coordination, and persistence I now bring to quality engineering and technical leadership.</p>
         </div>
       </div>
     </section>
 
     <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
-      <div class="contact-panel reveal">
+      <div class="contact-panel">
         <div class="contact-intro">
           <p class="eyebrow">Let’s work together</p>
-          <h2 id="contact-heading">Looking for an engineer who can make complex AI systems testable?</h2>
-          <p>I bring AI systems testing, API automation, reliable UI automation, realistic test data, observability, and end-to-end validation to product teams.</p>
+          <h2 id="contact-heading">Need complex systems to be testable and explainable?</h2>
+          <p>I bring AI behavioral testing, API and browser automation, realistic test data, observability, and failure diagnosis to product teams.</p>
         </div>
         <section class="contact-card" aria-labelledby="contact-card-heading">
           <h3 id="contact-card-heading" class="visually-hidden">Contact details</h3>
           <p class="contact-label">Email</p>
           <div class="contact-email-tools">
-            <a class="contact-email-address" href="mailto:saivamsikolla@gmail.com">saivamsikolla@gmail.com</a>
+            <span class="contact-email-value">saivamsikolla@gmail.com</span>
+            <a class="contact-email-address" href="mailto:saivamsikolla@gmail.com">Email Sai</a>
             <button
               class="copy-email-button"
               type="button"
@@ -387,7 +389,7 @@
             <span id="copy-email-status" class="visually-hidden" aria-live="polite"></span>
           </div>
           <ul class="contact-links" aria-label="Professional links">
-            <li><a href="files/SaiVamsiKolla_Resume.pdf" download>Resume<span aria-hidden="true"> ↓</span></a></li>
+            <li><a href="files/SaiVamsiKolla_Resume.pdf" download>Download resume<span aria-hidden="true"> ↓</span></a></li>
             <li><a href="https://www.linkedin.com/in/saivamsi-kolla/" target="_blank" rel="noopener noreferrer">LinkedIn<span aria-hidden="true"> ↗</span></a></li>
             <li><a href="https://github.com/SaiVamsiKolla-QA" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true"> ↗</span></a></li>
           </ul>
@@ -408,13 +410,12 @@
 
   <footer class="site-footer">
     <div class="section-shell">
-      <p><strong>Sai Vamsi Kolla</strong><span>AI Quality Engineer · Senior SDET</span></p>
+      <p><strong>Sai Vamsi Kolla</strong><span>Senior SDET · AI Quality Engineer</span></p>
       <p>Static, lightweight, and designed for testability.</p>
       <a href="#top">Back to top</a>
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260802" defer></script>
-  <script src="js/background.js?v=20260801" defer></script>
+  <script src="js/main.js?v=20260803" defer></script>
 </body>
 </html>
