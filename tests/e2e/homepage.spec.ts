@@ -37,7 +37,7 @@ test('CONTENT-001 ASSET-001 homepage exposes the core recruiter path', async ({ 
 
     const resumeDownloads = page.locator('a[href="files/SaiVamsiKolla_Resume.pdf"][download]');
     await expect(resumeDownloads).toHaveCount(1);
-    await expect(resumeDownloads).toHaveText('Download PDF');
+    await expect(resumeDownloads).toHaveAccessibleName('Resume');
     await expect(resumeDownloads).not.toHaveAttribute('target', '_blank');
   });
 
@@ -112,10 +112,14 @@ test('CONTACT-001 email remains visible and copy feedback handles Clipboard API,
   await test.step('Verify the visible and accessible contact controls', async () => {
     await expect(emailLink).toBeVisible();
     await expect(emailLink).toHaveAttribute('href', 'mailto:saivamsikolla@gmail.com');
+    await expect(page.locator('#contact a[href^="mailto:"]')).toHaveCount(1);
     await expect(copyButton).toBeVisible();
     await expect(copyButton).toHaveAccessibleName('Copy email');
     await expect(copyButton).toHaveAttribute('aria-describedby', 'copy-email-status');
     await expect(status).toHaveAttribute('aria-live', 'polite');
+    await expect(page.getByRole('list', { name: 'Professional links' }).getByRole('link')).toHaveCount(3);
+    await expect(page.locator('.contact-details')).toContainText('Vancouver, BC');
+    await expect(page.locator('.contact-details')).toContainText('Canada and US opportunities');
   });
 
   await test.step('Use the Clipboard API when it is available', async () => {

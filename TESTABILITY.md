@@ -127,6 +127,7 @@ Use `npm run test:visual:update` only in an unrestricted browser environment and
 | ASSET-001 | Required image, CSS, JS, or résumé is missing | `homepage.spec.ts`, `links.spec.ts`, `check-assets.mjs` | Broken-image and résumé checks | Static, smoke, links |
 | CONTENT-001 | Recruiter hierarchy loses its single headline | `homepage.spec.ts` | Five-second impression | Smoke |
 | CONTENT-002 | Active work is presented as completed | `project-status.spec.ts` | Credibility review | Functional |
+| CONTACT-001 | Contact actions become duplicated, hidden, or unusable without clipboard access | `homepage.spec.ts`, `no-javascript.spec.ts`, `responsive.spec.ts` | Recruiter path, keyboard, copy feedback | Functional, responsive |
 | VISUAL-001 | Stable desktop landmarks drift unexpectedly | `visual.spec.ts` | Visual professionalism | Deferred until baseline approval |
 | VISUAL-002 | Open compact-navigation layout regresses | `visual.spec.ts` | Real mobile browsers | Deferred until baseline approval |
 

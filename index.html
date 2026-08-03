@@ -367,13 +367,14 @@
 
     <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
       <div class="contact-panel reveal">
-        <div>
+        <div class="contact-intro">
           <p class="eyebrow">Let’s work together</p>
           <h2 id="contact-heading">Looking for an engineer who can make complex AI systems testable?</h2>
           <p>I bring AI systems testing, API automation, reliable UI automation, realistic test data, observability, and end-to-end validation to product teams.</p>
         </div>
-        <div class="contact-actions">
-          <a class="button button-primary" href="mailto:saivamsikolla@gmail.com">Email Sai Vamsi</a>
+        <section class="contact-card" aria-labelledby="contact-card-heading">
+          <h3 id="contact-card-heading" class="visually-hidden">Contact details</h3>
+          <p class="contact-label">Email</p>
           <div class="contact-email-tools">
             <a class="contact-email-address" href="mailto:saivamsikolla@gmail.com">saivamsikolla@gmail.com</a>
             <button
@@ -385,13 +386,22 @@
             >Copy email</button>
             <span id="copy-email-status" class="visually-hidden" aria-live="polite"></span>
           </div>
-          <ul>
+          <ul class="contact-links" aria-label="Professional links">
+            <li><a href="files/SaiVamsiKolla_Resume.pdf" download>Resume<span aria-hidden="true"> ↓</span></a></li>
             <li><a href="https://www.linkedin.com/in/saivamsi-kolla/" target="_blank" rel="noopener noreferrer">LinkedIn<span aria-hidden="true"> ↗</span></a></li>
             <li><a href="https://github.com/SaiVamsiKolla-QA" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true"> ↗</span></a></li>
-            <li><a href="files/SaiVamsiKolla_Resume.pdf" download>Download PDF</a></li>
           </ul>
-          <p>Vancouver, BC · Canada and US opportunities</p>
-        </div>
+          <dl class="contact-details">
+            <div>
+              <dt>Location</dt>
+              <dd>Vancouver, BC</dd>
+            </div>
+            <div>
+              <dt>Availability</dt>
+              <dd>Canada and US opportunities</dd>
+            </div>
+          </dl>
+        </section>
       </div>
     </section>
   </main>

@@ -269,9 +269,10 @@ Supporting links:
 - GitHub: <https://github.com/SaiVamsiKolla-QA>
 - Resume: `files/SaiVamsiKolla_Resume.pdf`
 
-Location line:
+Location and availability:
 
-> Vancouver, BC · Canada and US opportunities
+- **Location:** Vancouver, BC
+- **Availability:** Canada and US opportunities
 
 ## Footer
 

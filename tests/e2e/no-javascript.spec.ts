@@ -28,8 +28,8 @@ test('A11Y-001 core portfolio content and navigation work without JavaScript', a
           .map((section) => section.id || section.className),
       );
       expect(hiddenSections).toEqual([]);
-      await expect(noJsPage.getByRole('link', { name: 'Email Sai Vamsi' })).toHaveAttribute('href', 'mailto:saivamsikolla@gmail.com');
       await expect(noJsPage.getByRole('link', { name: 'saivamsikolla@gmail.com' })).toBeVisible();
+      await expect(noJsPage.locator('#contact a[href^="mailto:"]')).toHaveCount(1);
       await expect(noJsPage.getByRole('button', { name: 'Copy email' })).toBeHidden();
       const resumePreview = noJsPage.getByRole('link', { name: /resume/i }).first();
       await expect(resumePreview).toHaveAttribute('href', 'files/SaiVamsiKolla_Resume.pdf');
