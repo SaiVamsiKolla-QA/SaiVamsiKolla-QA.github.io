@@ -22,7 +22,7 @@
   --approach-accent: #67b7ff;
   --shadow-sm: 0 1px 2px rgb(16 24 40 / 0.06), 0 4px 12px rgb(16 24 40 / 0.05);
   --shadow-lg: 0 20px 48px rgb(16 24 40 / 0.12);
-  --focus: #f79009;
+  --focus: #b54708;
   --content-width: 72rem;
   --reading-width: 65ch;
   --header-height: 4.25rem;
@@ -133,6 +133,7 @@ a:hover {
   outline: 3px solid var(--focus);
   outline-offset: 4px;
   border-radius: 0.4rem;
+  box-shadow: 0 0 0 2px var(--bg);
 }
 
 h1,
@@ -410,7 +411,7 @@ h3 {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: 1rem;
   margin-top: 2rem;
 }
 
@@ -760,11 +761,12 @@ h3 {
 }
 
 .technology-list li {
-  padding: 0.28rem 0.58rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--accent-soft);
   color: var(--accent-text);
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   font-weight: 700;
 }
 
@@ -1063,6 +1065,38 @@ h3 {
   width: 100%;
 }
 
+.contact-email-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.contact-email-address {
+  flex: 1 1 100%;
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+
+.copy-email-button {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.65rem;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.copy-email-button:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
 .contact-actions ul {
   display: flex;
   flex-wrap: wrap;
@@ -1318,10 +1352,6 @@ h3 {
     font-size: 1.02rem;
   }
 
-  .hero-actions {
-    gap: 0.65rem;
-  }
-
   .hero-actions .button {
     flex: 1 1 auto;
     padding-inline: 0.9rem;
@@ -1370,6 +1400,13 @@ h3 {
 
   .contact-panel {
     padding: 1.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-actions .button {
+    flex-basis: 100%;
+    width: 100%;
   }
 }
 

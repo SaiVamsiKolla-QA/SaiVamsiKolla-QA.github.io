@@ -6,6 +6,8 @@ const viewports = [
   { name: 'small-desktop', width: 1024, height: 768 },
   { name: 'tablet', width: 768, height: 1024 },
   { name: 'mobile', width: 390, height: 844 },
+  { name: 'narrow-mobile', width: 360, height: 800 },
+  { name: 'smallest-mobile', width: 320, height: 568 },
 ] as const;
 
 for (const viewport of viewports) {
@@ -60,6 +62,39 @@ for (const viewport of viewports) {
         await expect(page.getByTestId('mobile-navigation')).toBeVisible();
       }
     });
+
+    if (viewport.width <= 360) {
+      await test.step('Verify narrow-screen actions stack and remain operable', async () => {
+        const heroButtons = page.locator('.hero-actions .button');
+        await expect(heroButtons).toHaveCount(2);
+        const buttonBoxes = await Promise.all([heroButtons.nth(0).boundingBox(), heroButtons.nth(1).boundingBox()]);
+        expect(buttonBoxes.every(Boolean), 'Both hero actions should have measurable geometry').toBe(true);
+        expect(buttonBoxes[1]!.y, 'The second hero action should stack below the first').toBeGreaterThanOrEqual(buttonBoxes[0]!.y + buttonBoxes[0]!.height);
+        for (const box of buttonBoxes) {
+          expect(box!.x).toBeGreaterThanOrEqual(0);
+          expect(box!.x + box!.width).toBeLessThanOrEqual(viewport.width + 1);
+        }
+
+        const navigationTrigger = page.getByRole('button', { name: 'Open navigation menu' });
+        await navigationTrigger.click();
+        await expect(page.getByTestId('mobile-navigation')).toBeVisible();
+        await page.keyboard.press('Escape');
+        await expect(page.getByTestId('mobile-navigation')).toBeHidden();
+
+        const emailLink = page.getByRole('link', { name: 'saivamsikolla@gmail.com', exact: true });
+        const copyButton = page.getByRole('button', { name: 'Copy email' });
+        await expect(emailLink).toBeVisible();
+        await expect(copyButton).toBeVisible();
+        await page.evaluate(() => {
+          Object.defineProperty(navigator, 'clipboard', {
+            configurable: true,
+            value: { writeText: async () => undefined },
+          });
+        });
+        await copyButton.click();
+        await expect(page.locator('#copy-email-status')).toHaveText('Email address copied to clipboard.');
+      });
+    }
 
     await test.step('Verify sticky navigation leaves the anchored heading visible', async () => {
       await page.evaluate(() => {

@@ -29,7 +29,12 @@ test('A11Y-001 core portfolio content and navigation work without JavaScript', a
       );
       expect(hiddenSections).toEqual([]);
       await expect(noJsPage.getByRole('link', { name: 'Email Sai Vamsi' })).toHaveAttribute('href', 'mailto:saivamsikolla@gmail.com');
-      await expect(noJsPage.getByRole('link', { name: /resume/i }).first()).toHaveAttribute('href', 'files/SaiVamsiKolla_Resume.pdf');
+      await expect(noJsPage.getByRole('link', { name: 'saivamsikolla@gmail.com' })).toBeVisible();
+      await expect(noJsPage.getByRole('button', { name: 'Copy email' })).toBeHidden();
+      const resumePreview = noJsPage.getByRole('link', { name: /resume/i }).first();
+      await expect(resumePreview).toHaveAttribute('href', 'files/SaiVamsiKolla_Resume.pdf');
+      expect(await resumePreview.getAttribute('download')).toBeNull();
+      await expect(resumePreview).toHaveAttribute('target', '_blank');
       await noJsPage.getByRole('link', { name: 'Experience' }).click();
       await expect(noJsPage).toHaveURL(/#experience$/);
       await expect(noJsPage.getByRole('heading', { name: /Quality ownership across AI/ })).toBeVisible();
