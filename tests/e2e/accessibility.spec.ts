@@ -30,10 +30,21 @@ for (const state of states) {
       const highImpactViolations = results.violations.filter(
         (violation) => violation.impact === 'serious' || violation.impact === 'critical',
       );
+      const moderateViolations = results.violations.filter((violation) => violation.impact === 'moderate');
       await testInfo.attach(`axe-${state.name}.json`, {
         body: JSON.stringify(results, null, 2),
         contentType: 'application/json',
       });
+      await testInfo.attach(`axe-moderate-${state.name}.json`, {
+        body: JSON.stringify(moderateViolations, null, 2),
+        contentType: 'application/json',
+      });
+      if (moderateViolations.length > 0) {
+        testInfo.annotations.push({
+          type: 'accessibility-review',
+          description: `${moderateViolations.length} moderate axe violation(s): ${moderateViolations.map(({ id }) => id).join(', ')}`,
+        });
+      }
       expect(highImpactViolations).toEqual([]);
     });
   });
@@ -87,5 +98,70 @@ test('A11Y-004 headings, landmarks, names, and document language form a usable s
     );
     expect(unnamed).toEqual([]);
     await expect(page.getByRole('img', { name: 'Portrait of Sai Vamsi Kolla' })).toBeVisible();
+  });
+});
+
+function relativeLuminance(hexColor: string): number {
+  const channels = [1, 3, 5].map((index) => Number.parseInt(hexColor.slice(index, index + 2), 16) / 255);
+  const linear = channels.map((channel) => (
+    channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4
+  ));
+  return (0.2126 * linear[0]) + (0.7152 * linear[1]) + (0.0722 * linear[2]);
+}
+
+function contrastRatio(first: string, second: string): number {
+  const firstLuminance = relativeLuminance(first);
+  const secondLuminance = relativeLuminance(second);
+  return (Math.max(firstLuminance, secondLuminance) + 0.05) / (Math.min(firstLuminance, secondLuminance) + 0.05);
+}
+
+test('A11Y-005 focus indicators remain visible across representative light and dark surfaces', async ({ page }, testInfo) => {
+  annotateRequirements(testInfo, 'A11Y-005');
+  test.skip(testInfo.project.name !== 'chromium-desktop', 'Computed focus styling is audited in one deterministic browser.');
+
+  const audits: Record<string, unknown> = {};
+  for (const theme of ['light', 'dark'] as const) {
+    await openPortfolio(page, { theme });
+    const focusTarget = page.getByTestId('hero-primary-action');
+    await focusTarget.focus();
+
+    const audit = await page.evaluate(() => {
+      const rootStyle = getComputedStyle(document.documentElement);
+      const focusStyle = getComputedStyle(document.activeElement as HTMLElement);
+      const variable = (name: string) => rootStyle.getPropertyValue(name).trim();
+      return {
+        focusColor: variable('--focus'),
+        surfaces: [
+          variable('--bg'),
+          variable('--surface'),
+          variable('--surface-raised'),
+          variable('--accent-soft'),
+        ],
+        outlineStyle: focusStyle.outlineStyle,
+        outlineWidth: Number.parseFloat(focusStyle.outlineWidth),
+        outlineOffset: Number.parseFloat(focusStyle.outlineOffset),
+        boxShadow: focusStyle.boxShadow,
+      };
+    });
+
+    expect(audit.focusColor.toLowerCase()).toBe(theme === 'light' ? '#b54708' : '#fdb022');
+    expect(audit.outlineStyle).toBe('solid');
+    expect(audit.outlineWidth).toBeGreaterThanOrEqual(3);
+    expect(audit.outlineOffset).toBeGreaterThanOrEqual(4);
+    expect(audit.boxShadow).not.toBe('none');
+
+    const surfaceRatios = audit.surfaces.map((surface) => ({
+      surface,
+      ratio: contrastRatio(audit.focusColor, surface),
+    }));
+    for (const { surface, ratio } of surfaceRatios) {
+      expect(ratio, `${theme} focus color should have at least 3:1 contrast against ${surface}`).toBeGreaterThanOrEqual(3);
+    }
+    audits[theme] = { ...audit, surfaceRatios };
+  }
+
+  await testInfo.attach('focus-contrast-audit.json', {
+    body: JSON.stringify(audits, null, 2),
+    contentType: 'application/json',
   });
 });

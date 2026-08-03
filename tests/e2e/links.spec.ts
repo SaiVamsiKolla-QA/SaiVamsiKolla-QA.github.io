@@ -34,12 +34,18 @@ test('LINK-001 anchors, local assets, and outbound URLs satisfy the site contrac
       (links as HTMLAnchorElement[]).flatMap((link) => {
         const rawHref = link.getAttribute('href') ?? '';
         const problems: string[] = [];
+        const relTokens = link.rel.split(/\s+/).filter(Boolean);
+        const isExternalHttpLink = /^https?:\/\//i.test(rawHref);
         if (!rawHref.trim() || rawHref === '#') problems.push('empty or placeholder href');
         if (/^javascript:/i.test(rawHref)) problems.push('javascript URL');
-        if (link.target === '_blank' && !link.rel.split(/\s+/).includes('noopener')) problems.push('unsafe target blank');
+        if (isExternalHttpLink && link.target !== '_blank') problems.push('external link does not open in a new tab');
+        if (isExternalHttpLink && !relTokens.includes('noopener')) problems.push('external link is missing noopener');
+        if (isExternalHttpLink && !relTokens.includes('noreferrer')) problems.push('external link is missing noreferrer');
+        if (link.target === '_blank' && !relTokens.includes('noopener')) problems.push('unsafe target blank');
+        if (link.target === '_blank' && !relTokens.includes('noreferrer')) problems.push('target blank is missing noreferrer');
         if (rawHref.startsWith('mailto:') && !/^mailto:[^@\s]+@[^@\s]+\.[^@\s]+$/i.test(rawHref)) problems.push('invalid email');
         if (/^http:/i.test(rawHref)) problems.push('insecure external URL');
-        return problems.map((problem) => ({ href: rawHref, problem }));
+        return problems.map((problem) => ({ href: rawHref, label: link.textContent?.trim() || link.getAttribute('aria-label'), problem }));
       }),
     );
     expect(invalid).toEqual([]);

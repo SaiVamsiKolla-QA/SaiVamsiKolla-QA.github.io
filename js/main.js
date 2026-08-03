@@ -121,8 +121,75 @@
     root.dataset.motionReady = 'true';
   }
 
+  const copyEmailButton = document.querySelector('[data-copy-email]');
+  const copyEmailStatus = document.getElementById('copy-email-status');
+
+  function copyTextFallback(text) {
+    if (typeof document.execCommand !== 'function') return false;
+
+    const activeElement = document.activeElement;
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.readOnly = true;
+    textArea.setAttribute('aria-hidden', 'true');
+    Object.assign(textArea.style, {
+      position: 'fixed',
+      inset: '0 auto auto 0',
+      opacity: '0',
+      pointerEvents: 'none',
+    });
+    document.body.append(textArea);
+    textArea.select();
+    textArea.setSelectionRange(0, text.length);
+
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch (error) {
+      copied = false;
+    } finally {
+      textArea.remove();
+      if (activeElement instanceof HTMLElement) activeElement.focus({ preventScroll: true });
+    }
+    return copied;
+  }
+
+  async function copyText(text) {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      try {
+        await navigator.clipboard.writeText(text);
+        return;
+      } catch (error) {
+        // A denied Clipboard API request may still succeed through the selection fallback.
+      }
+    }
+
+    if (!copyTextFallback(text)) {
+      throw new Error('Clipboard access is unavailable');
+    }
+  }
+
+  function initializeCopyEmail() {
+    if (!(copyEmailButton instanceof HTMLButtonElement) || !copyEmailStatus) return;
+
+    copyEmailButton.hidden = false;
+    copyEmailButton.addEventListener('click', async () => {
+      const email = copyEmailButton.dataset.copyEmail;
+      if (!email) return;
+
+      copyEmailStatus.textContent = 'Copying email address…';
+      try {
+        await copyText(email);
+        copyEmailStatus.textContent = 'Email address copied to clipboard.';
+      } catch (error) {
+        copyEmailStatus.textContent = 'Could not copy the email address. Select and copy it manually.';
+      }
+    });
+  }
+
   initializeNavigation();
   initializeTheme();
   initializeReveal();
+  initializeCopyEmail();
   root.dataset.js = 'enabled';
 })();
