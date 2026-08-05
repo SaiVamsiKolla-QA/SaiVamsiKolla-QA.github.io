@@ -32,8 +32,8 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright install chromium firefox webkit
+      - name: Install Chromium for pull-request gates
+        run: npx playwright install chromium
 
       - name: Validate HTML
         run: npm run validate:html
@@ -69,7 +69,18 @@ jobs:
         env:
           PW_REPORT_SUFFIX: links
 
+      - name: Install broader browser engines
+        if: github.event_name != 'pull_request'
+        run: npx playwright install firefox webkit
+
+      - name: Run broader browser checks
+        if: github.event_name != 'pull_request'
+        run: npm run test:broad
+        env:
+          PW_REPORT_SUFFIX: broad
+
       - name: Run Lighthouse budgets
+        if: github.event_name != 'pull_request'
         run: npm run lighthouse:ci
 
       - name: Upload Playwright reports and failure evidence

@@ -40,7 +40,7 @@ if (!(await siteIsAvailable())) {
 const profiles = [
   {
     name: 'desktop',
-    url: `${siteUrl}/?testMode=1&theme=light`,
+    url: `${siteUrl}/?theme=light`,
     lighthouseConfig: desktopConfig,
     settings: {
       formFactor: 'desktop',
@@ -50,7 +50,7 @@ const profiles = [
   },
   {
     name: 'mobile',
-    url: `${siteUrl}/?testMode=1&theme=dark`,
+    url: `${siteUrl}/?theme=dark`,
     settings: {
       formFactor: 'mobile',
       screenEmulation: { mobile: true, width: 390, height: 844, deviceScaleFactor: 2.75, disabled: false },

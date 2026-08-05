@@ -7,7 +7,7 @@ Last synchronized: August 2026.
 ## Editorial rules
 
 - Present Sai as a quality engineer who designs systems, understands product risk, promotes testability, and communicates release confidence.
-- Primary role: **AI Quality Engineer · Senior SDET**.
+- Primary role: **Senior SDET · AI Quality Engineer**.
 - Keep core positioning focused on AI systems, APIs, UI automation, web quality, testability, observability, failure diagnosis, quality architecture, and release confidence.
 - Past platform-specific work may appear only as limited historical context when necessary. Do not present it as a specialization or career direction.
 - Do not position Sai around a single insurance platform.
@@ -23,151 +23,142 @@ Last synchronized: August 2026.
 Navigation:
 
 1. Expertise → `#expertise`
-2. Building → `#building`
+2. Projects → `#building`
 3. Experience → `#experience`
 4. About → `#about`
 5. Contact → `#contact`
 
-Primary header action: Resume → `files/SaiVamsiKolla_Resume.pdf` with download behavior.
+Primary header action: View resume → `files/SaiVamsiKolla_Resume.pdf` in a new tab.
 
 Secondary control: persisted light/dark theme toggle.
 
 ## Hero
 
-Eyebrow:
+Role:
 
-> AI Quality Engineer · Senior SDET
+> Senior SDET · AI Quality Engineer
 
-Headline:
+Name and H1:
 
-> I build quality systems for AI-powered products.
+> Sai Vamsi Kolla
+
+Positioning:
+
+> Quality engineering for AI agents, APIs, microservices, and web automation.
 
 Supporting copy:
 
-> I design test systems for AI agents, APIs and web applications using realistic data, behavioral validation and observable failure evidence.
+> I validate behavioral obligations and tool use, model realistic data and failure paths, design for testability and observability, and diagnose failures with browser, network, console, trace, and logging evidence.
 
 Primary CTA:
 
-> See what I’m building
+> View resume
 
 Secondary CTA:
 
-> View resume
+> View engineering projects
 
 Availability:
 
-> Vancouver, BC, Canada · Eligible to work in the US (TN visa)
+> Vancouver, BC, Canada · Canadian citizen · Eligible to apply for TN status for qualifying U.S. roles
 
-Professional profiles:
+Professional links:
 
 - GitHub: <https://github.com/SaiVamsiKolla-QA>
 - LinkedIn: <https://www.linkedin.com/in/saivamsi-kolla/>
+- Email Sai → `#contact`
 
 ## Evidence strip
 
 - **7+ years:** Quality engineering experience
-- **20 engineers:** Coordinated across distributed QA work
-- **10 to 15 integrations:** Validated across commerce workflows
+- **20 QA engineers:** Coordinated across distributed work
+- **10–15 integrations:** Validated across commerce workflows
+- **AI product quality:** Current end-to-end engineering ownership
 
 No defect counts belong in this strip.
 
-## What I engineer
+## Engineering focus
 
 Section heading:
 
-> Quality systems built around product risk.
+> Three connected quality disciplines.
 
 Introduction:
 
-> I connect test strategy, automation, data, and diagnostics so teams can understand both what failed and whether the product is ready.
+> Tools support the engineering story: understand behavior, test realistic system boundaries, and make failures explainable.
 
-### AI Systems Quality
+### AI Systems and Behavioral Quality
 
 Plain-language explanation:
 
-> I translate user intent into observable checks for agent obligations, constraints, tool use and failure behavior. I evaluate non-deterministic outputs against clear expectations without forcing every response into one exact assertion.
+> I turn user intent into observable checks for agent obligations, constraints, tool use, output quality, and failure behavior.
 
 Evidence areas:
 
-- Intent, obligation and constraint validation
-- Tool-use validation and failure behavior
-- Behavioral evaluation and output invariants
-- Evaluation strategy and observable failure evidence
+- Intent, obligation, and tool-use validation
+- Output invariants and failure behavior
+- Evaluation of non-deterministic systems
+- Evidence that explains why behavior failed
 
-### API and Microservice Quality
+### API, Microservices, and Realistic Data
 
 Plain-language explanation:
 
-> I combine contract validation with realistic data, state transitions and failure-path testing so teams can understand how services behave beyond the happy path.
+> I test service boundaries beyond the happy path with explicit contracts, realistic system state, and deliberately difficult data.
 
 Evidence areas:
 
 - OpenAPI contracts and schema validation
-- Fuzz testing and failure-path coverage
-- Seeded data and stateful integration scenarios
-- Python, pytest and Schemathesis across service boundaries
+- Contract, integration, and fuzz testing
+- Seeded data and stateful workflows
+- Missing, extreme, contradictory, and invalid data
 
-### UI Automation and Web Quality
-
-Plain-language explanation:
-
-> I build maintainable web automation around real user behavior, accessible semantics and deterministic test data. I use browser, network, console and trace evidence to diagnose failures instead of relying only on screenshots.
-
-Evidence areas:
-
-- Playwright coverage across Chromium, Firefox and WebKit
-- Semantic locators and accessibility-first test design
-- Reliable fixtures, test data and state control
-- Responsive, console, network and trace validation
-
-### Testability and Observability
+### UI Automation, Testability, and Observability
 
 Plain-language explanation:
 
-> I promote testability as an engineering requirement. I design observable states, deterministic test controls and diagnostic evidence so failures can be reproduced, understood and resolved quickly.
+> I build Playwright automation around accessible semantics, reliable fixtures, and diagnostic evidence instead of brittle selectors and screenshots alone.
 
 Evidence areas:
 
-- Testability built into component and API design
-- Logs, reports and traces connected to test evidence
-- Deterministic environments and repeatable test data
-- CI quality gates and requirement traceability
+- Semantic locators and reliable fixtures
+- Browser, network, console, trace, and logging evidence
+- Accessibility and responsive validation
+- Systems designed for testability
 
-## Building now
+## Engineering projects
+
+Section heading:
+
+> Evidence you can inspect.
 
 Supporting copy:
 
-> A selection of quality-engineering systems I am actively designing, implementing, and refining.
+> Three active builds that demonstrate AI evaluation, API quality, and reliable browser automation.
 
-All three entries use the status **Active build**.
+All three entries use the status **Active build** plus a concise maturity label.
 
 ### qa-agent
 
-- **Type:** AI evaluation
+- **Maturity:** Evaluation baseline implemented
 - **Problem:** Small local language models can sound authoritative while producing inconsistent or unsupported testing guidance.
-- **What I’m building:** A local RAG mentor with grounded retrieval, citation rules, abstention behavior, and a golden evaluation harness.
-- **Current status:** The ingestion/query pipeline, CLI, automated tests, and evaluation scaffolding exist. Published baseline results document that the current small model is not yet reliable for domain Q&A.
-- **Next milestone:** Upgrade the local instruct model and re-run the golden suite to compare concept accuracy, citations, and abstention behavior.
+- **Implemented:** A local RAG mentor with document ingestion, CLI queries, grounded retrieval, citation and abstention rules, automated tests, and a golden evaluation harness. Current work improves model quality and evaluation reliability.
 - **Technologies:** Python, pytest, ChromaDB, DeepEval
 - **Repository:** <https://github.com/SaiVamsiKolla-QA/qa-agent>
 
 ### fhir-contract-fuzz
 
-- **Type:** API quality
+- **Maturity:** Test architecture implemented
 - **Problem:** FHIR integrations can fail when live API behavior drifts from expected resource shapes or mishandles unusual inputs.
-- **What I’m building:** A layered HAPI FHIR R4 test system for smoke, contract, integration, and property-based fuzz validation.
-- **Current status:** The Dockerized test target, HTTP adapter, initial pydantic model, capability-statement smoke test, and CI structure are in place. Contract, workflow, and fuzz coverage are still being implemented.
-- **Next milestone:** Add response-shape contract tests and deterministic resource fixtures before expanding CRUD workflows and fuzz budgets.
+- **Implemented:** A Dockerized HAPI FHIR target, HTTP adapter, initial Pydantic contract model, capability-statement smoke test, and CI structure. Contract, workflow, and fuzz coverage is expanding from this working foundation.
 - **Technologies:** pytest, Schemathesis, pydantic, Docker
 - **Repository:** <https://github.com/SaiVamsiKolla-QA/fhir-contract-fuzz>
 
 ### medusa-checkout-e2e
 
-- **Type:** Web automation
+- **Maturity:** CI foundation implemented
 - **Problem:** Checkout spans storefront, backend, data, and third-party boundaries where timing and state make brittle UI tests easy to create.
-- **What I’m building:** A Playwright suite against a Dockerized Medusa storefront, with page objects, injected fixtures, readiness polling, and diagnostic reporting.
-- **Current status:** The local stack, page-object and fixture structure, global readiness setup, smoke checks, linting, and CI workflow exist. Full checkout journeys are not yet implemented.
-- **Next milestone:** Implement seeded cart and checkout journeys with failure diagnostics and keep the PR smoke path fast.
+- **Implemented:** A Dockerized Medusa stack with page objects, injected fixtures, readiness polling, smoke checks, linting, Allure reporting, and CI. Seeded cart and checkout coverage is expanding from this foundation.
 - **Technologies:** Playwright, JavaScript, Docker, Allure
 - **Repository:** <https://github.com/SaiVamsiKolla-QA/medusa-checkout-e2e>
 
@@ -213,15 +204,12 @@ Owned end-to-end validation for enterprise claims, policy, billing and customer-
 
 Section heading:
 
-> From intent to release confidence.
+> Four steps from intent to confidence.
 
-1. **Understand intent:** Determine what the feature or system is expected to accomplish for the user and product.
-2. **Identify risk:** Map behavioral, data, integration, reliability, accessibility, and user-impact risks.
-3. **Model realistic data:** Create valid, missing, extreme, contradictory, and stateful data scenarios.
-4. **Validate contracts:** Check schemas, service boundaries, dependencies, inputs, outputs, and failure behavior.
-5. **Evaluate behavior:** Assert deterministic results and evaluate non-deterministic AI behavior against clear obligations.
-6. **Trace failures:** Use logs, reports, traces, browser evidence, and system state to locate the failure point.
-7. **Communicate confidence:** Explain coverage, evidence, remaining risk, and whether the product is ready.
+1. **Understand intent and product risk:** Clarify what the system must accomplish and where behavior, data, integration, accessibility, or reliability can fail.
+2. **Model realistic data and failure paths:** Create valid, missing, extreme, contradictory, invalid, and stateful scenarios.
+3. **Validate contracts and behavior:** Check service boundaries and deterministic results, then evaluate AI behavior against clear obligations.
+4. **Diagnose failures and communicate confidence:** Connect logs, traces, browser evidence, and system state to explain failures, coverage, and remaining risk.
 
 ## Credentials
 
@@ -238,30 +226,23 @@ Section heading:
 
 ## About
 
-> I focus on quality engineering for AI systems, APIs and web products. My work connects test strategy, automation, testability and failure evidence so teams can make clearer release decisions.
+> I moved from India to Canada in 2019 for my master’s degree and progressed from dishwasher to front supervisor while studying.
 
-> I moved from India to Canada in 2019 for my master’s degree and worked from dishwasher to front supervisor while studying. That progression strengthened the calm coordination, adaptability, and ownership I bring to technical leadership today.
-
-Working principles:
-
-- Make risk explicit
-- Design for testability
-- Prefer observable systems
-- Communicate with evidence
+> That experience reinforced the adaptability, ownership, calm coordination, and persistence I now bring to quality engineering and technical leadership.
 
 ## Contact call to action
 
 Heading:
 
-> Looking for an engineer who can make complex AI systems testable?
+> Need complex systems to be testable and explainable?
 
 Supporting copy:
 
-> I bring AI systems testing, API automation, reliable UI automation, realistic test data, observability and end-to-end validation to product teams.
+> I bring AI behavioral testing, API and browser automation, realistic test data, observability, and failure diagnosis to product teams.
 
 Primary action:
 
-- Email: <mailto:saivamsikolla@gmail.com>
+- Email Sai: <mailto:saivamsikolla@gmail.com>
 
 Supporting links:
 
@@ -277,13 +258,17 @@ Location and availability:
 ## Footer
 
 - Sai Vamsi Kolla
-- AI Quality Engineer · Senior SDET
+- Senior SDET · AI Quality Engineer
 - “Static, lightweight, and designed for testability.”
 - Back-to-top anchor
 
 ## Metadata
 
-- Page title: `Sai Vamsi Kolla | AI Quality Engineer · Senior SDET`
-- Meta description: `Sai Vamsi Kolla designs test systems for AI agents, APIs, microservices and web applications with a focus on testability, automation and observable failure evidence.`
-- Open Graph title: `Sai Vamsi Kolla | AI Quality Engineer · Senior SDET`
-- Open Graph description: `Test systems for AI agents, APIs, microservices and web applications, with a focus on testability, automation and observable failure evidence.`
+- Page title: `Sai Vamsi Kolla | Senior SDET · AI Quality Engineer`
+- Meta description: `Sai Vamsi Kolla is a Senior SDET and AI Quality Engineer who tests AI-agent behavior, APIs, microservices, and web applications through realistic data, automation, testability, and failure diagnosis.`
+- Canonical URL: `https://saivamsikolla-qa.github.io/`
+- Open Graph title: `Sai Vamsi Kolla | Senior SDET · AI Quality Engineer`
+- Open Graph description: `Quality engineering for AI-agent behavior, APIs, microservices, and web automation, backed by realistic data and observable failure evidence.`
+- Open Graph and Twitter image: `images/social-preview.jpg`
+- Twitter card: `summary_large_image`
+- JSON-LD: Person profile using only the public name, role, portfolio URL, portrait, email, location, GitHub, and LinkedIn details above.

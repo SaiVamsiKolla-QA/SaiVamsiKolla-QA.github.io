@@ -6,7 +6,7 @@ Record the date, browser/device, operating system, theme, viewport or zoom, obse
 
 ## Recruiter five-second impression
 
-Open the homepage without scrolling. After five seconds, state the role, engineering focus, differentiator, and most obvious next action. Check whether “AI Quality Engineer · Senior SDET” and the quality-systems positioning register before a skill inventory. Repeat with a hiring manager unfamiliar with the candidate.
+Open the homepage without scrolling. After five seconds, state the name, role, systems tested, supporting evidence, and most obvious next action. Check whether “Sai Vamsi Kolla,” “Senior SDET · AI Quality Engineer,” and the résumé-first action register before a skill inventory. Repeat with a hiring manager unfamiliar with the candidate.
 
 ## Visual professionalism
 
@@ -14,7 +14,7 @@ Review at desktop, tablet, and mobile widths. Look for calm hierarchy, consisten
 
 ## Content credibility
 
-Read the Building-now cards as a skeptical engineering interviewer. Confirm active status, existing evidence, limitations, next milestones, technologies, and repository destinations. Verify experience statements and metrics against source material. Look for language that implies production readiness, completed outcomes, or results that are not demonstrated.
+Read the engineering-project cards as a skeptical interviewer. Confirm active status, concise maturity labels, implemented evidence, technologies, and repository destinations. Verify experience statements and metrics against source material. Look for language that implies production readiness, completed outcomes, or results that are not demonstrated.
 
 ## Keyboard usability
 
@@ -46,11 +46,11 @@ Throttle to Slow 3G and disable cache. Observe first content, portrait loading, 
 
 ## Reduced motion
 
-Enable the operating system’s reduced-motion setting before loading. Verify that core content appears immediately, reveal transitions and smooth scrolling are suppressed, the decorative canvas does not animate, and state changes remain understandable without motion.
+Enable the operating system’s reduced-motion setting before loading. Verify that core content appears immediately, smooth scrolling and control transitions are suppressed, and state changes remain understandable without motion.
 
 ## Print output
 
-Open print preview in light and dark preference. Confirm all professional content prints with readable contrast, sensible breaks, visible link destinations where useful, and no hidden reveal content. Navigation, theme control, canvas, portrait decoration, and redundant chrome should be removed.
+Open print preview in light and dark preference. Confirm all professional content prints with readable contrast, sensible breaks, and visible link destinations where useful. Navigation, theme control, portrait decoration, and redundant chrome should be removed.
 
 ## Resume download
 
@@ -62,7 +62,11 @@ Use local developer tools to block `images/profile.jpg`. Confirm the alternative
 
 ## Delayed-script behavior
 
-Block or delay `js/main.js` and `js/background.js`. Confirm headline, sections, contact details, resume links, and anchor navigation remain available; content never remains at zero opacity; the fallback navigation is usable; and loss of theme/canvas/menu enhancement does not create a blank or misleading page.
+Block or delay `js/main.js`. Confirm the full name, role, sections, contact details, resume links, and anchor navigation remain available; the fallback navigation is usable; and loss of theme, menu, or copy-email enhancement does not create a blank or misleading page.
+
+## Search and social preview
+
+After deployment, inspect a fresh link unfurl and the public `robots.txt` and `sitemap.xml`. Confirm the name, role, description, social image, image text, canonical URL, and crawler URLs all reference the production portfolio without stale cached content.
 
 ## Exit criteria
 

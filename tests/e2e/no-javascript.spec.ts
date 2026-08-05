@@ -17,10 +17,11 @@ test('A11Y-001 core portfolio content and navigation work without JavaScript', a
     });
 
     await test.step('Verify the baseline is visible and navigable', async () => {
-      await expect(noJsPage.getByRole('heading', { level: 1 })).toBeVisible();
+      await expect(noJsPage.getByRole('heading', { level: 1, name: 'Sai Vamsi Kolla' })).toBeVisible();
       await expect(noJsPage.getByRole('navigation', { name: 'Primary navigation' })).toBeVisible();
       await expect(noJsPage.getByTestId('mobile-navigation')).toBeVisible();
       await expect(noJsPage.getByRole('button', { name: /navigation menu/i })).toBeHidden();
+      await expect(noJsPage.getByTestId('theme-toggle')).toBeHidden();
       await expect(noJsPage.locator('main > section')).toHaveCount(9);
       const hiddenSections = await noJsPage.locator('main > section').evaluateAll((sections) =>
         sections
@@ -28,7 +29,8 @@ test('A11Y-001 core portfolio content and navigation work without JavaScript', a
           .map((section) => section.id || section.className),
       );
       expect(hiddenSections).toEqual([]);
-      await expect(noJsPage.getByRole('link', { name: 'saivamsikolla@gmail.com' })).toBeVisible();
+      await expect(noJsPage.locator('#contact').getByRole('link', { name: 'Email Sai' })).toBeVisible();
+      await expect(noJsPage.getByText('saivamsikolla@gmail.com', { exact: true })).toBeVisible();
       await expect(noJsPage.locator('#contact a[href^="mailto:"]')).toHaveCount(1);
       await expect(noJsPage.getByRole('button', { name: 'Copy email' })).toBeHidden();
       const resumePreview = noJsPage.getByRole('link', { name: /resume/i }).first();

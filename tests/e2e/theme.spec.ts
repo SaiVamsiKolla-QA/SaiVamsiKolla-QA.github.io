@@ -41,8 +41,9 @@ test('THEME-001 theme state, accessible action, focus, and persistence stay alig
 
   await test.step('Verify the theme control has a visible focus indicator', async () => {
     const toggle = await exposeThemeControl(page);
+    const resumeLink = page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'View resume' });
+    await resumeLink.focus();
     await page.keyboard.press('Tab');
-    await toggle.focus();
     await expect(toggle).toBeFocused();
     const focusStyle = await toggle.evaluate((element) => {
       const style = getComputedStyle(element);

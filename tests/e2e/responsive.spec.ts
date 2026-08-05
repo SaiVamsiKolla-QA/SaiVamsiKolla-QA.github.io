@@ -22,7 +22,7 @@ for (const viewport of viewports) {
     await test.step('Verify primary content and controls remain visible', async () => {
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
       await expect(page.getByTestId('hero-primary-action')).toBeVisible();
-      await expect(page.getByRole('heading', { name: 'Active systems, documented honestly.' })).toBeVisible();
+      await expect(page.getByRole('heading', { name: 'Evidence you can inspect.' })).toBeVisible();
 
       const header = page.getByTestId('site-header');
       const main = page.getByRole('main');
@@ -81,7 +81,7 @@ for (const viewport of viewports) {
         await page.keyboard.press('Escape');
         await expect(page.getByTestId('mobile-navigation')).toBeHidden();
 
-        const emailLink = page.getByRole('link', { name: 'saivamsikolla@gmail.com', exact: true });
+        const emailLink = page.locator('#contact').getByRole('link', { name: 'Email Sai', exact: true });
         const copyButton = page.getByRole('button', { name: 'Copy email' });
         await expect(emailLink).toBeVisible();
         await expect(copyButton).toBeVisible();

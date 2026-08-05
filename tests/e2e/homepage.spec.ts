@@ -14,7 +14,8 @@ test('CONTENT-001 ASSET-001 homepage exposes the core recruiter path', async ({ 
     await expect(page.getByRole('main')).toBeVisible();
     await expect(page.getByRole('contentinfo')).toBeVisible();
     await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
-    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: 'Sai Vamsi Kolla' })).toBeVisible();
+    await expect(page.locator('.hero .eyebrow')).toHaveText('Senior SDET · AI Quality Engineer');
   });
 
   await test.step('Verify the primary action and resume contract', async () => {
@@ -25,7 +26,7 @@ test('CONTENT-001 ASSET-001 homepage exposes the core recruiter path', async ({ 
       await expect(previewLink).toHaveAttribute('target', '_blank');
       await expect(previewLink).toHaveAttribute('rel', /\bnoopener\b/);
       await expect(previewLink).toHaveAttribute('rel', /\bnoreferrer\b/);
-      await expect(previewLink).toHaveText(/^(?:Resume|View resume)$/i);
+      await expect(previewLink).toHaveText('View resume');
     }
 
     const visibleResumeLinks = resumePreviews.filter({ visible: true });
@@ -37,7 +38,7 @@ test('CONTENT-001 ASSET-001 homepage exposes the core recruiter path', async ({ 
 
     const resumeDownloads = page.locator('a[href="files/SaiVamsiKolla_Resume.pdf"][download]');
     await expect(resumeDownloads).toHaveCount(1);
-    await expect(resumeDownloads).toHaveAccessibleName('Resume');
+    await expect(resumeDownloads).toHaveAccessibleName('Download resume');
     await expect(resumeDownloads).not.toHaveAttribute('target', '_blank');
   });
 
@@ -46,17 +47,22 @@ test('CONTENT-001 ASSET-001 homepage exposes the core recruiter path', async ({ 
     const expertise = page.getByTestId('capability-list');
     const currentRole = page.locator('.experience-item').first();
 
-    await expect(hero.getByRole('heading', { level: 1 })).toHaveText('I build quality systems for AI-powered products.');
-    await expect(hero.locator('.hero-lead')).toHaveText(
-      'I design test systems for AI agents, APIs, and web applications using realistic data, behavioral validation, and observable failure evidence.',
-    );
+    await expect(hero.getByRole('heading', { level: 1 })).toHaveText('Sai Vamsi Kolla');
+    await expect(hero.locator('.hero-positioning')).toContainText('AI agents, APIs, microservices, and web automation');
+    await expect(hero.locator('.hero-lead')).toContainText('behavioral obligations and tool use');
+    await expect(hero.locator('.hero-lead')).toContainText('testability and observability');
+    await expect(hero.locator('.hero-lead')).toContainText('browser, network, console, trace, and logging evidence');
     await expect(page.locator('.capability-strip li').first()).toHaveText('7+ years of quality engineering experience');
+    await expect(page.locator('.capability-strip li')).toHaveCount(4);
+    await expect(hero.locator('.availability')).toHaveText(
+      'Vancouver, BC, Canada · Canadian citizen · Eligible to apply for TN status for qualifying U.S. roles',
+    );
+    expect(await page.locator('body').innerText()).not.toMatch(/eligible to work in (?:the )?US\s*\(TN visa\)/i);
 
     const capabilityHeadings = [
-      'AI Systems Quality',
-      'API and Microservices Quality',
-      'UI Automation and Web Quality',
-      'Testability and Observability',
+      'AI Systems and Behavioral Quality',
+      'API, Microservices, and Realistic Data',
+      'UI Automation, Testability, and Observability',
     ];
     await expect(expertise.locator('.expertise-card')).toHaveCount(capabilityHeadings.length);
     for (const heading of capabilityHeadings) {
@@ -75,14 +81,14 @@ test('CONTENT-001 ASSET-001 homepage exposes the core recruiter path', async ({ 
   });
 
   await test.step('Verify recruiter metadata matches the positioning', async () => {
-    await expect(page).toHaveTitle('Sai Vamsi Kolla | AI Quality Engineer · Senior SDET');
+    await expect(page).toHaveTitle('Sai Vamsi Kolla | Senior SDET · AI Quality Engineer');
     await expect(page.locator('meta[name="description"]')).toHaveAttribute(
       'content',
-      'Sai Vamsi Kolla designs test systems for AI agents, APIs, microservices, and web applications with a focus on testability, automation, and observable failure evidence.',
+      'Sai Vamsi Kolla is a Senior SDET and AI Quality Engineer who tests AI-agent behavior, APIs, microservices, and web applications through realistic data, automation, testability, and failure diagnosis.',
     );
     await expect(page.locator('meta[property="og:description"]')).toHaveAttribute(
       'content',
-      'Test systems for AI agents, APIs, microservices, and web applications, with a focus on testability, automation, and observable failure evidence.',
+      'Quality engineering for AI-agent behavior, APIs, microservices, and web automation, backed by realistic data and observable failure evidence.',
     );
   });
 
@@ -99,19 +105,20 @@ test('CONTENT-001 ASSET-001 homepage exposes the core recruiter path', async ({ 
   });
 });
 
-test('CONTACT-001 email remains visible and copy feedback handles Clipboard API, fallback, and failure paths', async ({ page }, testInfo) => {
+test('CONTACT-001 email remains visible and copy feedback handles Clipboard API success and failure paths', async ({ page }, testInfo) => {
   annotateRequirements(testInfo, 'CONTACT-001', 'A11Y-004');
   test.skip(testInfo.project.name !== 'chromium-desktop', 'One Chromium pass covers the browser clipboard contract deterministically.');
 
   await openPortfolio(page);
 
-  const emailLink = page.getByRole('link', { name: 'saivamsikolla@gmail.com', exact: true });
+  const emailLink = page.locator('#contact').getByRole('link', { name: 'Email Sai', exact: true });
   const copyButton = page.getByRole('button', { name: 'Copy email' });
   const status = page.locator('#copy-email-status');
 
   await test.step('Verify the visible and accessible contact controls', async () => {
     await expect(emailLink).toBeVisible();
     await expect(emailLink).toHaveAttribute('href', 'mailto:saivamsikolla@gmail.com');
+    await expect(page.getByText('saivamsikolla@gmail.com', { exact: true })).toBeVisible();
     await expect(page.locator('#contact a[href^="mailto:"]')).toHaveCount(1);
     await expect(copyButton).toBeVisible();
     await expect(copyButton).toHaveAccessibleName('Copy email');
@@ -138,29 +145,12 @@ test('CONTACT-001 email remains visible and copy feedback handles Clipboard API,
     expect(await page.evaluate(() => (window as typeof window & { copiedEmail?: string }).copiedEmail)).toBe('saivamsikolla@gmail.com');
   });
 
-  await test.step('Use the selection fallback when the Clipboard API is unavailable', async () => {
-    await page.evaluate(() => {
-      Object.defineProperty(navigator, 'clipboard', { configurable: true, value: undefined });
-      Object.defineProperty(document, 'execCommand', {
-        configurable: true,
-        value: () => {
-          (window as typeof window & { fallbackEmail?: string }).fallbackEmail = document.querySelector('textarea')?.value;
-          return true;
-        },
-      });
-    });
-    await copyButton.click();
-    await expect(status).toHaveText('Email address copied to clipboard.');
-    expect(await page.evaluate(() => (window as typeof window & { fallbackEmail?: string }).fallbackEmail)).toBe('saivamsikolla@gmail.com');
-  });
-
   await test.step('Announce a safe failure without throwing an uncaught browser error', async () => {
     await page.evaluate(() => {
       Object.defineProperty(navigator, 'clipboard', {
         configurable: true,
         value: { writeText: async () => Promise.reject(new Error('Permission denied')) },
       });
-      Object.defineProperty(document, 'execCommand', { configurable: true, value: () => false });
     });
     await copyButton.click();
     await expect(status).toHaveText('Could not copy the email address. Select and copy it manually.');

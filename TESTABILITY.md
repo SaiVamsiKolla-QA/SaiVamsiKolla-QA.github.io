@@ -2,11 +2,11 @@
 
 ## 1. Testability principles
 
-The portfolio treats testability as part of the interface. Core content has a visible HTML baseline; progressive JavaScript only adds menu, theme, reveal, and canvas behavior. Important state is exposed through semantic HTML, accessible names, `aria-expanded`, `aria-pressed`, `hidden`, stable section IDs, and a small set of intentional test IDs. Tests collect browser, viewport, theme, JavaScript, console, page-error, request-failure, screenshot, and trace evidence.
+The portfolio treats testability as part of the interface. Core content and the static hero background have an HTML/CSS baseline; progressive JavaScript only adds compact navigation, theme persistence, and Clipboard API behavior. Important state is exposed through semantic HTML, accessible names, `aria-expanded`, `aria-pressed`, `hidden`, stable section IDs, and a small set of intentional test IDs. Tests collect browser, viewport, theme, JavaScript, console, page-error, request-failure, screenshot-on-failure, and trace evidence.
 
 ## 2. Supported browsers
 
-Automated projects cover current Playwright Chromium, Firefox, and WebKit desktop engines plus emulated Chromium and WebKit mobile profiles. The manual charter retains real iPhone Safari and Android Chrome because emulation cannot prove platform browser behavior.
+Pull-request gates use Chromium desktop plus one emulated Chromium mobile profile. Firefox desktop, WebKit desktop, and emulated mobile Safari run after pushes to `main` or through manual workflow dispatch. The manual charter retains real iPhone Safari and Android Chrome because emulation cannot prove platform browser behavior.
 
 ## 3. Supported viewport categories
 
@@ -31,8 +31,7 @@ Future changes should preserve the behavior and accessible meaning, not exact wr
 | --- | --- | --- |
 | Compact navigation | Closed/open, desktop/compact | Trigger `aria-expanded`, accessible action name, menu `hidden`, and visible state agree. Resizing to desktop resets stale open state. |
 | Theme toggle | Light/dark | Root `data-theme`, toggle `aria-pressed`, accessible action name, theme-color metadata, and stored preference agree. |
-| Reveal enhancement | Baseline/pending/visible | Content starts visible. JavaScript may mark motion-ready content pending only when motion is permitted and Intersection Observer exists. |
-| Hero canvas | Running/paused/disabled | Canvas is decorative, scoped to the hero, paused offscreen or in a hidden tab, and disabled in deterministic test mode. |
+| Copy email | Hidden/available/success/failure | The control is exposed only when the modern Clipboard API is available. The email address and mail link remain usable without it. Success and failure feedback is announced politely. |
 
 ## 6. Keyboard expectations
 
@@ -51,7 +50,7 @@ Automated scans do not replace keyboard testing, screen-reader review, 200%/400%
 
 ## 8. Deterministic test behavior
 
-Use `?testMode=1` for visual and functional automation. Test mode disables decorative canvas rendering and motion, makes reveal content immediately visible, and removes random visual output. A `theme=light` or `theme=dark` query value controls the initial theme without changing the public default. Tests create independent browser contexts, avoid arbitrary sleeps, and use web-first assertions.
+The site contains no random rendering or JavaScript-dependent content visibility. A `theme=light` or `theme=dark` query value controls the initial theme for deterministic checks without changing the public default. Playwright requests reduced motion, creates independent browser contexts, avoids arbitrary sleeps, and uses web-first assertions.
 
 ## 9. Automated test scope
 
@@ -62,9 +61,10 @@ Use `?testMode=1` for visual and functional automation. Test mode disables decor
 - No-JavaScript core-content and anchor-navigation fallback.
 - Active-project disclosure and prohibited high-visibility claims.
 - Duplicate IDs, internal anchors, local asset responses, email, and URL format.
+- Canonical, Open Graph, Twitter, JSON-LD, `robots.txt`, and `sitemap.xml` metadata.
+- Exact TN wording in both public content sources and absence of outdated wording across repository text files.
 - Browser console errors, uncaught page errors, and failed local requests.
 - Axe scans across theme, viewport, and open-menu states.
-- Stable-area visual comparisons.
 - Desktop/mobile Lighthouse and resource-size budgets.
 
 ## 10. Manual test scope
@@ -76,17 +76,16 @@ Human review remains required for recruiter comprehension, visual credibility, c
 - External destinations are format-checked but not fetched in pull-request gates; third-party availability is unstable.
 - Mobile projects are device emulations, not physical-device certification.
 - Axe does not assess every WCAG criterion or whether alternative text is contextually ideal.
-- The controlled visual specifications are present, but their first reviewed baselines have not been accepted yet. Until they are, visual comparison is an explicit local review step rather than a blocking CI gate.
 - The résumé PDF is checked for availability, not audited or altered by this redesign.
 - Lighthouse is a local synthetic sample and should be interpreted as a regression signal, not a field-performance guarantee.
 
 ## 12. CI quality gates
 
-`.github/workflows/portfolio-quality.yml` runs for pull requests, pushes to `main`, and manual dispatch. It installs locked Node dependencies and the three browser engines, then gates HTML, local assets, TypeScript, smoke, functional, responsive, accessibility, link, and Lighthouse checks. Reports, traces, screenshots, and Lighthouse output are uploaded even after a failure. Retries remain disabled so consistent failures are not hidden.
+`.github/workflows/portfolio-quality.yml` runs for pull requests, pushes to `main`, and manual dispatch. Every run installs locked Node dependencies and Chromium, then gates HTML, local assets and content, TypeScript, desktop smoke, desktop/mobile functional behavior, responsive geometry, accessibility, links, and metadata. Non-pull-request runs additionally install Firefox and WebKit, execute the broader browser checks, and enforce Lighthouse budgets. Reports, traces, screenshots-on-failure, and Lighthouse output are uploaded even after a failure. Retries remain disabled so consistent failures are not hidden.
 
-Visual specifications remain deliberately outside the blocking workflow until the first cross-browser baseline set can be generated and reviewed in an unrestricted browser environment. Enabling the visual gate before baseline approval would make every CI run fail for setup rather than for a visual regression.
+Visual regression configuration was removed because no reviewed baselines existed, so it provided setup without regression protection. Intentional visual review remains in the manual charter and requested multi-viewport review.
 
-The provisional Lighthouse budgets are stored in `lighthouse-budget.json`. Category floors are deliberately below 100. Payload ceilings are informed by the current approximately 130 KB of uncompressed HTML, CSS, JavaScript, and initially loaded image source, with explicit headroom for transfer variance and modest growth. The category floors must be confirmed or revised against the first successful desktop/mobile baseline before they are treated as established regression limits; document the measured result and reason for any change.
+The Lighthouse budgets are stored in `lighthouse-budget.json`. The August 3, 2026 desktop and mobile baselines each scored 1.0 for performance, accessibility, best practices, and SEO, with 127,244 transferred bytes and 4,194 script bytes. Category floors remain deliberately below 100 and payload ceilings retain headroom for transfer variance and modest growth; they are regression signals, not claims of perfect real-user performance or accessibility.
 
 ## 13. Local commands
 
@@ -101,14 +100,15 @@ npm run test:functional
 npm run test:responsive
 npm run test:a11y
 npm run test:links
-npm run test:visual
+npm run test:broad
 npm run lighthouse:baseline
 npm run lighthouse:ci
+npm run quality
 ```
 
 The development tooling requires Node `^22.22.0` or `>=24.8.0`; the CI workflow uses Node 24.
 
-Use `npm run test:visual:update` only in an unrestricted browser environment and only after confirming an intentional visual change. Review the generated baseline images before accepting them, then add `npm run test:visual` to the CI workflow. `npm test` runs the non-visual Playwright specifications across configured projects; visual comparison remains an explicit command until its first baselines are approved.
+`npm test` runs the regular specifications in Chromium desktop and the representative mobile Chromium project. `npm run test:broad` targets recruiter-path behavior in Firefox desktop, WebKit desktop, and emulated mobile Safari. Human visual review is required for intentional layout changes.
 
 ## 14. Requirement-to-test traceability
 
@@ -128,8 +128,7 @@ Use `npm run test:visual:update` only in an unrestricted browser environment and
 | CONTENT-001 | Recruiter hierarchy loses its single headline | `homepage.spec.ts` | Five-second impression | Smoke |
 | CONTENT-002 | Active work is presented as completed | `project-status.spec.ts` | Credibility review | Functional |
 | CONTACT-001 | Contact actions become duplicated, hidden, or unusable without clipboard access | `homepage.spec.ts`, `no-javascript.spec.ts`, `responsive.spec.ts` | Recruiter path, keyboard, copy feedback | Functional, responsive |
-| VISUAL-001 | Stable desktop landmarks drift unexpectedly | `visual.spec.ts` | Visual professionalism | Deferred until baseline approval |
-| VISUAL-002 | Open compact-navigation layout regresses | `visual.spec.ts` | Real mobile browsers | Deferred until baseline approval |
+| SEO-001 | Search/social metadata or crawler discovery points to the wrong profile | `links.spec.ts`, `check-assets.mjs` | Live unfurl and indexability checks | Static, links |
 
 ## Contributor change checklist
 

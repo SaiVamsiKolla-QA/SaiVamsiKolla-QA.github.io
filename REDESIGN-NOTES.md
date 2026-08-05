@@ -1,5 +1,7 @@
 # Responsive portfolio redesign notes
 
+> Historical implementation record for the August 1–3, 2026 redesign. `CONTENT.md`, `TESTABILITY.md`, and the current implementation supersede details below that reference the former canvas, reveal animation, test mode, or unreviewed visual-regression setup.
+
 ## 1. Executive summary
 
 The portfolio has been reorganized from a broad résumé-style presentation into a concise engineering narrative: what Sai Vamsi builds, the quality systems currently in progress, the scope of prior ownership, the method used to create confidence, and a direct contact path. The visual system remains blue, static, and framework-free while adding calmer spacing, stronger typography, clearer surfaces, robust compact navigation, accessible theme behavior, deterministic testing, and CI-verifiable contracts.
