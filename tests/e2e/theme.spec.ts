@@ -10,7 +10,7 @@ async function exposeThemeControl(page: Page): Promise<Locator> {
   return toggle;
 }
 
-test('THEME-001 theme state, accessible action, focus, and persistence stay aligned', async ({ page }, testInfo) => {
+test('THEME-001 theme state, accessible action, focus, and persistence stay aligned', async ({ browserName, page }, testInfo) => {
   annotateRequirements(testInfo, 'THEME-001');
 
   await test.step('Start from a deterministic dark preference', async () => {
@@ -41,9 +41,14 @@ test('THEME-001 theme state, accessible action, focus, and persistence stay alig
 
   await test.step('Verify the theme control has a visible focus indicator', async () => {
     const toggle = await exposeThemeControl(page);
-    const resumeLink = page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'View resume' });
-    await resumeLink.focus();
-    await page.keyboard.press('Tab');
+    if (browserName === 'webkit') {
+      // WebKit follows the macOS preference that may omit controls from the Tab sequence.
+      await toggle.focus();
+    } else {
+      const resumeLink = page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'View resume' });
+      await resumeLink.focus();
+      await page.keyboard.press('Tab');
+    }
     await expect(toggle).toBeFocused();
     const focusStyle = await toggle.evaluate((element) => {
       const style = getComputedStyle(element);
